@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://eprmypdm2vqh"]
+[gd_scene load_steps=9 format=3 uid="uid://eprmypdm2vqh"]
 
 [ext_resource type="Texture2D" uid="uid://denobb0t758lo" path="res://entities/test_player/test_player.png" id="1_3gwro"]
 [ext_resource type="Script" path="res://entities/test_player/test_player.gd" id="1_ogo0s"]
@@ -25,9 +25,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
-radius = 3.92431
-height = 13.368
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eov6o"]
+size = Vector2(6.54052, 11.14)
+
+[sub_resource type="Gradient" id="Gradient_ustth"]
+colors = PackedColorArray(0.998796, 0.999054, 0.999213, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oyrm6"]
+gradient = SubResource("Gradient_ustth")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.495726, 0.514957)
+fill_to = Vector2(0.519231, 0)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.52893, 1.3465)
@@ -40,9 +50,15 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.654052, -7.42666)
-shape = SubResource("CapsuleShape2D_hj6c1")
+position = Vector2(0.654052, -6.31266)
+shape = SubResource("RectangleShape2D_eov6o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.654052, -7.42666)
 zoom = Vector2(4, 4)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.654052, -7.42666)
+energy = 2.0
+texture = SubResource("GradientTexture2D_oyrm6")
+texture_scale = 0.6
