@@ -1,10 +1,17 @@
-[gd_scene load_steps=12 format=4 uid="uid://b2nrhqlr15506"]
+[gd_scene load_steps=18 format=4 uid="uid://b2nrhqlr15506"]
 
+[ext_resource type="Script" path="res://test_map.gd" id="1_1sfra"]
+[ext_resource type="Shader" path="res://shaders/lens_filter.gdshader" id="1_4ttov"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
 [ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="2_5tbwc"]
 [ext_resource type="Script" path="res://red_walls.gd" id="2_vvh8w"]
 [ext_resource type="Script" path="res://blue_walls.gd" id="3_g3bpo"]
 [ext_resource type="Script" path="res://green_walls.gd" id="4_822p5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kovpl"]
+shader = ExtResource("1_4ttov")
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fu1g5"]
 texture = ExtResource("1_jh8a6")
@@ -267,6 +274,11 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fu1g5")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nv5l8"]
+shader = ExtResource("1_4ttov")
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1yyd"]
 texture = ExtResource("1_jh8a6")
 texture_region_size = Vector2i(32, 32)
@@ -527,6 +539,11 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n1yyd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx04j"]
+shader = ExtResource("1_4ttov")
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q6cmy"]
 texture = ExtResource("1_jh8a6")
@@ -789,22 +806,32 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_q6cmy")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ejnx"]
+shader = ExtResource("1_4ttov")
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+
 [node name="scene" type="Node2D"]
+script = ExtResource("1_1sfra")
 
 [node name="RedWalls" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_kovpl")
 tile_map_data = PackedByteArray("AAACAAIAAAACAAUAAAADAAIAAAACAAUAAAAEAAIAAAACAAUAAAAFAAIAAAACAAUAAAAGAAEAAAACAAUAAAAHAAEAAAACAAUAAAAIAAEAAAACAAUAAAAJAAEAAAACAAUAAAD8/wAAAAACAAUAAAD9/wEAAAACAAUAAAD//wIAAAACAAUAAAAAAAMAAAACAAUAAAAAAAoAAAACAAUAAAABAAoAAAACAAUAAAACAAoAAAACAAUAAAADAAoAAAACAAUAAAAEAAoAAAACAAUAAAAFAAoAAAACAAUAAAAGAAoAAAACAAUAAAD+/wIAAAACAAUAAAA=")
 tile_set = SubResource("TileSet_hvij5")
 script = ExtResource("2_vvh8w")
 
 [node name="BlueWalls" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_nv5l8")
 tile_map_data = PackedByteArray("AAAKAAgAAAAJAAUAAAAKAAkAAAAJAAUAAAAKAAoAAAAJAAUAAAALAAsAAAAJAAUAAAALAAwAAAAJAAUAAAALAA0AAAAJAAUAAAADAAQAAAAJAAUAAAAEAAQAAAAJAAUAAAAFAAQAAAAJAAUAAAAGAAQAAAAJAAUAAAAHAAQAAAAJAAUAAAANAAYAAAAJAAUAAAANAAcAAAAJAAUAAAANAAgAAAAJAAUAAAA=")
 tile_set = SubResource("TileSet_2rakh")
 script = ExtResource("3_g3bpo")
 
 [node name="GreenWalls" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_hx04j")
 tile_map_data = PackedByteArray("AAD+/w0AAAABAAgAAAD//w0AAAABAAgAAAAAAA0AAAABAAgAAAABAA0AAAABAAgAAAAFAA0AAAABAAgAAAAGAA0AAAABAAgAAAAHAA0AAAABAAgAAAAIAAwAAAABAAgAAAAJAAwAAAABAAgAAAAHAAcAAAABAAgAAAAIAAYAAAABAAgAAAAJAAYAAAABAAgAAAAKAAUAAAABAAgAAAALAAQAAAABAAgAAAA=")
 tile_set = SubResource("TileSet_7kmhg")
 script = ExtResource("4_822p5")
 
 [node name="Player" parent="." instance=ExtResource("2_5tbwc")]
+material = SubResource("ShaderMaterial_1ejnx")
 position = Vector2(153, 296)
