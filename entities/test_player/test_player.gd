@@ -9,10 +9,13 @@ func _input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_1:
 				self.lens = LENS_COLOR.RED
+				RenderingServer.set_default_clear_color('RED')
 			KEY_2:
 				self.lens = LENS_COLOR.BLUE
+				RenderingServer.set_default_clear_color('BLUE')
 			KEY_3:
 				self.lens = LENS_COLOR.GREEN
+				RenderingServer.set_default_clear_color('GREEN')
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction for left/right and up/down
