@@ -1,6 +1,5 @@
 shader_type canvas_item;
 
-uniform float tint_factor : hint_range(0.0, 1.0) = 0.8;
 uniform float fade: hint_range(0.0, 1.0) = 0.5;
 
 void vertex() {
@@ -13,6 +12,7 @@ void fragment() {
 	
 	// Set tint color
 	vec4 color = vec4(1.0, 0.0, 0.0, 0.8);
+	float tint_factor = 0.75;
 
 
     vec4 main_texture = texture(TEXTURE, UV);
@@ -20,7 +20,7 @@ void fragment() {
 	float original_modulation = 1.0 - tint_factor;
 	
 	final_output.rgb = mix(main_texture.rgb, color.rgb * tint_factor, tint_factor);
-	final_output.a *= fade;
+	//final_output.a *= fade;
 	COLOR = final_output;
 }
 

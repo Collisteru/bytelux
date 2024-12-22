@@ -10,7 +10,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kovpl"]
 shader = ExtResource("1_4ttov")
-shader_parameter/tint_factor = 0.5
 shader_parameter/fade = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fu1g5"]
@@ -276,7 +275,6 @@ sources/0 = SubResource("TileSetAtlasSource_fu1g5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nv5l8"]
 shader = ExtResource("1_4ttov")
-shader_parameter/tint_factor = 0.5
 shader_parameter/fade = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1yyd"]
@@ -542,7 +540,6 @@ sources/0 = SubResource("TileSetAtlasSource_n1yyd")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hx04j"]
 shader = ExtResource("1_4ttov")
-shader_parameter/tint_factor = 0.5
 shader_parameter/fade = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q6cmy"]
@@ -808,7 +805,6 @@ sources/0 = SubResource("TileSetAtlasSource_q6cmy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ejnx"]
 shader = ExtResource("1_4ttov")
-shader_parameter/tint_factor = 0.5
 shader_parameter/fade = 1.0
 
 [node name="scene" type="Node2D"]
