@@ -4,7 +4,18 @@ const SPEED = 300.0
 enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
 var lens = LENS_COLOR.WHITE
 
+# Import child nodes
+@onready var laser = $PlayerLaser
+
+
+
 func _input(event: InputEvent) -> void:
+	# Get player's response to mouse events
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var player_position = self.position
+		laser.fire_laser(event.position, player_position)
+		
+	# Get player's response to key events
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_1:
@@ -22,8 +33,6 @@ func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	
-	
-
 	# Handle horizontal (x) movement
 	if direction_x != 0:
 		velocity.x = direction_x * SPEED
