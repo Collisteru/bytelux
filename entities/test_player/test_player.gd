@@ -18,9 +18,11 @@ func _input(event: InputEvent) -> void:
 				RenderingServer.set_default_clear_color('GREEN')
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction for left/right and up/down
+	# Get the input direction 
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
+	
+	
 
 	# Handle horizontal (x) movement
 	if direction_x != 0:
