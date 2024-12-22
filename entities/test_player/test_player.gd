@@ -8,13 +8,10 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_1:
-				print("Player pressed 1")
 				self.lens = LENS_COLOR.RED
 			KEY_2:
-				print("Player pressed 2")
 				self.lens = LENS_COLOR.BLUE
 			KEY_3:
-				print("Player pressed 3")
 				self.lens = LENS_COLOR.GREEN
 
 func _physics_process(delta: float) -> void:
