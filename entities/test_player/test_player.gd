@@ -7,6 +7,7 @@ var lens = LENS_COLOR.WHITE
 # Import child nodes
 @onready var laser = $PlayerLaser
 @onready var sprite = $PlayerSprite
+@onready var pointer = $Pointer
 
 func translate_to_center(position: Vector2) -> Vector2:
 		# Get the size of the viewport
@@ -32,13 +33,22 @@ func _input(event: InputEvent) -> void:
 		# Get player position with ref to scene
 		var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 		
-		var click_position: Vector2;
+		var click_position: Vector2 = get_local_mouse_position();
+		
+		var screensize = get_viewport().size 
 		
 		# Get position w/ ref to player
-		click_position.x = event.position.x - camera_player_position.x
-		click_position.y = event.position.y + 30 - camera_player_position.y
-		 
-		laser.fire_laser(click_position, camera_player_position, global_player_position)
+		#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
+		#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
+		 		
+		laser.fire_laser(click_position, camera_player_position, self)
+		
+		pointer.move(click_position, global_position)
+		
+		print("\n position: ", self.position)
+		#print("\n calc'd click: ", click_position)
+		#print("\n camera_player_position: ", camera_player_position)
+		#print("\n click: ", get_viewport().get_mouse_position())
 		
 	# Get player's response to key events
 	if event is InputEventKey and event.pressed:
