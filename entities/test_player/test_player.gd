@@ -6,7 +6,7 @@ var lens = LENS_COLOR.WHITE
 
 # Import child nodes
 @onready var laser = $PlayerLaser
-@onready var sprite = $PlayerSprite
+@onready var body = $BodySprite
 
 func translate_to_center(position: Vector2) -> Vector2:
 		# Get the size of the viewport
@@ -58,14 +58,16 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle horizontal (x) movement
 	if direction_x != 0:
-		velocity.x = direction_x * SPEED
+		velocity.x = move_toward(velocity.x, direction_x * SPEED, SPEED)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	# Handle vertical (y) movement
 	if direction_y != 0:
-		velocity.y = direction_y * SPEED
+		velocity.y = move_toward(velocity.y, direction_y * SPEED, SPEED)
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		
+	body.pointForwards(velocity.angle())
 
 	move_and_slide()
