@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
 		 		
 		laser.fire_laser(click_position, camera_player_position, self)
 		
-		pointer.move(click_position, global_position)
+		#pointer.move(click_position, global_position)
 		
 		print("\n position: ", self.position)
 		#print("\n calc'd click: ", click_position)

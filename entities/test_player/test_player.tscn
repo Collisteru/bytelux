@@ -48,7 +48,6 @@ offset = Vector2(-0.51, 3.195)
 height = 10.0
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
-visible = false
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_m7s6k")
 animation = &"idle"
@@ -56,7 +55,6 @@ autoplay = "idle"
 script = ExtResource("4_m8jfv")
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="."]
-visible = false
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_1ipka")
 script = ExtResource("5_ciudl")
