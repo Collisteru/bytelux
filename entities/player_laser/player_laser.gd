@@ -1,13 +1,12 @@
 extends RayCast2D
 
 func fire_laser(laser_position, player_position):
-	
-	print("laser_position:  ", laser_position)
-	print("Player Position: ", player_position)
-		
+	#
+	#print("laser_position:  ", laser_position)
+	#print("Player Position: ", player_position)
 	# Calculate angle
-	var x_diff = laser_position.x - player_position.x
-	var y_diff = laser_position.y - player_position.y
+	var x_diff = laser_position.x
+	var y_diff = laser_position.y
 	
 	var angle;
 	

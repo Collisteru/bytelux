@@ -31,10 +31,11 @@ func _input(event: InputEvent) -> void:
 		var player_position = player_pos.get_origin()
 		
 		var click_position: Vector2;
+		
 		# Get position w/ ref to player
 		click_position.x = event.position.x - player_position.x
 		click_position.y = event.position.y + 30 - player_position.y
-		
+		 
 		laser.fire_laser(click_position, player_position)
 		
 	# Get player's response to key events
