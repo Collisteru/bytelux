@@ -1,7 +1,7 @@
 extends RayCast2D
 
 @onready var laser_line = $LaserLine2D
-
+@onready var hit_circle = $HitCircle
 
 
 # TODO: This is a placeholder until wall collision code is programmed
@@ -9,6 +9,7 @@ extends RayCast2D
 
 func _ready():
 	laser_line.visible = false  # Initially hidden
+	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 
 
@@ -32,6 +33,12 @@ func fire_laser(laser_position, screen_player_position, global_player_position):
 		print("Is colliding!")
 		# Get global collision point
 		var global_collision_point = self.get_collision_point()
+		
+		# TODO: For debugging. Make circle appear for collision point
+		hit_circle.position = global_collision_point;
+		hit_circle.visible = true
+		
+		
 		print("Global collision point: ", global_collision_point)
 		
 		
