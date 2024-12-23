@@ -1,36 +1,37 @@
 [gd_scene load_steps=10 format=3 uid="uid://eprmypdm2vqh"]
 
-[ext_resource type="Texture2D" uid="uid://denobb0t758lo" path="res://entities/test_player/test_player.png" id="1_3gwro"]
 [ext_resource type="Script" path="res://entities/test_player/test_player.gd" id="1_ogo0s"]
 [ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/player_laser.tscn" id="3_qwxxa"]
-[ext_resource type="Texture2D" uid="uid://v0hj0jxch7uu" path="res://assets/rcircle.png" id="4_egn2e"]
-[ext_resource type="Script" path="res://entities/test_player/pointer.gd" id="5_wlmts"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4lmj4"]
-atlas = ExtResource("1_3gwro")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gw2gp"]
-atlas = ExtResource("1_3gwro")
-region = Rect2(32, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_vwure"]
+[ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="4_a7xgk"]
+[ext_resource type="Script" path="res://entities/test_player/body_sprite.gd" id="4_m8jfv"]
+[ext_resource type="Script" path="res://entities/test_player/head_sprite.gd" id="5_ciudl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4lmj4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gw2gp")
+"texture": ExtResource("3_vwure")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ipka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_a7xgk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
-radius = 3.92431
-height = 13.368
+radius = 4.36035
+height = 12.3778
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.52893, 1.3465)
@@ -38,18 +39,23 @@ script = ExtResource("1_ogo0s")
 
 [node name="PlayerLaser" parent="." instance=ExtResource("3_qwxxa")]
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_m7s6k")
 animation = &"idle"
 autoplay = "idle"
+script = ExtResource("4_m8jfv")
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_1ipka")
+script = ExtResource("5_ciudl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.3081, 0)
+scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_hj6c1")
 
-[node name="PlayerCamera" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0.654052, -7.42666)
 zoom = Vector2(2, 2)
-
-[node name="Pointer" type="Sprite2D" parent="."]
-scale = Vector2(0.0164397, 0.0164397)
-texture = ExtResource("4_egn2e")
-script = ExtResource("5_wlmts")

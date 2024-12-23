@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0luyywalcg5n"
-path="res://.godot/imported/character sprite body.png-5d45d737c375a11f2569b9c344e35e66.ctex"
+uid="uid://c5esnsujy8r1l"
+path="res://.godot/imported/point lights.png-4427fe5b976af5890f9944f1db8bd009.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character sprite body.png"
-dest_files=["res://.godot/imported/character sprite body.png-5d45d737c375a11f2569b9c344e35e66.ctex"]
+source_file="res://assets/point lights.png"
+dest_files=["res://.godot/imported/point lights.png-4427fe5b976af5890f9944f1db8bd009.ctex"]
 
 [params]
 

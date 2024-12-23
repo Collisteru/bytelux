@@ -36,8 +36,7 @@ func fire_laser(laser_position, screen_player_position, node):
 		# Get global collision point
 		var global_collision_point = self.get_collision_point()
 		#print("coord: ",global_collision_point)
-		#
-		#
+
 		#print("Global collision point: ", global_collision_point)
 
 		# Transform global to camera point
@@ -47,8 +46,8 @@ func fire_laser(laser_position, screen_player_position, node):
 		var refplayer_col_point = node.to_local(global_collision_point);
 		
 		# TODO: For debugging. Make circle appear for collision point
-		hit_circle.position = refplayer_col_point;
-		hit_circle.visible = true
+		#hit_circle.position = refplayer_col_point;
+		#hit_circle.visible = true
 
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
 		laser_hurt.shape.a = Vector2.ZERO 
