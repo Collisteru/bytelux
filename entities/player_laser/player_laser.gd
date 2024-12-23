@@ -57,15 +57,23 @@ func fire_laser(laser_position, screen_player_position, node):
 
 	laser_line.visible = true  # Show the laser line
 	
-
+	laser_line.modulate.a = 1.0;
 	laser_line.visible = true  # Show the laser line
 	
 	fade()
 
 func fade():
-	# TODO: Make this fade rather than immediately disappearing
 	
-	await get_tree().create_timer(0.05).timeout
+	# Total time for the laser to disappear in seconds
+	var fade_time = 0.1
+	
+	var millisecond = 0.01
+	
+	# Make the laser line fade otu
+	while (laser_line.modulate.a > 0.0):
+		await get_tree().create_timer(millisecond).timeout;
+		laser_line.modulate.a -= (millisecond/(fade_time));
+	
 	laser_line.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
