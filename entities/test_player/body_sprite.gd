@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	pass
 
 func pointForwards(angle: float) -> void:
-	rotation = angle
+	rotation = lerp_angle(rotation, angle, 0.1)
