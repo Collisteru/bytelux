@@ -25,7 +25,8 @@ func fire_laser(laser_position, screen_player_position, global_player_position):
 	var direction_norm = Vector2(x_diff / vec_norm, y_diff / vec_norm)
 	
 	# Raycast in this direction	
-	self.target_position = direction_norm * laser_max_length
+	#self.target_position = direction_norm * laser_max_length
+	self.target_position = laser_position * laser_max_length
 	self.force_raycast_update()  # Ensure RayCast2D updates immediately
 	
 	# Check for collision
@@ -33,9 +34,10 @@ func fire_laser(laser_position, screen_player_position, global_player_position):
 		print("Is colliding!")
 		# Get global collision point
 		var global_collision_point = self.get_collision_point()
+		print()
 		
 		# TODO: For debugging. Make circle appear for collision point
-		hit_circle.position = global_collision_point;
+		hit_circle.position = global_collision_point - global_player_position;
 		hit_circle.visible = true
 		
 		
