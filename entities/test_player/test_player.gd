@@ -64,6 +64,21 @@ func _input(event: InputEvent) -> void:
 			KEY_3:
 				self.lens = LENS_COLOR.GREEN
 				RenderingServer.set_default_clear_color('GREEN')
+				
+func die() -> void:
+	
+	# Spawn playerdeathparticles
+	
+	# Instance the particle scene
+	var particle_scene = preload("res://entities/particles/player_explosion_node.tscn").instantiate()
+	
+	particle_scene.global_position = global_position
+	# Add the particle scene to the parent
+	get_parent().add_child(particle_scene)
+	
+	# Clear player from scene
+	queue_free()
+
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction 
