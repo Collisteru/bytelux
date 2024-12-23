@@ -49,4 +49,3 @@ position = Vector2(0.654052, -7.42666)
 zoom = Vector2(4, 4)
 
 [node name="PlayerLaser" parent="." instance=ExtResource("3_qwxxa")]
-position = Vector2(0.654052, -6.684)

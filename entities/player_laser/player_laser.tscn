@@ -1,11 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://h8odvwv2neqd"]
+[gd_scene load_steps=2 format=3 uid="uid://h8odvwv2neqd"]
 
 [ext_resource type="Script" path="res://entities/player_laser/player_laser.gd" id="1_uo0wu"]
-
-[sub_resource type="Curve" id="Curve_hmbxt"]
 
 [node name="PlayerLaser" type="RayCast2D"]
 script = ExtResource("1_uo0wu")
 
-[node name="Line2D" type="Line2D" parent="."]
-width_curve = SubResource("Curve_hmbxt")
+[node name="LaserLine2D" type="Line2D" parent="."]
+width = 1.0
+texture_mode = 2
