@@ -428,7 +428,7 @@ tile_set = SubResource("TileSet_37u0p")
 use_kinematic_bodies = true
 
 [node name="Player" parent="." instance=ExtResource("2_5tbwc")]
-position = Vector2(153, 296)
+position = Vector2(184, 286)
 collision_layer = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

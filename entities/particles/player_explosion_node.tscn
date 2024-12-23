@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4bhrkym08owo"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_okh4d"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="PlayerExplosionNode" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_okh4d")
