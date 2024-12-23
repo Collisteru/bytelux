@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 @export var targetNode:Node2D = null
 
+@onready var hitbox = $Hitbox
+
 const SPEED = 100.0
 const ACCELERATION = 10.0
 const ENGAGE_DIST = 150.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if targetNode:
 		look_at(targetNode.position)
 		
