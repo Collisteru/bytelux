@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://waxjota0gc2y"]
+[gd_scene load_steps=16 format=4 uid="uid://waxjota0gc2y"]
 
+[ext_resource type="Script" path="res://test_map.gd" id="1_cjt4j"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
 [ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="2_5tbwc"]
 
@@ -349,6 +350,7 @@ sources/1 = SubResource("TileSetAtlasSource_dtxjx")
 sources/2 = SubResource("TileSetAtlasSource_bww7b")
 
 [node name="scene" type="Node2D"]
+script = ExtResource("1_cjt4j")
 
 [node name="Floor" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -357,6 +359,7 @@ tile_set = SubResource("TileSet_lavsq")
 collision_enabled = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.486537, 0.218119, 0.186721, 0.54902)
 
 [node name="Walls" type="TileMapLayer" parent="."]
