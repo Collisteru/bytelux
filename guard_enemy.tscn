@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bag4telckbyg0"]
+
+[ext_resource type="Texture2D" uid="uid://bi036wks6gn2" path="res://assets/Enemy_SecurityGuard_Standing_blue.png" id="1_57csr"]
+
+[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_ktgxm"]
+
+[node name="GuardEnemy" type="Node2D"]
+
+[node name="On" type="Sprite2D" parent="."]
+texture = ExtResource("1_57csr")
+
+[node name="Off" type="Sprite2D" parent="."]
+texture = ExtResource("1_57csr")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("ConcavePolygonShape2D_ktgxm")

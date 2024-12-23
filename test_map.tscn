@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://waxjota0gc2y"]
+[gd_scene load_steps=16 format=4 uid="uid://bewescq387kuy"]
 
 [ext_resource type="Script" path="res://test_map.gd" id="1_cjt4j"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
@@ -405,6 +405,7 @@ texture = ExtResource("6_k0nrf")
 [sub_resource type="TileSet" id="TileSet_37u0p"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_seyk0")
 sources/0 = SubResource("TileSetAtlasSource_tlry2")
 sources/1 = SubResource("TileSetAtlasSource_dtxjx")
@@ -427,7 +428,8 @@ tile_set = SubResource("TileSet_37u0p")
 use_kinematic_bodies = true
 
 [node name="Player" parent="." instance=ExtResource("2_5tbwc")]
-position = Vector2(177, 284)
+position = Vector2(153, 296)
+collision_layer = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
