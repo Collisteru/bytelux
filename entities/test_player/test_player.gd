@@ -26,17 +26,19 @@ func _input(event: InputEvent) -> void:
 		# Get the player's global position
 		var global_position = self.to_global(Vector2.ZERO)
 
-		# Convert the global position to screen space
-		var player_pos = self.get_global_transform_with_canvas()
-		var player_position = player_pos.get_origin()
+		# Convert the global position to screen space to get player position with reference to camera
+		var global_player_position = self.position
+		
+		# Get player position with ref to scene
+		var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 		
 		var click_position: Vector2;
 		
 		# Get position w/ ref to player
-		click_position.x = event.position.x - player_position.x
-		click_position.y = event.position.y + 30 - player_position.y
+		click_position.x = event.position.x - camera_player_position.x
+		click_position.y = event.position.y + 30 - camera_player_position.y
 		 
-		laser.fire_laser(click_position, player_position)
+		laser.fire_laser(click_position, camera_player_position, global_player_position)
 		
 	# Get player's response to key events
 	if event is InputEventKey and event.pressed:

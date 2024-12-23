@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://h8odvwv2neqd"]
+
+[ext_resource type="Script" path="res://entities/player_laser/player_laser.gd" id="1_uo0wu"]
+
+[node name="PlayerLaser" type="RayCast2D"]
+target_position = Vector2(0, 0)
+script = ExtResource("1_uo0wu")
+
+[node name="LaserLine2D" type="Line2D" parent="."]
+width = 1.4
+texture_mode = 2
