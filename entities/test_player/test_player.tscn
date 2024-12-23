@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://eprmypdm2vqh"]
+
+[ext_resource type="Texture2D" uid="uid://denobb0t758lo" path="res://entities/test_player/test_player.png" id="1_3gwro"]
+[ext_resource type="Script" path="res://entities/test_player/test_player.gd" id="1_ogo0s"]
+[ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/player_laser.tscn" id="3_qwxxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lmj4"]
+atlas = ExtResource("1_3gwro")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw2gp"]
+atlas = ExtResource("1_3gwro")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw2gp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
+radius = 3.92431
+height = 13.368
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.52893, 1.3465)
+script = ExtResource("1_ogo0s")
+
+[node name="PlayerLaser" parent="." instance=ExtResource("3_qwxxa")]
+position = Vector2(0, -6)
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.654052, -7.42666)
+sprite_frames = SubResource("SpriteFrames_m7s6k")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.654052, -7.42666)
+shape = SubResource("CapsuleShape2D_hj6c1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0.654052, -7.42666)
+zoom = Vector2(4, 4)
