@@ -329,6 +329,7 @@ texture = ExtResource("5_3766s")
 [sub_resource type="TileSet" id="TileSet_37u0p"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_seyk0")
 sources/0 = SubResource("TileSetAtlasSource_tlry2")
 sources/1 = SubResource("TileSetAtlasSource_dtxjx")
@@ -351,6 +352,7 @@ use_kinematic_bodies = true
 
 [node name="Player" parent="." instance=ExtResource("2_5tbwc")]
 position = Vector2(153, 296)
+collision_layer = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
