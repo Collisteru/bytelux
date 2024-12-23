@@ -96,6 +96,8 @@ func die(camera) -> void:
 	
 	# Clear player from scene
 	queue_free()
+	
+	# Wait for a time equal to the duration of the particle effect then 
 
 
 func _physics_process(delta: float) -> void:
