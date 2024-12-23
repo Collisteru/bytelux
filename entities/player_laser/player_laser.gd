@@ -52,12 +52,11 @@ func fire_laser(laser_position, screen_player_position, node):
 
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
 		laser_hurt.shape.a = Vector2.ZERO 
-		laser_hurt.shape.b = refplayer_col_point
-		laser_area.monitorable = true
+		laser_hurt.shape.b = refplayer_col_point+2*refplayer_col_point.normalized()
 		
 	else:
 		print("Is not colliding!")
-		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y +3)]
+		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y)]
 	
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true  # Show the laser line
@@ -76,11 +75,12 @@ func fade():
 		await get_tree().create_timer(millisecond).timeout;
 		laser_line.modulate.a -= (millisecond/(fade_time));
 	
-	print("HI")
-	laser_hurt.shape.a = Vector2.ZERO
-	laser_hurt.shape.b = Vector2.ZERO
-	laser_area.monitorable = false
+	#print("HI")
+	#laser_hurt.shape.a = Vector2.ZERO
+	#laser_hurt.shape.b = Vector2.ZERO
+	laser_line.points = [Vector2.ZERO, Vector2.ZERO]
 	laser_line.visible = false
+	self.target_position = Vector2.ZERO
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
