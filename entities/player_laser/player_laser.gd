@@ -21,7 +21,7 @@ func fire_laser(laser_position, player_position):
 	var laser_end: Vector2 = (laser_max_length * dir_norm)
 	
 	
-	laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y * 1.1)]
+	laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y +3)]
 
 	laser_line.visible = true  # Show the laser line
 	

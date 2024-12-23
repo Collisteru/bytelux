@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://waxjota0gc2y"]
+[gd_scene load_steps=14 format=4 uid="uid://waxjota0gc2y"]
 
 [ext_resource type="Script" path="res://test_map.gd" id="1_cjt4j"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
 [ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="2_5tbwc"]
+[ext_resource type="Texture2D" uid="uid://dk8cce8wtku7b" path="res://assets/testredwall.png" id="3_kdsnw"]
+[ext_resource type="Texture2D" uid="uid://c20w2vw7fsk2b" path="res://assets/testgreenwall.png" id="4_yfu0k"]
+[ext_resource type="Texture2D" uid="uid://cgwbhokfp4b17" path="res://assets/testbluewall.png" id="5_3766s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4er6"]
 texture = ExtResource("1_jh8a6")
@@ -297,54 +300,36 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_a4er6")
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pk0ku"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_71eqg"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 0.0625, -8, 0.1875)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_seyk0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlry2"]
+texture = ExtResource("3_kdsnw")
 0:0/0 = 0
 1:1/0 = 0
-1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_pk0ku")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
 1:2/0 = 0
-1:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_71eqg")
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_elkr3"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f1q0c"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 0.0625, -8, 0.1875)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtxjx"]
+texture = ExtResource("4_yfu0k")
 0:0/0 = 0
 1:1/0 = 0
-1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_elkr3")
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -8, -8, 8, -8, 8, 8, 0.25, 8, -8, 8)
 2:1/0 = 0
 1:2/0 = 0
-1:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_f1q0c")
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u31fe"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gg625"]
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 0.0625, -8, 0.1875)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bww7b"]
+texture = ExtResource("5_3766s")
 0:0/0 = 0
 1:1/0 = 0
-1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_u31fe")
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -8, -8, 8, -8, 8, 8, 0.25, 8, -8, 8)
 2:1/0 = 0
 1:2/0 = 0
-1:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_gg625")
 
 [sub_resource type="TileSet" id="TileSet_37u0p"]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_seyk0")
 sources/0 = SubResource("TileSetAtlasSource_tlry2")
 sources/1 = SubResource("TileSetAtlasSource_dtxjx")
 sources/2 = SubResource("TileSetAtlasSource_bww7b")
@@ -358,14 +343,15 @@ tile_map_data = PackedByteArray("AAD6/wIAAAANAAIAAAD7/wIAAAANAAIAAAD8/wEAAAANAAI
 tile_set = SubResource("TileSet_lavsq")
 collision_enabled = false
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.486537, 0.218119, 0.186721, 0.54902)
-
 [node name="Walls" type="TileMapLayer" parent="."]
+position = Vector2(26, -47)
 tile_map_data = PackedByteArray("AADw//z/AQABAAEAAADx//z/AQABAAEAAADy//z/AQABAAEAAADz//z/AQABAAEAAAD0//z/AQABAAEAAAD1//z/AQABAAEAAAD2//z/AQABAAEAAAD3//z/AQABAAEAAAD4//z/AQABAAEAAAD5//z/AQABAAEAAAD6//z/AQABAAEAAAD7//z/AQABAAEAAAD8//z/AQABAAEAAAD9//z/AQABAAEAAAD+//z/AQABAAEAAAD///z/AQABAAEAAAAAAPz/AQABAAEAAAABAPz/AQABAAEAAAACAPz/AQABAAEAAAADAPz/AQABAAEAAAAEAPz/AQABAAEAAAAFAPz/AQABAAEAAAAGAPz/AQABAAEAAAAHAPz/AQABAAEAAAAIAPz/AQABAAEAAAAJAPz/AQABAAEAAAAKAPz/AQABAAEAAAALAPz/AQABAAEAAAAMAPz/AQABAAEAAAD8/wEAAAABAAEAAAD9/wEAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAAAAAEAAgABAAEAAAAAAAIAAgABAAEAAAAAAAMAAgABAAEAAAAAAAQAAgABAAEAAAAAAAUAAgABAAEAAAAAAAYAAgABAAEAAAAAAAcAAgABAAEAAAABAAgAAgABAAEAAAABAAkAAgABAAEAAAABAAoAAgABAAEAAAABAAsAAgABAAEAAAABAAwAAgABAAEAAAABAA0AAgABAAEAAAAAAA4AAgABAAEAAAD//w4AAgABAAEAAAD+/w8AAgABAAEAAAD//w8AAgABAAEAAAADAAoAAQABAAEAAAAEAAoAAQABAAEAAAAFAAoAAQABAAEAAAAGAAgAAQABAAEAAAAGAAkAAQABAAEAAAAAAAgAAgABAAEAAAAAAAkAAgABAAIAAAABAA4AAgABAAIAAAAAAA8AAgABAAIAAAD//xAAAgABAAIAAAD+/xAAAgABAAIAAAD8/wIAAAABAAIAAAD9/wIAAAABAAIAAAD+/wIAAAABAAIAAAD//wIAAAABAAIAAAADAAsAAQABAAIAAAAEAAsAAQABAAIAAAAFAAsAAQABAAIAAAAGAAoAAQABAAIAAADw//3/AQABAAIAAADx//3/AQABAAIAAADy//3/AQABAAIAAADz//3/AQABAAIAAAD0//3/AQABAAIAAAD1//3/AQABAAIAAAD2//3/AQABAAIAAAD3//3/AQABAAIAAAD4//3/AQABAAIAAAD5//3/AQABAAIAAAD6//3/AQABAAIAAAD7//3/AQABAAIAAAD8//3/AQABAAIAAAD9//3/AQABAAIAAAD+//3/AQABAAIAAAD///3/AQABAAIAAAAAAP3/AQABAAIAAAABAP3/AQABAAIAAAACAP3/AQABAAIAAAADAP3/AQABAAIAAAAEAP3/AQABAAIAAAAFAP3/AQABAAIAAAAGAP3/AQABAAIAAAAHAP3/AQABAAIAAAAIAP3/AQABAAIAAAAJAP3/AQABAAIAAAAKAP3/AQABAAIAAAALAP3/AQABAAIAAAAMAP3/AQABAAIAAADz//7/AQABAAEAAADz////AQABAAIAAAA=")
 tile_set = SubResource("TileSet_37u0p")
 use_kinematic_bodies = true
 
 [node name="Player" parent="." instance=ExtResource("2_5tbwc")]
 position = Vector2(153, 296)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.486537, 0.218119, 0.186721, 0.54902)
