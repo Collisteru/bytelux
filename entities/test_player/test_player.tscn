@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://eprmypdm2vqh"]
+[gd_scene load_steps=10 format=3 uid="uid://eprmypdm2vqh"]
 
 [ext_resource type="Script" path="res://entities/test_player/test_player.gd" id="1_ogo0s"]
-[ext_resource type="Texture2D" uid="uid://c5esnsujy8r1l" path="res://assets/point lights.png" id="3_p46x7"]
 [ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/player_laser.tscn" id="3_qwxxa"]
 [ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_vwure"]
 [ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="4_a7xgk"]
@@ -39,13 +38,6 @@ scale = Vector2(1.52893, 1.3465)
 script = ExtResource("1_ogo0s")
 
 [node name="PlayerLaser" parent="." instance=ExtResource("3_qwxxa")]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.975283, 0.0123512, 5.77569e-07, 1)
-energy = 5.0
-texture = ExtResource("3_p46x7")
-offset = Vector2(-0.51, 3.195)
-height = 10.0
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
