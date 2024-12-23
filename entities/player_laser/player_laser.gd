@@ -47,10 +47,12 @@ func fire_laser(laser_position, screen_player_position, global_player_position):
 		# Transform global to camera point
 		
 		print("Global player position: ", global_player_position)
+		
+		var scale_factor = 0.70
 
 		var refplayer_col_point = global_collision_point - global_player_position;
 
-		laser_line.points = [Vector2.ZERO, refplayer_col_point]
+		laser_line.points = [Vector2.ZERO, refplayer_col_point * scale_factor]
 	else:
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y +3)]
