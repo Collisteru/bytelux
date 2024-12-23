@@ -76,8 +76,8 @@ func fade():
 		laser_line.modulate.a -= (millisecond/(fade_time));
 	
 	#print("HI")
-	#laser_hurt.shape.a = Vector2.ZERO
-	#laser_hurt.shape.b = Vector2.ZERO
+	laser_hurt.shape.a = Vector2.ZERO
+	laser_hurt.shape.b = Vector2.ZERO
 	laser_line.points = [Vector2.ZERO, Vector2.ZERO]
 	laser_line.visible = false
 	self.target_position = Vector2.ZERO

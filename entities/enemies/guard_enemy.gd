@@ -58,4 +58,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	print("HI")
+	alive = false
+	visible = false
 	pass # Replace with function body.
