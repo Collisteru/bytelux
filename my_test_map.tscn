@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=4 uid="uid://waxjota0gc2y"]
 
-[ext_resource type="Script" path="res://test_map.gd" id="1_cjt4j"]
-[ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
-[ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="2_5tbwc"]
-[ext_resource type="Texture2D" uid="uid://dk8cce8wtku7b" path="res://assets/testredwall.png" id="3_kdsnw"]
-[ext_resource type="Texture2D" uid="uid://c20w2vw7fsk2b" path="res://assets/testgreenwall.png" id="4_yfu0k"]
-[ext_resource type="Texture2D" uid="uid://cgwbhokfp4b17" path="res://assets/testbluewall.png" id="5_3766s"]
-[ext_resource type="Texture2D" uid="uid://bd0pig66p5y4t" path="res://Art Assets/wire_tilemap.png" id="6_k0nrf"]
-[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="8_4lr8c"]
+[ext_resource type="Script" path="res://test_map.gd" id="1_fk617"]
+[ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_ovppr"]
+[ext_resource type="Texture2D" uid="uid://dk8cce8wtku7b" path="res://assets/testredwall.png" id="3_k4kgg"]
+[ext_resource type="Texture2D" uid="uid://c20w2vw7fsk2b" path="res://assets/testgreenwall.png" id="4_lh7n2"]
+[ext_resource type="Texture2D" uid="uid://cgwbhokfp4b17" path="res://assets/testbluewall.png" id="5_u35b2"]
+[ext_resource type="Texture2D" uid="uid://bd0pig66p5y4t" path="res://Art Assets/wire_tilemap.png" id="6_qv0f8"]
+[ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="7_s8aae"]
+[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="8_gxmrs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4er6"]
-texture = ExtResource("1_jh8a6")
+texture = ExtResource("2_ovppr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -305,7 +305,7 @@ sources/0 = SubResource("TileSetAtlasSource_a4er6")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_seyk0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlry2"]
-texture = ExtResource("3_kdsnw")
+texture = ExtResource("3_k4kgg")
 0:0/0 = 0
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -313,7 +313,7 @@ texture = ExtResource("3_kdsnw")
 1:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dtxjx"]
-texture = ExtResource("4_yfu0k")
+texture = ExtResource("4_lh7n2")
 0:0/0 = 0
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -8, -8, 8, -8, 8, 8, 0.25, 8, -8, 8)
@@ -321,7 +321,7 @@ texture = ExtResource("4_yfu0k")
 1:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bww7b"]
-texture = ExtResource("5_3766s")
+texture = ExtResource("5_u35b2")
 0:0/0 = 0
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1, -8, -8, 8, -8, 8, 8, 0.25, 8, -8, 8)
@@ -329,7 +329,7 @@ texture = ExtResource("5_3766s")
 1:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i3uce"]
-texture = ExtResource("6_k0nrf")
+texture = ExtResource("6_qv0f8")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -414,7 +414,7 @@ sources/2 = SubResource("TileSetAtlasSource_bww7b")
 sources/3 = SubResource("TileSetAtlasSource_i3uce")
 
 [node name="scene" type="Node2D"]
-script = ExtResource("1_cjt4j")
+script = ExtResource("1_fk617")
 
 [node name="Floor" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -428,7 +428,7 @@ tile_map_data = PackedByteArray("AAD+/w8AAwADAAMAAAD7/w8AAwAAAAAAAAD6/w8AAwAAAAA
 tile_set = SubResource("TileSet_37u0p")
 use_kinematic_bodies = true
 
-[node name="Player" parent="." instance=ExtResource("2_5tbwc")]
+[node name="Player" parent="." instance=ExtResource("7_s8aae")]
 position = Vector2(153, 296)
 collision_layer = 2
 
@@ -436,6 +436,6 @@ collision_layer = 2
 visible = false
 color = Color(0.486537, 0.218119, 0.186721, 0.54902)
 
-[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("8_4lr8c")]
+[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("8_gxmrs")]
 position = Vector2(211, 372)
 targetNode = NodePath("../Player")
