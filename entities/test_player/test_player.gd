@@ -41,11 +41,11 @@ func _input(event: InputEvent) -> void:
 		#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
 		#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
 		 		
-		laser.fire_laser(click_position, camera_player_position, global_player_position)
+		laser.fire_laser(click_position, camera_player_position, self)
 		
 		pointer.move(click_position, global_position)
 		
-		#print("\n position: ", self.position)
+		print("\n position: ", self.position)
 		#print("\n calc'd click: ", click_position)
 		#print("\n camera_player_position: ", camera_player_position)
 		#print("\n click: ", get_viewport().get_mouse_position())
