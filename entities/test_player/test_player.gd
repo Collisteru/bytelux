@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const ACCELERATION = 30.0
 enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
-var lens = LENS_COLOR.WHITE
+var lens = LENS_COLOR.RED
 
 # Import child nodes
 @onready var laser = $PlayerLaser
@@ -58,10 +58,8 @@ func _input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_1:
 				self.lens = LENS_COLOR.RED
-				RenderingServer.set_default_clear_color('RED')
 			KEY_2:
 				self.lens = LENS_COLOR.BLUE
-				RenderingServer.set_default_clear_color('BLUE')
 			KEY_3:
 				self.lens = LENS_COLOR.GREEN
 				RenderingServer.set_default_clear_color('GREEN')
