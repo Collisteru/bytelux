@@ -31,15 +31,13 @@ func fire_laser(laser_position, screen_player_position, node):
 	
 	# Check for collision
 	if self.is_colliding():
-		print("Is colliding!")
 		# Get global collision point
 		var global_collision_point = self.get_collision_point()
-		print("coord: ",global_collision_point)
-		
-		
-		print("Global collision point: ", global_collision_point)
-		
-		
+		#print("coord: ",global_collision_point)
+		#
+		#
+		#print("Global collision point: ", global_collision_point)
+
 		# Transform global to camera point
 		
 		#print("Global player position: ", global_player_position)
@@ -54,8 +52,6 @@ func fire_laser(laser_position, screen_player_position, node):
 	else:
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y +3)]
-
-	laser_line.visible = true  # Show the laser line
 	
 
 	laser_line.visible = true  # Show the laser line
