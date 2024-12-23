@@ -50,7 +50,7 @@ func fire_laser(laser_position, screen_player_position, node):
 		hit_circle.position = refplayer_col_point;
 		hit_circle.visible = true
 
-		laser_line.points = [Vector2.ZERO, refplayer_col_point]
+		laser_line.points = [Vector2.ZERO, refplayer_col_point * scale_factor]
 	else:
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y +3)]
