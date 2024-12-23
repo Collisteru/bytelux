@@ -34,8 +34,7 @@ func fire_laser(laser_position, screen_player_position, node):
 		# Get global collision point
 		var global_collision_point = self.get_collision_point()
 		#print("coord: ",global_collision_point)
-		#
-		#
+
 		#print("Global collision point: ", global_collision_point)
 
 		# Transform global to camera point

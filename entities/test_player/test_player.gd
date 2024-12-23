@@ -10,6 +10,7 @@ var lens = LENS_COLOR.WHITE
 @onready var sprite = $PlayerSprite
 @onready var pointer = $Pointer
 @onready var body = $BodySprite
+@onready var player_camera = $Camera2D
 
 func translate_to_center(position: Vector2) -> Vector2:
 		# Get the size of the viewport
@@ -64,15 +65,32 @@ func _input(event: InputEvent) -> void:
 			KEY_3:
 				self.lens = LENS_COLOR.GREEN
 				RenderingServer.set_default_clear_color('GREEN')
+			KEY_K:
+				# Kill self (debugging purposes)
+				# TODO: Remove
+				self.die(player_camera)
 				
-func die() -> void:
+func die(camera) -> void:
 	
+	# Duplicate camera
+	# (the player camera is a child of the original class, so we need to create a new one with the same properites to 
+	# properly play the death animation)
+	var new_camera = camera.duplicate() as Camera2D
+
+	# Set the new camera's position and properties to match the original
+	new_camera.global_position = camera.global_position
+	new_camera.zoom = camera.zoom
+	new_camera.offset = camera.offset
+	get_parent().add_child(new_camera)
+
 	# Spawn playerdeathparticles
 	
 	# Instance the particle scene
 	var particle_scene = preload("res://entities/particles/player_explosion_node.tscn").instantiate()
 	
-	particle_scene.global_position = global_position
+	# Assign position of the particles to be the same as the player
+	particle_scene.position = self.position
+	
 	# Add the particle scene to the parent
 	get_parent().add_child(particle_scene)
 	
