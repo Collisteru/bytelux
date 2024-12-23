@@ -45,8 +45,8 @@ func fire_laser(laser_position, screen_player_position, node):
 		var refplayer_col_point = node.to_local(global_collision_point);
 		
 		# TODO: For debugging. Make circle appear for collision point
-		hit_circle.position = refplayer_col_point;
-		hit_circle.visible = true
+		#hit_circle.position = refplayer_col_point;
+		#hit_circle.visible = true
 
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
 	else:
