@@ -13,6 +13,7 @@ config_version=5
 config/name="bytelux"
 run/main_scene="res://test_map.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
 
 [input]
 
@@ -53,6 +54,7 @@ ui_down={
 
 2d_physics/layer_1="Walls"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Blue Walls"
 
 [rendering]
 

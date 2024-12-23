@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bewescq387kuy"]
+[gd_scene load_steps=17 format=4 uid="uid://bewescq387kuy"]
 
 [ext_resource type="Script" path="res://test_map.gd" id="1_cjt4j"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c20w2vw7fsk2b" path="res://assets/testgreenwall.png" id="4_yfu0k"]
 [ext_resource type="Texture2D" uid="uid://cgwbhokfp4b17" path="res://assets/testbluewall.png" id="5_3766s"]
 [ext_resource type="Texture2D" uid="uid://bd0pig66p5y4t" path="res://Art Assets/wire_tilemap.png" id="6_k0nrf"]
+[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="8_4lr8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4er6"]
 texture = ExtResource("1_jh8a6")
@@ -434,3 +435,7 @@ collision_layer = 2
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.486537, 0.218119, 0.186721, 0.54902)
+
+[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("8_4lr8c")]
+position = Vector2(211, 372)
+targetNode = NodePath("../Player")
