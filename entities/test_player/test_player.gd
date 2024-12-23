@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+const ACCELERATION = 30.0
 enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
 var lens = LENS_COLOR.WHITE
 
@@ -68,16 +69,25 @@ func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	
-	# Handle horizontal (x) movement
-	if direction_x != 0:
-		velocity.x = direction_x * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	# Handle vertical (y) movement
-	if direction_y != 0:
-		velocity.y = direction_y * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+	# Handle diagonal (xy) movement
+	if direction_x != 0 and direction_y != 0:
+		velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+		velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+	# Handles single direction (x or y) movement
+	else:	
+		# Handle horizontal (x) movement
+		if direction_x != 0:
+			#velocity.x = direction_x * SPEED
+			velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
+		else:
+			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
+		
+		# Handle vertical (y) movement
+		if direction_y != 0:
+			#velocity.y = direction_y * SPEED
+			velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
+		else:
+			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+
 
 	move_and_slide()
