@@ -7,7 +7,7 @@ var lens = LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
-@onready var laser = $PlayerLaser
+#@onready var laser = $PlayerLaser
 #@onready var sprite = $PlayerSprite # TODO: remove when done debugging
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
@@ -52,8 +52,10 @@ func _input(event: InputEvent) -> void:
 			# Get position w/ ref to player
 			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
 			#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
-			 		
-			laser.fire_laser(click_position, camera_player_position, self)
+			
+			var laser = preload("res://entities/player_laser/player_laser.tscn").instantiate()
+			laser.initialize(click_position, self)
+			get_parent().add_child(laser)
 			
 			#pointer.move(click_position, global_position)
 			
@@ -106,8 +108,6 @@ func die(camera = player_camera) -> void:
 	
 	# Instance the particle scene
 	var particle_scene = preload("res://entities/particles/player_explosion_node.tscn").instantiate()
-	
-
 	
 	# Make player invisible.
 	self.visible = false
