@@ -54,6 +54,7 @@ func _input(event: InputEvent) -> void:
 			#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
 			
 			var laser = preload("res://entities/player_laser/player_laser.tscn").instantiate()
+			laser.position = position
 			laser.initialize(click_position, self)
 			get_parent().add_child(laser)
 			

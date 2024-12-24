@@ -18,7 +18,7 @@ func initialize(target_coord: Vector2, shooter: Node2D) -> void:
 	originator = shooter
 	
 func _ready():
-	print(position)
+	print('position',position)
 	#laser_line.visible = false  # Initially hidden
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
