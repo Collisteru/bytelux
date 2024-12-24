@@ -56,7 +56,7 @@ func _input(event: InputEvent) -> void:
 			
 			#pointer.move(click_position, global_position)
 			
-			print("\n position: ", self.position)
+			#print("\n position: ", self.position)
 			#print("\n calc'd click: ", click_position)
 			#print("\n camera_player_position: ", camera_player_position)
 			#print("\n click: ", get_viewport().get_mouse_position())
