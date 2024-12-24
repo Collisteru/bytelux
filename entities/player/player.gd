@@ -38,17 +38,17 @@ func _input(event: InputEvent) -> void:
 			
 			# Get positions
 			# Get the player's global position
-			var global_position = self.to_global(Vector2.ZERO)
+			#var global_position = self.to_global(Vector2.ZERO)
 
 			# Convert the global position to screen space to get player position with reference to camera
-			var global_player_position = self.position
+			#var global_player_position = self.position
 			
 			# Get player position with ref to scene
-			var camera_player_position = self.get_global_transform_with_canvas().get_origin()
+			#var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 			
 			var click_position: Vector2 = get_local_mouse_position();
 			
-			var screensize = get_viewport().size 
+			#var screensize = get_viewport().size 
 			
 			# Get position w/ ref to player
 			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x

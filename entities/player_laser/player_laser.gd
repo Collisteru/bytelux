@@ -39,7 +39,7 @@ func fire_laser():
 	# Check for collision
 	if self.is_colliding():
 		# Get global collision point
-		var global_collision_point = shooter.get_collision_point()
+		var global_collision_point = self.get_collision_point()
 		#print("coord: ",global_collision_point)
 
 		#print("Global collision point: ", global_collision_point)
