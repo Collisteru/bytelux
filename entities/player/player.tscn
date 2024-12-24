@@ -121,6 +121,8 @@ height = 12.3778
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.52893, 1.3465)
+collision_layer = 2
+collision_mask = 21
 script = ExtResource("1_3f2xq")
 
 [node name="PlayerLaser" parent="." instance=ExtResource("2_gqt28")]
@@ -171,7 +173,7 @@ position = Vector2(0.654052, -7.42666)
 zoom = Vector2(2, 2)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 2
 collision_mask = 16
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
