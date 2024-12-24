@@ -27,7 +27,7 @@ func _ready():
 
 #func fire_laser(laser_position, screen_player_position, node):
 func fire_laser():
-
+	print(x_diff, y_diff)
 	# Calculate angle
 	# Find the laser's direction
 	var vec_norm = sqrt(pow(x_diff,2) + pow(y_diff, 2));
@@ -49,19 +49,18 @@ func fire_laser():
 		
 		#print("Global player position: ", global_player_position)
 		var refplayer_col_point = originator.to_local(global_collision_point);
-		
+		print('refplayer_col_point', refplayer_col_point)
 		# TODO: For debugging. Make circle appear for collision point
 		#hit_circle.position = refplayer_col_point;
 		#hit_circle.visible = true
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
-		print(laser_line.points)
 		laser_hurt.shape.a = Vector2.ZERO 
 		laser_hurt.shape.b = refplayer_col_point+2*refplayer_col_point.normalized()
 		
 	else:
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff)]
-	
+	print(laser_line.points)
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true  # Show the laser line
 	
