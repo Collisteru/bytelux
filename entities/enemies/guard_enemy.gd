@@ -6,17 +6,20 @@ extends CharacterBody2D
 #@onready hitbox.connect
 
 @onready var hitbox = $"Hitbox"
-@onready var main = get_tree().root
 @onready var projectile = load("res://entities/projectile/projectile.tscn")
 
-var alive = true
+var health = 1
 
 const SPEED = 100.0
 const ACCELERATION = 10.0
 const ENGAGE_DIST = 150.0
 
+func death() -> void:
+	#TODO animation
+	queue_free()
+
 func _physics_process(_delta: float) -> void:	
-	if alive:
+	if health > 0:
 		if targetNode:
 			look_at(targetNode.position)
 			
@@ -55,6 +58,8 @@ func _physics_process(_delta: float) -> void:
 		else:
 			print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 			# Should only happen if you don't give this node a target node
+	else:
+		death()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
@@ -68,12 +73,11 @@ func fire():
 	#print(rotation)
 	instance.spawnPos = global_position
 	instance.spawnRot = rotation
-	main.add_child.call_deferred(instance)
+	get_parent().add_child.call_deferred(instance)
 
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	print("HI")
-	alive = false
-	visible = false
+	health -= 1
 
 
 func _on_timer_timeout() -> void:
