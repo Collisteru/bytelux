@@ -12,6 +12,7 @@ var player_is_alive
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
+@onready var laser_scene = load("res://entities/player_laser/playerLaser.tscn")
 
 
 
@@ -28,6 +29,22 @@ func _ready():
 		## Translate the position to be relative to the center
 		#return position - screen_center
 
+#func fire():
+	#var projectile = projectile_scene.instantiate()
+	#
+	#projectile.global_position = global_position
+	#projectile.direction = Vector2.RIGHT.rotated(global_rotation)
+	#get_parent().add_child(projectile)
+
+func create_laser():
+	var laser = laser_scene.instantiate()
+	var laser_length = 1000
+	
+	laser.position = self.position
+	laser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position)
+	print("targetting: ", laser.target_position)
+	laser.bounces = 2
+	get_parent().add_child(laser)
 
 func _input(event: InputEvent) -> void:
 	
@@ -49,8 +66,8 @@ func _input(event: InputEvent) -> void:
 			# Get position w/ ref to player
 			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
 			#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
-			
-			laser.fire_laser(self)
+			create_laser()
+			#laser.fire_laser(self)
 
 			
 			#pointer.move(click_position, global_position)
