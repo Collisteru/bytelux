@@ -8,16 +8,13 @@ extends RayCast2D
 
 # TODO: This is a placeholder until wall collision code is programmed
 var laser_max_length = 1000  # Max length of the laser
-var x_diff = 0
-var y_diff = 0
-var originator = null
+var shooter = null
 
-func initialize(target_coord: Vector2, shooter: Node2D) -> void:
-	x_diff = target_coord.x
-	y_diff = target_coord.y
-	originator = shooter
+func initialize(player: Node2D) -> void:
+	shooter = player
 
 func _ready():
+	laser_line.visible = false  # Initially hidden
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	fire_laser()
@@ -27,6 +24,9 @@ func fire_laser():
 	#TODO: remove this
 	laser_line.default_color = Color('BLACK')
 	
+	var mouse_position = shooter.get_local_mouse_position()
+	var x_diff = mouse_position.x
+	var y_diff = mouse_position.y
 	# Calculate angle
 	# Find the laser's direction
 	var vec_norm = sqrt(pow(x_diff,2) + pow(y_diff, 2));
@@ -39,7 +39,7 @@ func fire_laser():
 	# Check for collision
 	if self.is_colliding():
 		# Get global collision point
-		var global_collision_point = self.get_collision_point()
+		var global_collision_point = shooter.get_collision_point()
 		#print("coord: ",global_collision_point)
 
 		#print("Global collision point: ", global_collision_point)
@@ -47,7 +47,7 @@ func fire_laser():
 		# Transform global to camera point
 		
 		#print("Global player position: ", global_player_position)
-		var refplayer_col_point = originator.to_local(global_collision_point);
+		var refplayer_col_point = shooter.to_local(global_collision_point);
 		# TODO: For debugging. Make circle appear for collision point
 		hit_circle.position = refplayer_col_point;
 		hit_circle.visible = true
@@ -59,6 +59,7 @@ func fire_laser():
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff)]
 	laser_line.modulate.a = 1.0;
+	laser_line.visible = true  # Show the laser line
 	
 	fade()
 

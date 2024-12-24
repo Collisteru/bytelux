@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://yt5f7pfpyq3p"]
+[gd_scene load_steps=18 format=4 uid="uid://ci80g68iqw8me"]
 
 [ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_lmfc7"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_b4oiy"]

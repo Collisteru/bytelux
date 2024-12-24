@@ -34,22 +34,21 @@ func _input(event: InputEvent) -> void:
 	if player_is_alive:
 		# Get player's response to mouse events
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			# TODO: Remove all old code for laser if not essential
 			# By default, the click position is done with reference to the screen. We want it to be done with reference to the player position
 			
 			# Get positions
 			# Get the player's global position
-			#var global_position = self.to_global(Vector2.ZERO)
+			var global_position = self.to_global(Vector2.ZERO)
 
 			# Convert the global position to screen space to get player position with reference to camera
-			#var global_player_position = self.position
+			var global_player_position = self.position
 			
 			# Get player position with ref to scene
-			#var camera_player_position = self.get_global_transform_with_canvas().get_origin()
+			var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 			
 			var click_position: Vector2 = get_local_mouse_position();
 			
-			#var screensize = get_viewport().size 
+			var screensize = get_viewport().size 
 			
 			# Get position w/ ref to player
 			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
@@ -57,7 +56,7 @@ func _input(event: InputEvent) -> void:
 			
 			var laser = preload("res://entities/player_laser/player_laser.tscn").instantiate()
 			laser.position = position
-			laser.initialize(click_position, self)
+			laser.initialize(self)
 			get_parent().add_child(laser)
 			
 			#pointer.move(click_position, global_position)
