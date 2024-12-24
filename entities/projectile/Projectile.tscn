@@ -11,16 +11,19 @@ script = ExtResource("1_4fr38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.929256, 0.921496, 1)
+rotation = 3.14159
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_6p7a8")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+rotation = 3.14159
 scale = Vector2(0.2, 0.2)
 color = Color(1, 0, 0, 1)
 energy = 4.5
 texture = ExtResource("2_654p4")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
+rotation = 3.14159
 polygon = PackedVector2Array(-9, -7, -4, -2, 10, -2, 10, 2, -4, 2, -9, 7, -10, 7, -10, 6, -4, 0, -10, -6, -10, -7)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -28,6 +31,7 @@ collision_layer = 16
 collision_mask = 11
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="Area2D"]
+rotation = 3.14159
 polygon = PackedVector2Array(-9, -7, -4, -2, 10, -2, 10, 2, -4, 2, -9, 7, -10, 7, -10, 6, -4, 0, -10, -6, -10, -7)
 
 [node name="Life" type="Timer" parent="."]
