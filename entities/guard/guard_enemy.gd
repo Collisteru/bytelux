@@ -87,6 +87,7 @@ func fire():
 	
 	projectile.global_position = global_position
 	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
+	projectile.global_rotation = global_rotation
 	get_parent().add_child(projectile)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
