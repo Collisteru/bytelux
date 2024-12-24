@@ -4,7 +4,7 @@ extends CharacterBody2D
 #@onready hitbox.connect
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
-@onready var projectile_scene = load("res://entities/projectile/Projectile.tscn")
+@onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
 
 var health = 1
 const SPEED = 100.0
@@ -41,17 +41,17 @@ func _input(event: InputEvent) -> void:
 				fire()
 
 func can_see(target):
-	return (self.position - target.position).length() < AGRO_RANGE
+	return (self.position - targetNode.position).length() < AGRO_RANGE
 
 func custom_move(target):
-	look_at(target.position)
-	var dist = (self.position - target.position).length()
+	look_at(targetNode.position)
+	var dist = (self.position - targetNode.position).length()
 	
 	#-1 to retreat and 1 to approach. Used in figuring out which direction to go
 	var approach = 2*int(dist > ENGAGE_DIST) - 1
 	
-	var direction_x = approach * sign(target.position.x - self.position.x)
-	var direction_y = approach * sign(target.position.y - self.position.y)
+	var direction_x = approach * sign(targetNode.position.x - self.position.x)
+	var direction_y = approach * sign(targetNode.position.y - self.position.y)
 
 	#Handle diagonal (xy) movement
 	if direction_x != 0 and direction_y != 0:
