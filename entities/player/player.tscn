@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=21 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/player_laser.tscn" id="2_gqt28"]
@@ -89,6 +89,17 @@ gravity = Vector3(0, 0, 0)
 radius = 4.36035
 height = 12.3778
 
+[sub_resource type="Gradient" id="Gradient_y6gn6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wqiig"]
+gradient = SubResource("Gradient_y6gn6")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.489316, 0.461538)
+fill_to = Vector2(0.521368, 0)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.52893, 1.3465)
 script = ExtResource("1_3f2xq")
@@ -137,6 +148,12 @@ texture = ExtResource("14_p3wd8")
 position = Vector2(1.3081, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_hj6c1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.654052, 9.53674e-07)
+scale = Vector2(0.226738, 0.24508)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_wqiig")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0.654052, -7.42666)
