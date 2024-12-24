@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/player_laser.tscn" id="2_gqt28"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://entities/player/body_sprite.gd" id="10_2cpae"]
 [ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="11_qf7pn"]
 [ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
-[ext_resource type="Texture2D" uid="uid://c5esnsujy8r1l" path="res://assets/point lights.png" id="13_0q7g0"]
 [ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
@@ -85,6 +84,22 @@ angle_max = 1.07288e-05
 direction = Vector3(-1, 0, 0)
 gravity = Vector3(0, 0, 0)
 
+[sub_resource type="Gradient" id="Gradient_e77mv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mva8t"]
+gradient = SubResource("Gradient_e77mv")
+fill = 1
+fill_from = Vector2(0.491453, 0.459402)
+
+[sub_resource type="Gradient" id="Gradient_sldgn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b21un"]
+gradient = SubResource("Gradient_sldgn")
+fill = 1
+fill_from = Vector2(0.502137, 0.487179)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
 radius = 4.36035
 height = 12.3778
@@ -94,11 +109,11 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wqiig"]
 gradient = SubResource("Gradient_y6gn6")
-width = 500
-height = 500
+width = 1500
+height = 1500
 fill = 1
 fill_from = Vector2(0.489316, 0.461538)
-fill_to = Vector2(0.521368, 0)
+fill_to = Vector2(0.502137, 0)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.52893, 1.3465)
@@ -118,31 +133,24 @@ scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_1ipka")
 script = ExtResource("12_krybn")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="HeadSprite"]
+position = Vector2(-13, 68)
+scale = Vector2(1, 1)
+process_material = SubResource("ParticleProcessMaterial_4evqw")
+
 [node name="Eyes" type="Node2D" parent="HeadSprite"]
 
 [node name="EyeGlowAmbient_R" type="Sprite2D" parent="HeadSprite/Eyes"]
-self_modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 0, 1)
 position = Vector2(-13, 68)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("13_0q7g0")
-
-[node name="EyeGlowCore_R" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_R"]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("14_p3wd8")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="HeadSprite/Eyes/EyeGlowAmbient_R"]
-scale = Vector2(2, 2)
-process_material = SubResource("ParticleProcessMaterial_4evqw")
+texture = SubResource("GradientTexture2D_mva8t")
 
 [node name="EyeGlowAmbient_L" type="Sprite2D" parent="HeadSprite/Eyes"]
-self_modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 0, 1)
 position = Vector2(-13, -68)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("13_0q7g0")
-
-[node name="EyeGlowCore_L" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_L"]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("14_p3wd8")
+texture = SubResource("GradientTexture2D_b21un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.3081, 0)

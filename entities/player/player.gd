@@ -13,6 +13,8 @@ var player_is_alive
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
 
+
+
 func _ready():
 	# Set player living/death flag
 	player_is_alive = true
@@ -65,14 +67,16 @@ func _input(event: InputEvent) -> void:
 			match event.keycode:
 				KEY_1:
 					self.lens = LENS_COLOR.RED
+					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK RED')
+					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK RED')
 				KEY_2:
 					self.lens = LENS_COLOR.BLUE
+					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK BLUE')
+					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK BLUE')
 				KEY_3:
 					self.lens = LENS_COLOR.GREEN
-				KEY_K:
-					# Kill self (debugging purposes)
-					# TODO: Remove
-					self.die(player_camera)
+					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK GREEN')
+					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK GREEN')
 					
 func die(camera) -> void:
 	# Set player_is_alive flag to false, making it impossible to perform player actions
