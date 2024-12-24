@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
-[ext_resource type="PackedScene" path="res://entities/player_laser/playerLaser.tscn" id="2_gqt28"]
-[ext_resource type="Texture2D" uid="uid://8wsvrl458vh5" path="res://assets/character sprite body.png" id="3_1nkbj"]
+[ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/playerLaser.tscn" id="2_gqt28"]
+[ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
 [ext_resource type="Texture2D" uid="uid://5nir8gdxwv6v" path="res://assets/character sprite body walking 1.png" id="4_mdog6"]
 [ext_resource type="Texture2D" uid="uid://dix043ipat66m" path="res://assets/character sprite body walking 3.png" id="5_4iomr"]
 [ext_resource type="Texture2D" uid="uid://bwfl2181g2gcs" path="res://assets/character sprite body walking 2.png" id="6_wjt1c"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://chl453o1178r7" path="res://assets/character sprite body walking 2 mirror.png" id="8_6oghk"]
 [ext_resource type="Texture2D" uid="uid://c332hotjolfik" path="res://assets/character sprite body walking 3 mirror.png" id="9_2yc4q"]
 [ext_resource type="Script" path="res://entities/player/body_sprite.gd" id="10_2cpae"]
-[ext_resource type="Texture2D" uid="uid://c3r1vfkhs84y4" path="res://assets/character sprite head.png" id="11_qf7pn"]
+[ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="11_qf7pn"]
 [ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
 [ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
 
