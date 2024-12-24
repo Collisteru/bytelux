@@ -5,8 +5,9 @@ extends CharacterBody2D
 #@onready var hitbox = $Hitbox
 #@onready hitbox.connect
 
-func _onready():
-	var hitbox = $"Hitbox"
+@onready var hitbox = $"Hitbox"
+@onready var main = get_tree().root
+@onready var projectile = load("res://entities/projectile/projectile.tscn")
 
 var alive = true
 
@@ -55,6 +56,22 @@ func _physics_process(delta: float) -> void:
 			print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 			# Should only happen if you don't give this node a target node
 
+func _ready():
+	fire()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		match event.keycode:
+			KEY_4:
+				fire()
+
+func fire():
+	var instance = projectile.instantiate()
+	instance.dir = rotation + PI/2
+	#print(rotation)
+	instance.spawnPos = global_position
+	instance.spawnRot = rotation
+	main.add_child.call_deferred(instance)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	print("HI")

@@ -586,7 +586,6 @@ script = ExtResource("6_wpcc5")
 
 [node name="Player" parent="." instance=ExtResource("7_14l81")]
 position = Vector2(153, 296)
-collision_layer = 2
 
 [node name="background_filter" type="CanvasModulate" parent="."]
 script = ExtResource("8_leyyi")

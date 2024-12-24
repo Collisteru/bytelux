@@ -1,19 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6fkvyiyobjdp"]
+[gd_scene load_steps=4 format=3 uid="uid://bfjgw6jb54p85"]
 
-[ext_resource type="Texture2D" uid="uid://b7dds1c8dib28" path="res://assets/projectile.png" id="1_4cxxx"]
-[ext_resource type="Texture2D" uid="uid://dg46i6cdi86tk" path="res://assets/projectile_glow_texture.png" id="2_qtb8k"]
+[ext_resource type="Script" path="res://entities/projectile/projectile.gd" id="1_4fr38"]
+[ext_resource type="Texture2D" uid="uid://b7dds1c8dib28" path="res://assets/projectile.png" id="1_6p7a8"]
+[ext_resource type="Texture2D" uid="uid://dg46i6cdi86tk" path="res://assets/projectile_glow_texture.png" id="2_654p4"]
 
-[node name="Projectile" type="RigidBody2D"]
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_4fr38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.929256, 0.921496, 1)
-position = Vector2(220, 298)
-scale = Vector2(0.152893, 0.13465)
-texture = ExtResource("1_4cxxx")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_6p7a8")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(220, 298)
-scale = Vector2(0.152893, 0.13465)
+scale = Vector2(0.2, 0.2)
 color = Color(1, 0, 0, 1)
 energy = 4.5
-texture = ExtResource("2_qtb8k")
+texture = ExtResource("2_654p4")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -7, -4, -2, 10, -2, 10, 2, -4, 2, -9, 7, -10, 7, -10, 6, -4, 0, -10, -6, -10, -7)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-9, -7, -4, -2, 10, -2, 10, 2, -4, 2, -9, 7, -10, 7, -10, 6, -4, 0, -10, -6, -10, -7)
+
+[node name="Life" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

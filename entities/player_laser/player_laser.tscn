@@ -7,6 +7,7 @@
 
 [node name="PlayerLaser" type="RayCast2D"]
 target_position = Vector2(0, 0)
+collision_mask = 7
 script = ExtResource("1_uo0wu")
 
 [node name="HitCircle" type="Node2D" parent="."]
@@ -16,8 +17,8 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("2_w5caf")
 
 [node name="Laser area" type="Area2D" parent="."]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 8
+collision_mask = 0
 
 [node name="LaserHurtBox" type="CollisionShape2D" parent="Laser area"]
 shape = SubResource("SegmentShape2D_o0myf")

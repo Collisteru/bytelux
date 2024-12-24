@@ -35,6 +35,7 @@ height = 12.3778
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.52893, 1.3465)
+collision_layer = 2
 script = ExtResource("1_ogo0s")
 
 [node name="PlayerLaser" parent="." instance=ExtResource("3_qwxxa")]
