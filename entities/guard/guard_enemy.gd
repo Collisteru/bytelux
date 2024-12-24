@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 		death()
 
 	if targetNode:
-		if can_see(targetNode):
+		if can_see(targetNode) and targetNode.player_is_alive:
 			custom_move(targetNode)
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
@@ -86,4 +86,5 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	fire()
+	if targetNode.player_is_alive:
+		fire()
