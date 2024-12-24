@@ -56,6 +56,7 @@ ui_down={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Player Projectile"
+2d_physics/layer_5="Enemy Projectile"
 2d_physics/main_scene="res://my_test_map.tscn"
 
 [rendering]

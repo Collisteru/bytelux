@@ -15,7 +15,7 @@ const SPEED = 100.0
 const ACCELERATION = 10.0
 const ENGAGE_DIST = 150.0
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(_delta: float) -> void:	
 	if alive:
 		if targetNode:
 			look_at(targetNode.position)
@@ -56,9 +56,6 @@ func _physics_process(delta: float) -> void:
 			print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 			# Should only happen if you don't give this node a target node
 
-func _ready():
-	fire()
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
@@ -73,8 +70,11 @@ func fire():
 	instance.spawnRot = rotation
 	main.add_child.call_deferred(instance)
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	print("HI")
 	alive = false
 	visible = false
-	pass # Replace with function body.
+
+
+func _on_timer_timeout() -> void:
+	fire()

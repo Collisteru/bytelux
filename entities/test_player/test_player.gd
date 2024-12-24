@@ -74,9 +74,9 @@ func _input(event: InputEvent) -> void:
 				KEY_K:
 					# Kill self (debugging purposes)
 					# TODO: Remove
-					self.die(player_camera)
+					self.die()
 					
-func die(camera) -> void:
+func die(camera = player_camera) -> void:
 	
 	# Set player_is_alive flag to false, making it impossible to perform player actions
 	player_is_alive = false
@@ -148,3 +148,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		
 				
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	die()
