@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
-#@onready var hitbox = $Hitbox
-#@onready hitbox.connect
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
-@onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
+@onready var onSprite = $"On"
+@onready var offSprite = $"Off"
+
+# to be used for turning an enemy on/off
+var mode = true
+# enemies may care about the current lens
+enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
+var lens = LENS_COLOR.RED
 
 var health = 1
 const SPEED = 100.0
@@ -17,6 +22,7 @@ func death() -> void:
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
+	reset_lens()
 	if health == 0:
 		death()
 
@@ -26,23 +32,36 @@ func _physics_process(_delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
-			
 	else:
 		print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 		# Should only happen if you don't give this node a target node
 	
 	move_and_slide()
-	
-# TODO: remove after debugging
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_4:
-				fire()
 
+func reset_lens():
+	lens = targetNode.lens
+
+func change_activeness():
+	mode = not mode
+	if mode:
+		set_on()
+	else:
+		set_off()
+	
+func set_off():
+	onSprite.visible = false
+	offSprite.visible = true
+	
+func set_on():
+	onSprite.visible = true
+	offSprite.visible = false
+	
 func can_see(target):
 	return (self.position - targetNode.position).length() < AGRO_RANGE
-
+	
+# note: this is called and a final move_and_slide() is called after
+#       So this should just set velocity
+# Default was ripped from guard enemy
 func custom_move(target):
 	look_at(targetNode.position)
 	var dist = (self.position - targetNode.position).length()
@@ -72,18 +91,10 @@ func custom_move(target):
 			velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
 		else:
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
-
-func fire():
-	var projectile = projectile_scene.instantiate()
-	
-	projectile.global_position = global_position
-	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
-	get_parent().add_child(projectile)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	print("HI")
 	health -= 1
 
-
 func _on_timer_timeout() -> void:
-	fire()
+	pass

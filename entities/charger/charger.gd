@@ -1,22 +1,35 @@
 extends CharacterBody2D
 
-#@onready var hitbox = $Hitbox
-#@onready hitbox.connect
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
-@onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
+@onready var onSprite = $"On"
+@onready var offSprite = $"Off"
+
+# to be used for turning an enemy on/off
+var mode = true
+# enemies may care about the current lens
+enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
+var lens = LENS_COLOR.RED
 
 var health = 1
-const SPEED = 100.0
+const SPEED = 0 #100.0
 const ACCELERATION = 10.0
 const ENGAGE_DIST = 150.0
 const AGRO_RANGE = 300.0
+
+var direction_x = 0
+var direction_y = 0
+
+var charging = false
+const CHARGING_ACCELERATION = 4*ACCELERATION
+const CHARGING_SPEED = 300.0
 
 func death() -> void:
 	#TODO animation
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
+	reset_lens()
 	if health == 0:
 		death()
 
@@ -26,37 +39,55 @@ func _physics_process(_delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
-			
 	else:
 		print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 		# Should only happen if you don't give this node a target node
 	
 	move_and_slide()
+
+func reset_lens():
+	lens = targetNode.lens
+
+func change_activeness():
+	mode = not mode
+	if mode:
+		set_on()
+	else:
+		set_off()
 	
-# TODO: remove after debugging
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_4:
-				fire()
+func set_off():
+	onSprite.visible = false
+	offSprite.visible = true
+	
+func set_on():
+	onSprite.visible = true
+	offSprite.visible = false
 
 func can_see(target):
 	return (self.position - targetNode.position).length() < AGRO_RANGE
-
+	
+# note: this is called and a final move_and_slide() is called after
+#       So this should just set velocity
+# Default was ripped from guard enemy
 func custom_move(target):
 	look_at(targetNode.position)
 	var dist = (self.position - targetNode.position).length()
 	
-	#-1 to retreat and 1 to approach. Used in figuring out which direction to go
-	var approach = 2*int(dist > ENGAGE_DIST) - 1
+	if not charging:
+		direction_x = sign(targetNode.position.x - self.position.x)
+		direction_y = sign(targetNode.position.y - self.position.y)
+
+	var currentAcceleration = ACCELERATION
+	var topSpeed = SPEED
 	
-	var direction_x = approach * sign(targetNode.position.x - self.position.x)
-	var direction_y = approach * sign(targetNode.position.y - self.position.y)
+	if charging:
+		currentAcceleration = CHARGING_ACCELERATION
+		topSpeed = CHARGING_SPEED
 
 	#Handle diagonal (xy) movement
 	if direction_x != 0 and direction_y != 0:
-		velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
-		velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+		velocity.x = move_toward(velocity.x,direction_x * topSpeed/sqrt(2),currentAcceleration/sqrt(2))
+		velocity.y = move_toward(velocity.y,direction_y * topSpeed/sqrt(2),currentAcceleration/sqrt(2))
 	# Handles single direction (x or y) movement
 	else:	
 		# Handle horizontal (x) movement
@@ -72,18 +103,14 @@ func custom_move(target):
 			velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
 		else:
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
-
-func fire():
-	var projectile = projectile_scene.instantiate()
-	
-	projectile.global_position = global_position
-	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
-	get_parent().add_child(projectile)
+			
+	if velocity.length() == topSpeed:
+		charging = false
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	print("HI")
 	health -= 1
 
-
 func _on_timer_timeout() -> void:
-	fire()
+	charging = true
+	pass

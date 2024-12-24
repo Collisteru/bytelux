@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://clo3n4jlqqkgd"]
+
+[ext_resource type="Script" path="res://entities/charger/charger.gd" id="1_4b11g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2shnh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bks1b"]
+
+[node name="charger" type="CharacterBody2D"]
+collision_layer = 20
+collision_mask = 3
+script = ExtResource("1_4b11g")
+
+[node name="On" type="Sprite2D" parent="."]
+scale = Vector2(200, 200)
+texture = SubResource("CanvasTexture_2shnh")
+
+[node name="Off" type="Sprite2D" parent="."]
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_bks1b")
+
+[node name="Physics" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-101, -99, 100, -100, 101, 98, -100, 101)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 20
+collision_mask = 8
+
+[node name="Area" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-101, -99, 100, -100, 101, 98, -100, 101)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
