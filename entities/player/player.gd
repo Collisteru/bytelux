@@ -8,8 +8,8 @@ var player_is_alive
 
 # Import child nodes
 @onready var laser = $PlayerLaser
-@onready var sprite = $PlayerSprite
-@onready var pointer = $Pointer
+#@onready var sprite = $PlayerSprite # TODO: remove when done debugging
+#@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
 
