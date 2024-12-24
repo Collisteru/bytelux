@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://blue_walls.gd" id="4_d0sr7"]
 [ext_resource type="Script" path="res://red_walls.gd" id="5_kidbu"]
 [ext_resource type="Script" path="res://green_walls.gd" id="6_wpcc5"]
-[ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="7_14l81"]
+[ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="8_82cy7"]
 [ext_resource type="Script" path="res://background_filter.gd" id="8_leyyi"]
 [ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="9_v3ddb"]
 
@@ -584,14 +584,10 @@ tile_map_data = PackedByteArray("AAD//wwAAAAEAAEAAAD//w0AAAAEAAEAAAD//w4AAAAEAAE
 tile_set = SubResource("TileSet_fygma")
 script = ExtResource("6_wpcc5")
 
-[node name="Player" parent="." instance=ExtResource("7_14l81")]
-visible = true
-position = Vector2(153, 296)
-collision_layer = 2
-
 [node name="background_filter" type="CanvasModulate" parent="."]
 script = ExtResource("8_leyyi")
 
-[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("9_v3ddb")]
+[node name="Player" parent="." instance=ExtResource("8_82cy7")]
+
+[node name="GuardEnemy" parent="." instance=ExtResource("9_v3ddb")]
 position = Vector2(211, 372)
-targetNode = NodePath("../Player")

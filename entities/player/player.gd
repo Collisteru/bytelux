@@ -65,13 +65,10 @@ func _input(event: InputEvent) -> void:
 			match event.keycode:
 				KEY_1:
 					self.lens = LENS_COLOR.RED
-					RenderingServer.set_default_clear_color('RED')
 				KEY_2:
 					self.lens = LENS_COLOR.BLUE
-					RenderingServer.set_default_clear_color('BLUE')
 				KEY_3:
 					self.lens = LENS_COLOR.GREEN
-					RenderingServer.set_default_clear_color('GREEN')
 				KEY_K:
 					# Kill self (debugging purposes)
 					# TODO: Remove
@@ -117,34 +114,35 @@ func die(camera) -> void:
 	# Wait for a time equal to the duration of the particle effect then 
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction 
-	var direction_x := Input.get_axis("ui_left", "ui_right")
-	var direction_y := Input.get_axis("ui_up", "ui_down")
-	
-	# Handle diagonal (xy) movement
-	if direction_x != 0 and direction_y != 0:
-		velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
-		velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
-	# Handles single direction (x or y) movement
-	else:	
-		# Handle horizontal (x) movement
-		if direction_x != 0:
-			#velocity.x = direction_x * SPEED
-			velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
-		else:
-			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
+	# Get the input direction
+	if player_is_alive:
+		var direction_x := Input.get_axis("ui_left", "ui_right")
+		var direction_y := Input.get_axis("ui_up", "ui_down")
 		
-		# Handle vertical (y) movement
-		if direction_y != 0:
-			#velocity.y = direction_y * SPEED
-			velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
-		else:
-			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+		# Handle diagonal (xy) movement
+		if direction_x != 0 and direction_y != 0:
+			velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+			velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+		# Handles single direction (x or y) movement
+		else:	
+			# Handle horizontal (x) movement
+			if direction_x != 0:
+				#velocity.x = direction_x * SPEED
+				velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
+			else:
+				velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			
-	if(velocity.length() != 0):
-		body.pointForwards(velocity.angle())
-		body.play("walk")
-	else:
-		body.tryStop()
+			# Handle vertical (y) movement
+			if direction_y != 0:
+				#velocity.y = direction_y * SPEED
+				velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
+			else:
+				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+				
+		if(velocity.length() != 0):
+			body.pointForwards(velocity.angle())
+			body.play("walk")
+		else:
+			body.tryStop()
 
-	move_and_slide()
+		move_and_slide()
