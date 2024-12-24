@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bd0pig66p5y4t" path="res://Art Assets/wire_tilemap.png" id="3_y27sq"]
 [ext_resource type="Script" path="res://blue_walls.gd" id="4_ndf7i"]
 [ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="4_npott"]
-[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="5_8foy1"]
+[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/guard/guard_enemy.tscn" id="5_8foy1"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkdyh"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

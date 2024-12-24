@@ -23,10 +23,10 @@ func _process(delta):
 	if direction != Vector2.ZERO:
 		linear_velocity = direction * SPEED
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	#print("HITTT area")
 	queue_free()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	#print("HITTT body")
 	queue_free()

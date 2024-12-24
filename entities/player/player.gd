@@ -57,10 +57,6 @@ func _input(event: InputEvent) -> void:
 			#var global_player_position = self.position
 			
 			# Get player position with ref to scene
-			var camera_player_position = self.get_global_transform_with_canvas().get_origin()
-			
-			var click_position: Vector2 = get_local_mouse_position();
-			
 			#var screensize = get_viewport().size 
 			
 			# Get position w/ ref to player
@@ -95,7 +91,7 @@ func _input(event: InputEvent) -> void:
 					# TODO: Remove
 					self.die()
 
-func die(camera = player_camera) -> void:
+func die(_camera = player_camera) -> void:
 	
 	# Set player_is_alive flag to false, making it impossible to perform player actions
 	player_is_alive = false
@@ -135,7 +131,7 @@ func die(camera = player_camera) -> void:
 	#
 	# Wait for a time equal to the duration of the particle effect then 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	##get the viewport size and divide by 2 since this is where the camera is positioned
 	#var view = get_viewport_rect().size / 2
 	#var view_pos = get_viewport_transform()
@@ -209,5 +205,5 @@ func change_eye_color():
 		eyes[n].self_modulate = cPrime
 		eye_trails[n].default_color = cPrime
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	die()
