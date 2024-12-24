@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://nvh03rv6fjoc"]
+
+[ext_resource type="Curve" uid="uid://v2mlc7tboewq" path="res://entities/player/EyeTrailCurve.tres" id="1_j0xb3"]
+[ext_resource type="Texture2D" uid="uid://djk3hys0p4tvl" path="res://assets/trail texture.png" id="2_56jj7"]
+[ext_resource type="Script" path="res://entities/player/eye_trail.gd" id="3_0cjou"]
+
+[node name="EyeTrail" type="Line2D"]
+top_level = true
+z_index = 1
+width = 5.0
+width_curve = ExtResource("1_j0xb3")
+default_color = Color(1, 0, 0, 1)
+texture = ExtResource("2_56jj7")
+texture_mode = 2
+script = ExtResource("3_0cjou")

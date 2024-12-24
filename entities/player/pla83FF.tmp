@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=27 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="PackedScene" path="res://entities/player_laser/playerLaser.tscn" id="2_gqt28"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c3r1vfkhs84y4" path="res://assets/character sprite head.png" id="11_qf7pn"]
 [ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
 [ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
+[ext_resource type="Script" path="res://entities/player/eye_trail.gd" id="15_032a1"]
+[ext_resource type="PackedScene" uid="uid://nvh03rv6fjoc" path="res://entities/player/eye_trail.tscn" id="15_2442y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
 animations = [{
@@ -74,6 +76,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4evqw"]
+particle_flag_disable_z = true
+emission_shape = 4
+emission_point_texture = ExtResource("14_p3wd8")
+emission_point_count = 1
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(-1, 0, 0)
+gravity = Vector3(0, 0, 0)
+
 [sub_resource type="Gradient" id="Gradient_e77mv"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
@@ -118,7 +130,6 @@ script = ExtResource("1_3f2xq")
 [node name="PlayerLaser" parent="." instance=ExtResource("2_gqt28")]
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_m7s6k")
 animation = &"walk"
 autoplay = "walk"
@@ -129,27 +140,27 @@ scale = Vector2(0.04, 0.04)
 sprite_frames = SubResource("SpriteFrames_1ipka")
 script = ExtResource("12_krybn")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="HeadSprite"]
+position = Vector2(-13, 68)
+process_material = SubResource("ParticleProcessMaterial_4evqw")
+
 [node name="Eyes" type="Node2D" parent="HeadSprite"]
 
 [node name="EyeGlowAmbient_R" type="Sprite2D" parent="HeadSprite/Eyes"]
-self_modulate = Color(1, 0, 0, 1)
 position = Vector2(-13, 68)
+scale = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_mva8t")
 
 [node name="EyeGlowCore_R" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_R"]
-z_index = 2
-z_as_relative = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_p3wd8")
 
 [node name="EyeGlowAmbient_L" type="Sprite2D" parent="HeadSprite/Eyes"]
-self_modulate = Color(1, 0, 0, 1)
 position = Vector2(-13, -68)
+scale = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_b21un")
 
 [node name="EyeGlowCore_L" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_L"]
-z_index = 2
-z_as_relative = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("14_p3wd8")
 
@@ -177,5 +188,8 @@ collision_mask = 16
 position = Vector2(1.3081, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_f4xep")
+
+[node name="EyeTrail" parent="Area2D" instance=ExtResource("15_2442y")]
+script = ExtResource("15_032a1")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

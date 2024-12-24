@@ -12,13 +12,26 @@ var player_is_alive
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
-
+@onready var eyes = [] # eyes right to left
+@onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
+@onready var eye_trails = [] # eyes right to left
 
 
 func _ready():
 	# Set player living/death flag
 	player_is_alive = true
-
+	
+	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_R)
+	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_L)
+	
+	for n in eyes.size():
+		var trail = eye_trail_scene.instantiate()
+		print(trail)
+		eye_trails.append(trail)
+		print(get_parent())
+		print(eye_trails)
+		add_child(trail)
+		
 # TODO: remove if not being used
 #func translate_to_center(position: Vector2) -> Vector2:
 		## Get the size of the viewport
@@ -69,16 +82,13 @@ func _input(event: InputEvent) -> void:
 			match event.keycode:
 				KEY_1:
 					self.lens = LENS_COLOR.RED
-					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK RED')
-					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK RED')
+					change_eye_color()
 				KEY_2:
 					self.lens = LENS_COLOR.BLUE
-					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK BLUE')
-					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK BLUE')
+					change_eye_color()
 				KEY_3:
 					self.lens = LENS_COLOR.GREEN
-					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK GREEN')
-					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK GREEN')
+					change_eye_color()
 				# TODO: Remove this before shipping (but leave until the end so we can test)
 				KEY_K:
 					# Kill self (debugging purposes)
@@ -171,7 +181,10 @@ func _physics_process(delta: float) -> void:
 				velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
 			else:
 				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+		
+		var is_moving = false
 		if(velocity.length() != 0):
+			is_moving = true
 			body.pointForwards(velocity.angle())
 			body.play("walk")
 		else:
@@ -179,8 +192,22 @@ func _physics_process(delta: float) -> void:
 
 		move_and_slide()
 		
-				
+		for n in eye_trails.size():
+			eye_trails[n].tick(eyes[n].global_position, is_moving)
 
+func change_eye_color():
+	var cPrime
+	match lens:
+		LENS_COLOR.RED:
+			cPrime = Color(255, 0, 0)
+		LENS_COLOR.GREEN:
+			cPrime = Color(0, 255, 0)
+		LENS_COLOR.BLUE:
+			cPrime = Color(0, 0, 255)
+	
+	for n in eyes.size():
+		eyes[n].self_modulate = cPrime
+		eye_trails[n].default_color = cPrime
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	die()
