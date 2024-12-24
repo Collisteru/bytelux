@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://dnuq5oyygkjft"]
+[gd_scene load_steps=65 format=4 uid="uid://v1ngilmtvbs7"]
 
 [ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_goum1"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_k6kep"]
@@ -38,7 +38,7 @@ polygon = PackedVector2Array(-8, 8, 7.90625, 8.5, 8, -8)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dqfrx"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4vlm6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3hbha"]
 texture = ExtResource("1_goum1")
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_gkdyh")
@@ -61,9 +61,9 @@ texture = ExtResource("1_goum1")
 
 [sub_resource type="TileSet" id="TileSet_3t5kj"]
 occlusion_layer_0/light_mask = 1
-sources/1 = SubResource("TileSetAtlasSource_4vlm6")
+sources/1 = SubResource("TileSetAtlasSource_3hbha")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wa0nn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gcsm"]
 texture = ExtResource("2_k6kep")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -354,9 +354,9 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_lavsq"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_wa0nn")
+sources/0 = SubResource("TileSetAtlasSource_8gcsm")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2c815"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f8cwc"]
 texture = ExtResource("3_jklr2")
 0:0/0 = 0
 1:0/0 = 0
@@ -407,7 +407,7 @@ texture = ExtResource("3_jklr2")
 6:5/0 = 0
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 8, 8, -8, -8, -8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ryql"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6k3g3"]
 texture = ExtResource("7_0jkwl")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.25, -8, 8, -8, 8, 8, -4.75, 8)
@@ -488,8 +488,8 @@ texture = ExtResource("7_0jkwl")
 [sub_resource type="TileSet" id="TileSet_wsnwm"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_1ryql")
-sources/0 = SubResource("TileSetAtlasSource_2c815")
+sources/1 = SubResource("TileSetAtlasSource_6k3g3")
+sources/0 = SubResource("TileSetAtlasSource_f8cwc")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4rg6f"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -599,7 +599,7 @@ polygon = PackedVector2Array(-0.21875, -0.125, -8, 8, 8, 8, 8, -8)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ek30b"]
 polygon = PackedVector2Array(-8, -8, -0.59375, -0.3125, 8, 8, 8, -8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpmm3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65wgp"]
 texture = ExtResource("3_jklr2")
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_4rg6f")
@@ -714,7 +714,7 @@ texture = ExtResource("3_jklr2")
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_xpmm3")
+sources/0 = SubResource("TileSetAtlasSource_65wgp")
 
 [node name="Test_Level" type="Node2D"]
 
@@ -764,19 +764,16 @@ tile_set = SubResource("TileSet_wsnwm")
 script = ExtResource("8_v3js3")
 
 [node name="Player" parent="." instance=ExtResource("9_8q5ua")]
+position = Vector2(0, 5.96046e-08)
 
-[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("10_pdvgm")]
+[node name="GuardEnemy" parent="." instance=ExtResource("10_pdvgm")]
 position = Vector2(-79, 536)
-targetNode = NodePath("../Player")
 
-[node name="GuardEnemy2" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("10_pdvgm")]
+[node name="GuardEnemy2" parent="." instance=ExtResource("10_pdvgm")]
 position = Vector2(315, 548)
-targetNode = NodePath("../Player")
 
-[node name="GuardEnemy3" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("10_pdvgm")]
+[node name="GuardEnemy3" parent="." instance=ExtResource("10_pdvgm")]
 position = Vector2(411, -12)
-targetNode = NodePath("../Player")
 
-[node name="GuardEnemy4" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("10_pdvgm")]
+[node name="GuardEnemy4" parent="." instance=ExtResource("10_pdvgm")]
 position = Vector2(-234, 387)
-targetNode = NodePath("../Player")

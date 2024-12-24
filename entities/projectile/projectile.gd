@@ -1,32 +1,32 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-@export var SPEED = 100
+const SPEED: float = 100.0
+@export var lifespan: float = 3.0
 
-var dir : float
-var spawnPos : Vector2
-var spawnRot : float
+# direction of projectile
+var direction: Vector2 = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
+# timer to track projectile's lifespan
+var life_timer: float = 0.0
+
 func _ready():
-	global_position = spawnPos
-	global_rotation = spawnRot
+	# initialize the timer
+	life_timer = lifespan
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float):
-	velocity = Vector2(0,-SPEED).rotated(dir)
-	move_and_slide()
+func _process(delta):
+	# reduce the lifespan timer
+	life_timer -= delta
+	if life_timer <= 0:
+		queue_free()
 
-func _on_life_timeout() -> void:
-	print("I lived too long")
-	queue_free()
-
+	# Maintain constant velocity in the given direction
+	if direction != Vector2.ZERO:
+		linear_velocity = direction * SPEED
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("HITTT area")
+	#print("HITTT area")
 	queue_free()
-	
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("HITTT body")
+	#print("HITTT body")
 	queue_free()
