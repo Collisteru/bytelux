@@ -18,7 +18,8 @@ func initialize(target_coord: Vector2, shooter: Node2D) -> void:
 	originator = shooter
 	
 func _ready():
-	laser_line.visible = false  # Initially hidden
+	print(position)
+	#laser_line.visible = false  # Initially hidden
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	fire_laser()
@@ -27,7 +28,6 @@ func _ready():
 
 #func fire_laser(laser_position, screen_player_position, node):
 func fire_laser():
-	print(x_diff, y_diff)
 	# Calculate angle
 	# Find the laser's direction
 	var vec_norm = sqrt(pow(x_diff,2) + pow(y_diff, 2));
@@ -48,7 +48,7 @@ func fire_laser():
 		# Transform global to camera point
 		
 		#print("Global player position: ", global_player_position)
-		var refplayer_col_point = originator.to_local(global_collision_point);
+		var refplayer_col_point = self.to_local(global_collision_point);
 		print('refplayer_col_point', refplayer_col_point)
 		# TODO: For debugging. Make circle appear for collision point
 		#hit_circle.position = refplayer_col_point;
@@ -60,7 +60,6 @@ func fire_laser():
 	else:
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff)]
-	print(laser_line.points)
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true  # Show the laser line
 	

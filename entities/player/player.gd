@@ -90,19 +90,21 @@ func die(camera = player_camera) -> void:
 	# Set player_is_alive flag to false, making it impossible to perform player actions
 	player_is_alive = false
 	
-	# Duplicate camera
-	# (the player camera is a child of the original class, so we need to create a new one with the same properites to 
-	# properly play the death animation)
-	var new_camera = camera.duplicate() as Camera2D
-
-	# Set the new camera's position and properties to match the original
-	new_camera.global_position = camera.global_position
-	new_camera.zoom = camera.zoom
-	new_camera.offset = camera.offset
-	get_parent().add_child(new_camera)
+	# TODO: remove this if player isn't queue freed for death
+	## Duplicate camera
+	## (the player camera is a child of the original class, so we need to create a new one with the same properites to 
+	## properly play the death animation)
+	#var new_camera = camera.duplicate() as Camera2D
+#
+	## Set the new camera's position and properties to match the original
+	#new_camera.global_position = camera.global_position
+	#new_camera.zoom = camera.zoom
+	#new_camera.offset = camera.offset
+	#get_parent().add_child(new_camera)
+	#
+	## Switch to this camera
+	#new_camera.make_current()
 	
-	# Switch to this camera
-	new_camera.make_current()
 
 	# Spawn playerdeathparticles
 	
@@ -132,7 +134,7 @@ func _physics_process(delta: float) -> void:
 	#print("View pos y:", view_pos.y)
 
 	#get the camera position
-	var camera_pos = $Camera2D.global_position
+	var camera_pos = player_camera.global_position
 	
 
 	# TODO: Figure out cause of incorrent left bound bug
