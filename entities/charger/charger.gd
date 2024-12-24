@@ -64,18 +64,16 @@ func set_on():
 	offSprite.visible = false
 
 func can_see(target):
-	return (self.position - targetNode.position).length() < AGRO_RANGE
+	return (self.position - target.position).length() < AGRO_RANGE
 	
 # note: this is called and a final move_and_slide() is called after
 #       So this should just set velocity
 # Default was ripped from guard enemy
 func custom_move(target):
-	look_at(targetNode.position)
-	var dist = (self.position - targetNode.position).length()
-	
+	look_at(target.position)
 	if not charging:
-		direction_x = sign(targetNode.position.x - self.position.x)
-		direction_y = sign(targetNode.position.y - self.position.y)
+		direction_x = sign(target.position.x - self.position.x)
+		direction_y = sign(target.position.y - self.position.y)
 
 	var currentAcceleration = ACCELERATION
 	var topSpeed = SPEED

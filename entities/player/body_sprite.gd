@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _tryStop and self.is_playing():
 		if self.frame == 5 or self.animation_finished:
 			_tryStop = false
