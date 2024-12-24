@@ -70,7 +70,6 @@ func _input(event: InputEvent) -> void:
 					self.lens = LENS_COLOR.BLUE
 				KEY_3:
 					self.lens = LENS_COLOR.GREEN
-					RenderingServer.set_default_clear_color('GREEN')
 				KEY_K:
 					# Kill self (debugging purposes)
 					# TODO: Remove

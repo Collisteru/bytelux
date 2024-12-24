@@ -1,0 +1,143 @@
+[gd_scene load_steps=19 format=3 uid="uid://dpw0dvtius7nn"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
+[ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/player_laser.tscn" id="2_gqt28"]
+[ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
+[ext_resource type="Texture2D" uid="uid://5nir8gdxwv6v" path="res://assets/character sprite body walking 1.png" id="4_mdog6"]
+[ext_resource type="Texture2D" uid="uid://dix043ipat66m" path="res://assets/character sprite body walking 3.png" id="5_4iomr"]
+[ext_resource type="Texture2D" uid="uid://bwfl2181g2gcs" path="res://assets/character sprite body walking 2.png" id="6_wjt1c"]
+[ext_resource type="Texture2D" uid="uid://dpj1rqvxy8m47" path="res://assets/character sprite body walking 1 mirror.png" id="7_rb7vk"]
+[ext_resource type="Texture2D" uid="uid://chl453o1178r7" path="res://assets/character sprite body walking 2 mirror.png" id="8_6oghk"]
+[ext_resource type="Texture2D" uid="uid://c332hotjolfik" path="res://assets/character sprite body walking 3 mirror.png" id="9_2yc4q"]
+[ext_resource type="Script" path="res://entities/player/body_sprite.gd" id="10_2cpae"]
+[ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="11_qf7pn"]
+[ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
+[ext_resource type="Texture2D" uid="uid://c5esnsujy8r1l" path="res://assets/point lights.png" id="13_0q7g0"]
+[ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1nkbj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1nkbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mdog6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4iomr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wjt1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mdog6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1nkbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rb7vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6oghk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2yc4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6oghk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rb7vk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ipka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qf7pn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4evqw"]
+particle_flag_disable_z = true
+emission_shape = 4
+emission_point_texture = ExtResource("14_p3wd8")
+emission_point_count = 1
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(-1, 0, 0)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
+radius = 4.36035
+height = 12.3778
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.52893, 1.3465)
+script = ExtResource("1_3f2xq")
+
+[node name="PlayerLaser" parent="." instance=ExtResource("2_gqt28")]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_m7s6k")
+animation = &"walk"
+autoplay = "walk"
+script = ExtResource("10_2cpae")
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_1ipka")
+script = ExtResource("12_krybn")
+
+[node name="Eyes" type="Node2D" parent="HeadSprite"]
+
+[node name="EyeGlowAmbient_R" type="Sprite2D" parent="HeadSprite/Eyes"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-13, 68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_0q7g0")
+
+[node name="EyeGlowCore_R" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_R"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("14_p3wd8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="HeadSprite/Eyes/EyeGlowAmbient_R"]
+scale = Vector2(2, 2)
+process_material = SubResource("ParticleProcessMaterial_4evqw")
+
+[node name="EyeGlowAmbient_L" type="Sprite2D" parent="HeadSprite/Eyes"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-13, -68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_0q7g0")
+
+[node name="EyeGlowCore_L" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_L"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("14_p3wd8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.3081, 0)
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CapsuleShape2D_hj6c1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0.654052, -7.42666)
+zoom = Vector2(2, 2)
