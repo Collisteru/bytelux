@@ -1,58 +1,13 @@
-[gd_scene load_steps=16 format=4 uid="uid://waxjota0gc2y"]
+[gd_scene load_steps=17 format=4 uid="uid://waxjota0gc2y"]
 
+[ext_resource type="Script" path="res://test_map.gd" id="1_cjt4j"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_jh8a6"]
 [ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="2_5tbwc"]
 [ext_resource type="Texture2D" uid="uid://dk8cce8wtku7b" path="res://assets/testredwall.png" id="3_kdsnw"]
 [ext_resource type="Texture2D" uid="uid://c20w2vw7fsk2b" path="res://assets/testgreenwall.png" id="4_yfu0k"]
 [ext_resource type="Texture2D" uid="uid://cgwbhokfp4b17" path="res://assets/testbluewall.png" id="5_3766s"]
 [ext_resource type="Texture2D" uid="uid://bd0pig66p5y4t" path="res://Art Assets/wire_tilemap.png" id="6_k0nrf"]
-
-[sub_resource type="GDScript" id="GDScript_taem6"]
-script/source = "extends Node2D
-
-var global_color = 'R'
-
-@onready var camera = $Player/Camera2D
-@onready var player = $Player
-@onready var floor = $Floor
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var limits = floor.get_used_rect()
-	var topleft = floor.map_to_local(limits.position)
-	var floor_size = floor.map_to_local(limits.size)
-	
-	var viewport_size = get_viewport().get_visible_rect().size
-	
-	
-	camera.limit_left = topleft.x + (viewport_size.x / 4)
-	camera.limit_top = topleft.y + (viewport_size.y / 4)
-	camera.limit_right = topleft.x + floor_size.x
-	camera.limit_bottom = topleft.y + floor_size.y
-		
-	#print(\"Topleft: \", topleft)
-	#print(\"Left limit: \", camera.limit_left)
-	#
-	#
-	
-	
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is athe elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var viewport_size = get_viewport().get_visible_rect().size
-	#print(\"Viewport size: \", viewport_size)
-
-	var sprite_offset = 15;
-	
-	player.position.x = clamp(player.position.x, camera.limit_left+sprite_offset, camera.limit_right-sprite_offset)
-	player.position.y = clamp(player.position.y, camera.limit_top+sprite_offset, camera.limit_bottom-sprite_offset)
-
-	
-	
-	pass
-"
+[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="8_4lr8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4er6"]
 texture = ExtResource("1_jh8a6")
@@ -474,9 +429,14 @@ tile_map_data = PackedByteArray("AAD+/w8AAwADAAMAAAD7/w8AAwAAAAAAAAD6/w8AAwAAAAA
 tile_set = SubResource("TileSet_37u0p")
 use_kinematic_bodies = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.49, 0.21658, 0.1862, 1)
-
 [node name="Player" parent="." instance=ExtResource("2_5tbwc")]
-position = Vector2(184, 286)
+position = Vector2(153, 296)
 collision_layer = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.486537, 0.218119, 0.186721, 0.54902)
+
+[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("8_4lr8c")]
+position = Vector2(211, 372)
+targetNode = NodePath("../Player")

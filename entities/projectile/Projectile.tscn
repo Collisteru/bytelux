@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6fkvyiyobjdp"]
+
+[ext_resource type="Texture2D" uid="uid://b7dds1c8dib28" path="res://assets/projectile.png" id="1_4cxxx"]
+[ext_resource type="Texture2D" uid="uid://dg46i6cdi86tk" path="res://assets/projectile_glow_texture.png" id="2_qtb8k"]
+
+[node name="Projectile" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.929256, 0.921496, 1)
+position = Vector2(220, 298)
+scale = Vector2(0.152893, 0.13465)
+texture = ExtResource("1_4cxxx")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(220, 298)
+scale = Vector2(0.152893, 0.13465)
+color = Color(1, 0, 0, 1)
+energy = 4.5
+texture = ExtResource("2_qtb8k")

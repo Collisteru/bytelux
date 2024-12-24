@@ -1,6 +1,8 @@
 extends RayCast2D
 
-@onready var laser_line = $LaserLine2D
+@onready var laser_line = $"Laser area/LaserLine2D"
+@onready var laser_hurt = $"Laser area/LaserHurtBox"
+@onready var laser_area = $"Laser area"
 @onready var hit_circle = $HitCircle
 
 
@@ -48,9 +50,12 @@ func fire_laser(laser_position, screen_player_position, node):
 		#hit_circle.visible = true
 
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
+		laser_hurt.shape.a = Vector2.ZERO 
+		laser_hurt.shape.b = refplayer_col_point+2*refplayer_col_point.normalized()
+		
 	else:
-		#print("Is not colliding!")
-		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y +3)]
+		print("Is not colliding!")
+		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(laser_position.x, laser_position.y)]
 	
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true  # Show the laser line
@@ -69,7 +74,12 @@ func fade():
 		await get_tree().create_timer(millisecond).timeout;
 		laser_line.modulate.a -= (millisecond/(fade_time));
 	
+	#print("HI")
+	laser_hurt.shape.a = Vector2.ZERO
+	laser_hurt.shape.b = Vector2.ZERO
+	laser_line.points = [Vector2.ZERO, Vector2.ZERO]
 	laser_line.visible = false
+	self.target_position = Vector2.ZERO
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

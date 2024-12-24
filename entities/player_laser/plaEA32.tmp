@@ -16,8 +16,6 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("2_w5caf")
 
 [node name="Laser area" type="Area2D" parent="."]
-collision_layer = 7
-collision_mask = 7
 
 [node name="LaserHurtBox" type="CollisionShape2D" parent="Laser area"]
 shape = SubResource("SegmentShape2D_o0myf")

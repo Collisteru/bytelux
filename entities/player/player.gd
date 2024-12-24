@@ -6,13 +6,14 @@ enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
 var lens = LENS_COLOR.RED
 var player_is_alive
 
-
 # Import child nodes
 @onready var laser = $PlayerLaser
 @onready var sprite = $PlayerSprite
 @onready var pointer = $Pointer
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
+
+
 
 func _ready():
 	# Set player living/death flag
@@ -30,7 +31,7 @@ func translate_to_center(position: Vector2) -> Vector2:
 func _input(event: InputEvent) -> void:
 	
 	if player_is_alive:
-		# Get player's response to mouse events
+	# Get player's response to mouse events
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			# By default, the click position is done with reference to the screen. We want it to be done with reference to the player position
 
@@ -66,18 +67,18 @@ func _input(event: InputEvent) -> void:
 			match event.keycode:
 				KEY_1:
 					self.lens = LENS_COLOR.RED
+					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK RED')
+					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK RED')
 				KEY_2:
 					self.lens = LENS_COLOR.BLUE
+					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK BLUE')
+					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK BLUE')
 				KEY_3:
 					self.lens = LENS_COLOR.GREEN
-					RenderingServer.set_default_clear_color('GREEN')
-				KEY_K:
-					# Kill self (debugging purposes)
-					# TODO: Remove
-					self.die(player_camera)
+					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK GREEN')
+					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK GREEN')
 					
 func die(camera) -> void:
-	
 	# Set player_is_alive flag to false, making it impossible to perform player actions
 	player_is_alive = false
 	
@@ -115,7 +116,6 @@ func die(camera) -> void:
 	#queue_free()
 	#
 	# Wait for a time equal to the duration of the particle effect then 
-
 
 func _physics_process(delta: float) -> void:
 	
@@ -164,14 +164,30 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 		
-		# Handle vertical (y) movement
-		if direction_y != 0:
-			#velocity.y = direction_y * SPEED
-			velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
-		else:
-			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+		# Handle diagonal (xy) movement
+		if direction_x != 0 and direction_y != 0:
+			velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+			velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+		# Handles single direction (x or y) movement
+		else:	
+			# Handle horizontal (x) movement
+			if direction_x != 0:
+				#velocity.x = direction_x * SPEED
+				velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
+			else:
+				velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			
-	if(velocity.length() != 0):
-		body.pointForwards(velocity.angle())
+			# Handle vertical (y) movement
+			if direction_y != 0:
+				#velocity.y = direction_y * SPEED
+				velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
+			else:
+				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+				
+		if(velocity.length() != 0):
+			body.pointForwards(velocity.angle())
+			body.play("walk")
+		else:
+			body.tryStop()
 
-	move_and_slide()
+		move_and_slide()

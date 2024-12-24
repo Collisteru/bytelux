@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfpaw4les5y2i"]
+
+[ext_resource type="Script" path="res://entities/enemies/guard_enemy.gd" id="1_q3pa1"]
+[ext_resource type="Texture2D" uid="uid://bi036wks6gn2" path="res://assets/Enemy_SecurityGuard_Standing_blue.png" id="2_klm83"]
+[ext_resource type="PackedScene" uid="uid://bj0hyrs6vxhcf" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
+
+[node name="GuardEnemy" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_q3pa1")
+
+[node name="On" type="Sprite2D" parent="."]
+texture = ExtResource("2_klm83")
+
+[node name="Off" type="Sprite2D" parent="."]
+texture = ExtResource("2_klm83")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_fuou0")]
