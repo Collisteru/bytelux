@@ -589,5 +589,6 @@ script = ExtResource("8_leyyi")
 
 [node name="Player" parent="." instance=ExtResource("8_82cy7")]
 
-[node name="GuardEnemy" parent="." instance=ExtResource("9_v3ddb")]
+[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("9_v3ddb")]
 position = Vector2(211, 372)
+targetNode = NodePath("../Player")
