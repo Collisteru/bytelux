@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbrl4ecy4ob3d"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7wmt5"]
+
+[node name="LaserArea" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="LaserHurtBox" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_7wmt5")
+
+[node name="LaserLine2D" type="Line2D" parent="."]
+width = 1.4
+texture_mode = 2

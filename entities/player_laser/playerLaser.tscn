@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://h8odvwv2neqd"]
 
-[ext_resource type="Script" path="res://entities/player_gun/player_gun.gd" id="1_uo0wu"]
-[ext_resource type="Texture2D" uid="uid://v0hj0jxch7uu" path="res://assets/rcircle.png" id="2_w5caf"]
+[ext_resource type="Script" path="res://entities/player_laser/player_laser.gd" id="1_k6rj0"]
+[ext_resource type="Texture2D" uid="uid://v0hj0jxch7uu" path="res://assets/rcircle.png" id="2_wggs5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o0myf"]
 
 [node name="PlayerLaser" type="RayCast2D"]
 target_position = Vector2(0, 0)
 collision_mask = 23
-script = ExtResource("1_uo0wu")
+script = ExtResource("1_k6rj0")
 
 [node name="HitCircle" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="HitCircle"]
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("2_w5caf")
+texture = ExtResource("2_wggs5")
 
 [node name="Laser area" type="Area2D" parent="."]
 collision_layer = 8

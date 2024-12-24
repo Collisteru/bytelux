@@ -7,7 +7,7 @@ var lens = LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
-@onready var laser = $PlayerGun
+@onready var laser = $PlayerLaser
 #@onready var sprite = $PlayerSprite # TODO: remove when done debugging
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
