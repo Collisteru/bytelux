@@ -14,6 +14,15 @@ const AGRO_RANGE = 300.0
 
 func death() -> void:
 	#TODO animation
+	# Instance the particle scene
+	var particle_scene = preload("res://entities/particles/enemy_explosion.tscn").instantiate()
+	
+	# Assign position of the particles to be the same as the enemy
+	particle_scene.position = self.position
+	
+	# Add the particle scene to the parent
+	get_parent().add_child(particle_scene)
+	
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	

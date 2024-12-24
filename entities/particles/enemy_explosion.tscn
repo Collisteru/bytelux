@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://rlhu8qsp4ubt"]
+
+[ext_resource type="Script" path="res://entities/particles/player_death_particles.gd" id="1_yarrq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e4skt"]
+resource_local_to_scene = true
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_803ux"]
+max_value = 5.0
+bake_resolution = 300
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.664336, 4.30753), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_fk1qp"]
+colors = PackedColorArray(0.166667, 0, 1, 1, 1, 1, 1, 1)
+
+[node name="EnemyExplosion" type="Node2D"]
+
+[node name="EnemyDeathParticles" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_e4skt")
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 5
+emission_points = PackedVector2Array()
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_803ux")
+color_ramp = SubResource("Gradient_fk1qp")
+anim_speed_min = 10.0
+anim_speed_max = 10.0
+script = ExtResource("1_yarrq")
