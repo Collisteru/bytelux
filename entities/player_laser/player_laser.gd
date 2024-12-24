@@ -17,12 +17,11 @@ func _ready():
 	laser_line.visible = false  # Initially hidden
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
-	fire_laser()
+	#fire_laser()
 
-#func fire_laser(laser_position, screen_player_position, node):
-func fire_laser():
+func fire_laser(shooter):
 	#TODO: remove this
-	laser_line.default_color = Color('BLACK')
+	#laser_line.default_color = Color('BLACK')
 	
 	var mouse_position = shooter.get_local_mouse_position()
 	var x_diff = mouse_position.x
@@ -49,8 +48,8 @@ func fire_laser():
 		#print("Global player position: ", global_player_position)
 		var refplayer_col_point = shooter.to_local(global_collision_point);
 		# TODO: For debugging. Make circle appear for collision point
-		hit_circle.position = refplayer_col_point;
-		hit_circle.visible = true
+		#hit_circle.position = refplayer_col_point;
+		#hit_circle.visible = true
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
 		laser_hurt.shape.a = Vector2.ZERO 
 		laser_hurt.shape.b = refplayer_col_point+2*refplayer_col_point.normalized()
@@ -75,9 +74,6 @@ func fade():
 		await get_tree().create_timer(millisecond).timeout;
 		laser_line.modulate.a -= (millisecond/(fade_time));
 	
-	#TODO: uncomment
-	self.queue_free()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

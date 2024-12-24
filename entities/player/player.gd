@@ -7,7 +7,7 @@ var lens = LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
-#@onready var laser = $PlayerLaser
+@onready var laser = $PlayerLaser
 #@onready var sprite = $PlayerSprite # TODO: remove when done debugging
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
@@ -44,7 +44,7 @@ func _input(event: InputEvent) -> void:
 			#var global_player_position = self.position
 			
 			# Get player position with ref to scene
-			#var camera_player_position = self.get_global_transform_with_canvas().get_origin()
+			var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 			
 			var click_position: Vector2 = get_local_mouse_position();
 			
@@ -54,10 +54,8 @@ func _input(event: InputEvent) -> void:
 			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
 			#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
 			
-			var laser = preload("res://entities/player_laser/player_laser.tscn").instantiate()
-			laser.position = position
-			laser.initialize(self)
-			get_parent().add_child(laser)
+			laser.fire_laser(self)
+
 			
 			#pointer.move(click_position, global_position)
 			
