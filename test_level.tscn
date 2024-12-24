@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://rqnu14vvnda1"]
+[gd_scene load_steps=53 format=4 uid="uid://c8hpmtxcujd27"]
 
 [ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_eb3a0"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_q64mf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://green_walls.gd" id="6_wpcc5"]
 [ext_resource type="PackedScene" uid="uid://eprmypdm2vqh" path="res://entities/test_player/test_player.tscn" id="7_14l81"]
 [ext_resource type="Script" path="res://background_filter.gd" id="8_leyyi"]
+[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="9_v3ddb"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkdyh"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -589,3 +590,7 @@ collision_layer = 2
 
 [node name="background_filter" type="CanvasModulate" parent="."]
 script = ExtResource("8_leyyi")
+
+[node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("9_v3ddb")]
+position = Vector2(211, 372)
+targetNode = NodePath("../Player")

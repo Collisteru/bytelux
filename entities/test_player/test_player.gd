@@ -119,7 +119,7 @@ func die(camera) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction 
-	if alive:
+	if player_is_alive:
 		var direction_x := Input.get_axis("ui_left", "ui_right")
 		var direction_y := Input.get_axis("ui_up", "ui_down")
 		
