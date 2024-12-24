@@ -17,3 +17,5 @@ func _process(_delta: float) -> void:
 				color = Color('PALE_GREEN')
 			player.LENS_COLOR.BLUE:
 				color = Color('SKY_BLUE')
+			player.LENS_COLOR.WHITE:
+				visible = false
