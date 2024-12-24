@@ -47,7 +47,7 @@ func fire_laser():
 		# Transform global to camera point
 		
 		#print("Global player position: ", global_player_position)
-		var refplayer_col_point = self.to_local(global_collision_point);
+		var refplayer_col_point = originator.to_local(global_collision_point);
 		# TODO: For debugging. Make circle appear for collision point
 		hit_circle.position = refplayer_col_point;
 		hit_circle.visible = true

@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://yt5f7pfpyq3p"]
+[gd_scene load_steps=18 format=4 uid="uid://yt5f7pfpyq3p"]
 
-[ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_abasg"]
-[ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="1_l42bd"]
-[ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="2_mpcu0"]
-[ext_resource type="Script" path="res://background_filter.gd" id="8_ngju5"]
-[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="10_hxetf"]
+[ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_lmfc7"]
+[ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_b4oiy"]
+[ext_resource type="Script" path="res://background_filter.gd" id="3_bftok"]
+[ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="4_npott"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkdyh"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -34,7 +33,7 @@ polygon = PackedVector2Array(-8, 8, 7.90625, 8.5, 8, -8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idfw8"]
-texture = ExtResource("1_abasg")
+texture = ExtResource("1_lmfc7")
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_gkdyh")
 1:0/0 = 0
@@ -59,7 +58,7 @@ occlusion_layer_0/light_mask = 1
 sources/1 = SubResource("TileSetAtlasSource_idfw8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1w3p2"]
-texture = ExtResource("1_l42bd")
+texture = ExtResource("2_b4oiy")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -365,10 +364,7 @@ tile_set = SubResource("TileSet_lv1tc")
 collision_enabled = false
 
 [node name="background_filter" type="CanvasModulate" parent="."]
-script = ExtResource("8_ngju5")
+script = ExtResource("3_bftok")
 
-[node name="Player" parent="." instance=ExtResource("2_mpcu0")]
+[node name="Player" parent="." instance=ExtResource("4_npott")]
 position = Vector2(0, 5.96046e-08)
-
-[node name="GuardEnemy4" parent="." instance=ExtResource("10_hxetf")]
-position = Vector2(-234, 387)
