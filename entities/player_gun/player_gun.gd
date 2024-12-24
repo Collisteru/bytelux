@@ -2,26 +2,25 @@ extends RayCast2D
 
 @onready var laser_line = $"Laser area/LaserLine2D"
 @onready var laser_hurt = $"Laser area/LaserHurtBox"
-@onready var laser_area = $"Laser area"
 @onready var hit_circle = $HitCircle
 
 
 # TODO: This is a placeholder until wall collision code is programmed
-var laser_max_length = 1000  # Max length of the laser
+var laser_max_length = 120  # Max length of the laser
 var shooter = null
 
 func initialize(player: Node2D) -> void:
 	shooter = player
 
 func _ready():
-	laser_line.visible = false  # Initially hidden
+	#laser_line.visible = false  # Initially hidden
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	#fire_laser()
 
 func fire_laser(shooter):
 	#TODO: remove this
-	#laser_line.default_color = Color('BLACK')
+	laser_line.default_color = Color('BLACK')
 	
 	var mouse_position = shooter.get_local_mouse_position()
 	var x_diff = mouse_position.x
@@ -56,7 +55,7 @@ func fire_laser(shooter):
 		
 	else:
 		print("Is not colliding!")
-		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff)]
+		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff).normalized()]
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true  # Show the laser line
 	

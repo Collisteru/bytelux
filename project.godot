@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="bytelux"
-run/main_scene="res://levels/vic_level_design_for_funsies.tscn"
+run/main_scene="res://levels/test_jay.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
