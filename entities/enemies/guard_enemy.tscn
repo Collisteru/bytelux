@@ -17,7 +17,6 @@ texture = ExtResource("2_klm83")
 texture = ExtResource("2_klm83")
 
 [node name="Physics" parent="." instance=ExtResource("3_fuou0")]
-visible = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4

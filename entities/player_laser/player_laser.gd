@@ -16,18 +16,17 @@ func initialize(target_coord: Vector2, shooter: Node2D) -> void:
 	x_diff = target_coord.x
 	y_diff = target_coord.y
 	originator = shooter
-	
+
 func _ready():
-	print('position',position)
-	#laser_line.visible = false  # Initially hidden
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	fire_laser()
-	
-
 
 #func fire_laser(laser_position, screen_player_position, node):
 func fire_laser():
+	#TODO: remove this
+	laser_line.default_color = Color('BLACK')
+	
 	# Calculate angle
 	# Find the laser's direction
 	var vec_norm = sqrt(pow(x_diff,2) + pow(y_diff, 2));
@@ -49,10 +48,9 @@ func fire_laser():
 		
 		#print("Global player position: ", global_player_position)
 		var refplayer_col_point = self.to_local(global_collision_point);
-		print('refplayer_col_point', refplayer_col_point)
 		# TODO: For debugging. Make circle appear for collision point
-		#hit_circle.position = refplayer_col_point;
-		#hit_circle.visible = true
+		hit_circle.position = refplayer_col_point;
+		hit_circle.visible = true
 		laser_line.points = [Vector2.ZERO, refplayer_col_point]
 		laser_hurt.shape.a = Vector2.ZERO 
 		laser_hurt.shape.b = refplayer_col_point+2*refplayer_col_point.normalized()
@@ -61,7 +59,6 @@ func fire_laser():
 		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff)]
 	laser_line.modulate.a = 1.0;
-	laser_line.visible = true  # Show the laser line
 	
 	fade()
 
@@ -77,11 +74,7 @@ func fade():
 		await get_tree().create_timer(millisecond).timeout;
 		laser_line.modulate.a -= (millisecond/(fade_time));
 	
-	laser_hurt.shape.a = Vector2.ZERO
-	laser_hurt.shape.b = Vector2.ZERO
-	laser_line.points = [Vector2.ZERO, Vector2.ZERO]
-	laser_line.visible = false
-	self.target_position = Vector2.ZERO
+	#TODO: uncomment
 	self.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -700,7 +700,8 @@ tile_set = SubResource("TileSet_wsnwm")
 script = ExtResource("7_vyd5j")
 
 [node name="Player" parent="." instance=ExtResource("8_o6jmg")]
+position = Vector2(-40, 138)
 
 [node name="GuardEnemy" parent="." node_paths=PackedStringArray("targetNode") instance=ExtResource("9_dfe4e")]
-position = Vector2(211, 372)
+position = Vector2(210, 362)
 targetNode = NodePath("../Player")
