@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ua0xjunnuley" path="res://assets/walls_x.png" id="7_0jkwl"]
 [ext_resource type="Script" path="res://background_filter.gd" id="8_v3js3"]
 [ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="9_8q5ua"]
-[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/enemies/guard_enemy.tscn" id="10_pdvgm"]
+[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/guard/guard_enemy.tscn" id="10_pdvgm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkdyh"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
