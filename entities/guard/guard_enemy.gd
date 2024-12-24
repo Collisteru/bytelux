@@ -105,7 +105,6 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	if targetNode.player_is_alive:
-		print("hi!")
 		if readied:
 			fire()
 			timer.start(RELOAD_TIME)
