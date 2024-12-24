@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/enemies/guard_enemy.gd" id="1_q3pa1"]
 [ext_resource type="Texture2D" uid="uid://bi036wks6gn2" path="res://assets/Enemy_SecurityGuard_Standing_blue.png" id="2_klm83"]
-[ext_resource type="PackedScene" uid="uid://fviega6hwtft" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
+[ext_resource type="PackedScene" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
 
 [node name="GuardEnemy" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)

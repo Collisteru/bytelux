@@ -77,6 +77,9 @@ func _input(event: InputEvent) -> void:
 					self.lens = LENS_COLOR.GREEN
 					$HeadSprite/Eyes/EyeGlowAmbient_R.modulate = Color('DARK GREEN')
 					$HeadSprite/Eyes/EyeGlowAmbient_L.modulate = Color('DARK GREEN')
+				# TODO: Remove this before shipping (but leave until the end so we can test)
+				KEY_K:
+					self.die(player_camera)
 					
 func die(camera) -> void:
 	# Set player_is_alive flag to false, making it impossible to perform player actions
@@ -153,8 +156,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle diagonal (xy) movement
 	if direction_x != 0 and direction_y != 0:
-		velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+		print("Moving diagonally!")
+		velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
 		velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
+		
 	# Handles single direction (x or y) movement
 	else:	
 		# Handle horizontal (x) movement
@@ -163,26 +168,20 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
+
+		# Handle horizontal (x) movement
+		if direction_x != 0:
+			#velocity.x = direction_x * SPEED
+			velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
+		else:
+			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 		
-		# Handle diagonal (xy) movement
-		if direction_x != 0 and direction_y != 0:
-			velocity.x = move_toward(velocity.x,direction_x * SPEED/sqrt(2),ACCELERATION/sqrt(2))
-			velocity.y = move_toward(velocity.y,direction_y * SPEED/sqrt(2),ACCELERATION/sqrt(2))
-		# Handles single direction (x or y) movement
-		else:	
-			# Handle horizontal (x) movement
-			if direction_x != 0:
-				#velocity.x = direction_x * SPEED
-				velocity.x = move_toward(velocity.x,direction_x * SPEED,ACCELERATION)
-			else:
-				velocity.x = move_toward(velocity.x, 0, ACCELERATION)
-			
-			# Handle vertical (y) movement
-			if direction_y != 0:
-				#velocity.y = direction_y * SPEED
-				velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
-			else:
-				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
+		# Handle vertical (y) movement
+		if direction_y != 0:
+			#velocity.y = direction_y * SPEED
+			velocity.y = move_toward(velocity.y,direction_y * SPEED,ACCELERATION)
+		else:
+			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 				
 		if(velocity.length() != 0):
 			body.pointForwards(velocity.angle())
