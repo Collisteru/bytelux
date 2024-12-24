@@ -72,6 +72,9 @@ func fade():
 	while (laser_line.modulate.a > 0.0):
 		await get_tree().create_timer(millisecond).timeout;
 		laser_line.modulate.a -= (millisecond/(fade_time));
+		
+	laser_hurt.shape.a = Vector2.ZERO 
+	laser_hurt.shape.b = Vector2.ZERO 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
