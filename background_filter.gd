@@ -11,9 +11,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if player:
 		match player.lens:
-			player.LENS_COLOR.RED:
+			LensColor.LENS_COLOR.RED:
 				color = Color('PINK')
-			player.LENS_COLOR.GREEN:
+			LensColor.LENS_COLOR.GREEN:
 				color = Color('PALE_GREEN')
-			player.LENS_COLOR.BLUE:
+			LensColor.LENS_COLOR.BLUE:
 				color = Color('SKY_BLUE')

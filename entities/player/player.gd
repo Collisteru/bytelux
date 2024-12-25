@@ -2,8 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const ACCELERATION = 30.0
-enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
-var lens = LENS_COLOR.RED
+var lens : LensColor.LENS_COLOR = LensColor.LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
@@ -81,13 +80,13 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventKey and event.pressed:
 			match event.keycode:
 				KEY_1:
-					self.lens = LENS_COLOR.RED
+					self.lens = LensColor.LENS_COLOR.RED
 					change_eye_color()
 				KEY_2:
-					self.lens = LENS_COLOR.BLUE
+					self.lens = LensColor.LENS_COLOR.BLUE
 					change_eye_color()
 				KEY_3:
-					self.lens = LENS_COLOR.GREEN
+					self.lens = LensColor.LENS_COLOR.GREEN
 					change_eye_color()
 				# TODO: Remove this before shipping (but leave until the end so we can test)
 				KEY_K:
@@ -196,14 +195,7 @@ func _physics_process(delta: float) -> void:
 			eye_trails[n].tick(eyes[n].global_position, is_moving)
 
 func change_eye_color():
-	var cPrime
-	match lens:
-		LENS_COLOR.RED:
-			cPrime = Color(255, 0, 0)
-		LENS_COLOR.GREEN:
-			cPrime = Color(0, 255, 0)
-		LENS_COLOR.BLUE:
-			cPrime = Color(0, 0, 255)
+	var cPrime = LensColor.translate_color(lens)
 	
 	for n in eyes.size():
 		eyes[n].self_modulate = cPrime

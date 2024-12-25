@@ -1,16 +1,8 @@
-extends CharacterBody2D
+extends "res://entities/enemy_base/enemy_base.gd"
 
 #@onready var hitbox = $Hitbox
 #@onready hitbox.connect
-@onready var targetNode = $'../Player'
-@onready var hitbox = $"Hitbox"
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
-
-var health = 1
-const SPEED = 100.0
-const ACCELERATION = 10.0
-const ENGAGE_DIST = 150.0
-const AGRO_RANGE = 300.0
 
 func death() -> void:
 	#TODO animation
@@ -22,7 +14,8 @@ func _physics_process(_delta: float) -> void:
 
 	if targetNode:
 		if can_see(targetNode):
-			custom_move(targetNode)
+			pass
+			#custom_move(targetNode)
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
@@ -86,4 +79,5 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	fire()
+	pass
+	#fire()

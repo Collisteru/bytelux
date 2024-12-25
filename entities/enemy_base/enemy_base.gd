@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+class_name EnemyBase
+
+@export var myColor : LensColor.LENS_COLOR
+
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
 @onready var onSprite = $"On"
@@ -8,8 +12,7 @@ extends CharacterBody2D
 # to be used for turning an enemy on/off
 var mode = true
 # enemies may care about the current lens
-enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
-var lens = LENS_COLOR.RED
+var lens = LensColor.LENS_COLOR.RED
 
 var health = 1
 const SPEED = 100.0
