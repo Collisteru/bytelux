@@ -23,6 +23,11 @@ var player_is_alive
 @onready var hud_blue = preload('res://assets/hud_color_b.png')
 @onready var hud_green = preload('res://assets/hud_color_g.png')
 
+# Preload HUD inverse textures
+@onready var hud_iblue = preload('res://assets/hud_inverse_b.png')
+@onready var hud_ired = preload('res://assets/hud_inverse_r.png')
+@onready var hud_igreen = preload('res://assets/hud_inverse_g.png')
+
 
 
 func _ready():
@@ -116,30 +121,30 @@ func _input(event: InputEvent) -> void:
 						if (self.lens == LENS_COLOR.BLUE):
 							self.lens = LENS_COLOR.GREEN
 							change_eye_color()
-							change_hud('G')
+							change_hud('B', 'G')
 						elif (self.lens == LENS_COLOR.GREEN):
 							self.lens = LENS_COLOR.RED
 							change_eye_color()
-							change_hud('R')
+							change_hud('G', 'R')
 						elif (self.lens == LENS_COLOR.RED):
 							self.lens = LENS_COLOR.BLUE
 							change_eye_color()
-							change_hud('B')
+							change_hud('R', 'B')
 				KEY_E: # (blue to red, red to green, green to blue
 					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
 						if (self.lens == LENS_COLOR.BLUE):
 							self.lens = LENS_COLOR.RED
 							change_eye_color()
-							change_hud('R')
+							change_hud('B', 'R')
 						elif (self.lens == LENS_COLOR.RED):
 							self.lens = LENS_COLOR.GREEN
 							change_eye_color()
-							change_hud('G')
+							change_hud('R', 'G')
 						elif (self.lens == LENS_COLOR.GREEN):
 							self.lens = LENS_COLOR.BLUE
 							change_eye_color()
-							change_hud('B')
+							change_hud('G', 'B')
 				KEY_BRACKETRIGHT:
 					if player_camera.zoom.x < 10:
 						player_camera.zoom.x += 1
@@ -155,13 +160,35 @@ func _input(event: InputEvent) -> void:
 					# TODO: Remove
 					self.die()
 
-func change_hud(color):
-	if color == 'R':
-		color_hud.set_texture(hud_red)
-	if color == 'G':
-		color_hud.set_texture(hud_green)
-	if color == 'B':
-		color_hud.set_texture(hud_blue)
+func change_hud(old_color, new_color):
+	if old_color == 'R':
+		if new_color == 'G':
+			color_hud.set_texture(hud_iblue)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_green)
+		elif new_color == 'B':
+			color_hud.set_texture(hud_igreen)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_blue)
+	if old_color == 'G':
+		if new_color == 'R':
+			color_hud.set_texture(hud_iblue)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_red)
+		elif new_color == 'B':
+			color_hud.set_texture(hud_ired)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_blue)
+	if old_color == 'B':
+		if new_color == 'G':
+			color_hud.set_texture(hud_ired)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_green)
+		elif new_color == 'R':
+			color_hud.set_texture(hud_igreen)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_red)
+
 
 func die(camera = player_camera) -> void:
 	
