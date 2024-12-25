@@ -12,8 +12,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oto3a"]
 shader = ExtResource("2_e8mdg")
-shader_parameter/Mask = null
+shader_parameter/Mask = Color(0, 1, 0, 1)
 shader_parameter/Clip = null
+shader_parameter/ClipFeather = null
+shader_parameter/TargetColor = Color(1, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqh0m"]
 animations = [{

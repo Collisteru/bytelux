@@ -3,6 +3,14 @@ extends "res://entities/enemy_base/enemy_base.gd"
 #@onready var hitbox = $Hitbox
 #@onready hitbox.connect
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
+@onready var sprite = $"AnimatedSprite2D"
+
+func _ready() -> void:
+	var targetColor = LensColor.translate_color(myColor)
+	applyColor(targetColor)
+	
+func applyColor(color: Color) -> void:
+	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func death() -> void:
 	#TODO animation
@@ -15,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 	if targetNode:
 		if can_see(targetNode):
 			pass
-			#custom_move(targetNode)
+			custom_move(targetNode)
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
@@ -80,4 +88,4 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	pass
-	#fire()
+	fire()

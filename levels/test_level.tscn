@@ -704,3 +704,4 @@ script = ExtResource("7_vyd5j")
 position = Vector2(92, 451)
 
 [node name="GuardEnemy" parent="." instance=ExtResource("9_dfe4e")]
+myColor = 1
