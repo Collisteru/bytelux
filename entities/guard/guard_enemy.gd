@@ -3,14 +3,22 @@ extends CharacterBody2D
 #@onready var hitbox = $Hitbox
 #@onready hitbox.connect
 @onready var targetNode = $'../Player'
+@onready var sprite = $"Sprite"
 @onready var hitbox = $"Hitbox"
+@onready var timer = $"Timer"
+@onready var spawnNode = $"Bullet Spawn point"
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
+
+enum frames {AIMING = 0, NEUTRAL = 1}
 
 var health = 1
 const SPEED = 100.0
 const ACCELERATION = 10.0
 const ENGAGE_DIST = 150.0
 const AGRO_RANGE = 300.0
+var readied = false
+const RELOAD_TIME = 2.0
+const AIM_TIME = 1.0
 
 func death() -> void:
 	#TODO animation
@@ -30,7 +38,7 @@ func _physics_process(_delta: float) -> void:
 		death()
 
 	if targetNode:
-		if can_see(targetNode):
+		if can_see(targetNode) and targetNode.player_is_alive:
 			custom_move(targetNode)
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
@@ -85,8 +93,9 @@ func custom_move(target):
 func fire():
 	var projectile = projectile_scene.instantiate()
 	
-	projectile.global_position = global_position
+	projectile.global_position = spawnNode.global_position
 	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
+	projectile.global_rotation = global_rotation
 	get_parent().add_child(projectile)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
@@ -95,4 +104,15 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	fire()
+	if targetNode.player_is_alive:
+		if readied:
+			fire()
+			timer.start(RELOAD_TIME)
+			readied = false
+			sprite.frame = frames.NEUTRAL
+		else:
+			timer.start(AIM_TIME)
+			readied = true
+			sprite.frame = frames.AIMING
+
+		

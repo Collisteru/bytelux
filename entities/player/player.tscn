@@ -109,7 +109,7 @@ fill_to = Vector2(0.502137, 0)
 radius = 4.36035
 height = 12.3778
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.52893, 1.3465)
 collision_layer = 2
 collision_mask = 21
