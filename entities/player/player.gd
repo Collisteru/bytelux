@@ -7,7 +7,6 @@ var lens = LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
-@onready var laser = $PlayerLaser
 #@onready var sprite = $PlayerSprite # TODO: remove when done debugging
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
@@ -39,10 +38,7 @@ func _ready():
 	
 	for n in eyes.size():
 		var trail = eye_trail_scene.instantiate()
-		print(trail)
 		eye_trails.append(trail)
-		print(get_parent())
-		print(eye_trails)
 		add_child(trail)
 		
 # TODO: remove if not being used
@@ -62,14 +58,14 @@ func _ready():
 	#get_parent().add_child(projectile)
 
 func create_laser():
-	var laser = laser_scene.instantiate()
+	var newLaser = laser_scene.instantiate()
 	var laser_length = 1000
 	
-	laser.position = self.position
-	laser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position)
-	print("targetting: ", laser.target_position)
-	laser.bounces = 2
-	get_parent().add_child(laser)
+	newLaser.name = str(2)
+	newLaser.position = self.position
+	newLaser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position)
+	newLaser.bounces = 2
+	get_parent().add_child(newLaser)
 
 func is_default_color_locked() -> bool:
 	if self.lens == LENS_COLOR.WHITE:
@@ -91,9 +87,9 @@ func _input(event: InputEvent) -> void:
 			#var global_player_position = self.position
 			
 			# Get player position with ref to scene
-			var camera_player_position = self.get_global_transform_with_canvas().get_origin()
+			#var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 			
-			var click_position: Vector2 = get_local_mouse_position();
+			#var click_position: Vector2 = get_local_mouse_position();
 			
 			#var screensize = get_viewport().size 
 			
@@ -230,7 +226,7 @@ func die(camera = player_camera) -> void:
 	#
 	# Wait for a time equal to the duration of the particle effect then 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	##get the viewport size and divide by 2 since this is where the camera is positioned
 	#var view = get_viewport_rect().size / 2
 	#var view_pos = get_viewport_transform()
@@ -304,5 +300,8 @@ func change_eye_color():
 		eyes[n].self_modulate = cPrime
 		eye_trails[n].default_color = cPrime
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
+	die()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	die()

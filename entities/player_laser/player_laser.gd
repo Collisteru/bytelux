@@ -15,7 +15,6 @@ func initialize(player: Node2D) -> void:
 	shooter = player
 
 func _ready():
-	print("hello world!")
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	project()
@@ -30,70 +29,29 @@ func project():
 	if self.is_colliding():
 		# Get global collision point
 		var collision_point = to_local(get_collision_point())
-		var reach = 2#how much the hurtbox should extend from the raycast
-		print("collision at ", collision_point)
+		var reach = 5  #how much the hurtbox should extend from the raycast
 		laser_line.points = [Vector2.ZERO, collision_point]
-		laser_hurt.shape.a = Vector2.ZERO
-		laser_hurt.shape.b = collision_point+reach*collision_point.normalized()
+		
+		var newHurtLine = SegmentShape2D.new()
+		newHurtLine.a = Vector2.ZERO
+		newHurtLine.b = collision_point+reach*collision_point.normalized()
+		laser_hurt.shape = newHurtLine
 		
 	else:
-		print("Is not colliding!")
 		laser_line.points = [Vector2.ZERO, self.target_position]
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true
 			
-	print("Bounces: ", bounces)
 	if bounces > 0:
+		#print("bounced")
 		create_laser()
+	else:
+		print("\n")
 
 #func recur(spawn):
 #
 
-#func fire_laser(shooter):
-	##TODO: remove this
-	#laser_line.default_color = Color('BLACK')
-	#
-	#var mouse_position = shooter.get_local_mouse_position()
-	#var x_diff = mouse_position.x
-	#var y_diff = mouse_position.y
-	## Calculate angle
-	## Find the laser's direction
-	#var vec_norm = sqrt(pow(x_diff,2) + pow(y_diff, 2));
-	#var direction_norm = Vector2(x_diff / vec_norm, y_diff / vec_norm)
-	## Raycast in this direction	
-	#self.target_position = direction_norm * laser_max_length
-	##self.target_position = laser_position * laser_max_length
-	#self.force_raycast_update()  # Ensure RayCast2D updates immediately
-#
-	## Check for collision
-	#if self.is_colliding():
-		## Get global collision point
-		#var global_collision_point = self.get_collision_point()
-		##print("coord: ",global_collision_point)
-#
-		##print("Global collision point: ", global_collision_point)
-#
-		## Transform global to camera point
-		#
-		##print("Global player position: ", global_player_position)
-		#var refplayer_col_point = shooter.to_local(global_collision_point);
-		## TODO: For debugging. Make circle appear for collision point
-		##hit_circle.position = refplayer_col_point;
-		##hit_circle.visible = true
-		#laser_line.points = [Vector2.ZERO, refplayer_col_point]
-		#laser_hurt.shape.a = Vector2.ZERO 
-		#laser_hurt.shape.b = refplayer_col_point+2*refplayer_col_point.normalized()
-		#
-	#else:
-		#print("Is not colliding!")
-		#laser_line.points = [Vector2.ZERO, laser_max_length * Vector2(x_diff, y_diff).normalized()]
-	#laser_line.modulate.a = 1.0;
-	#laser_line.visible = true  # Show the laser line
-	#
-	#fade()
-
 func create_laser():
-	print("SELF REPLICATION!!!!")
 	var laser = laser_scene.instantiate()
 	var laser_length = 1000
 	
@@ -101,9 +59,9 @@ func create_laser():
 	var normal = get_collision_normal()
 	var post_reflect = pre_reflect.bounce(normal).normalized()
 	
+	laser.name = str(bounces-1)
 	laser.position = self.get_collision_point()
 	laser.target_position = laser_length * (post_reflect)
-	print("targetting: ", laser.target_position)
 	laser.bounces = self.bounces-1
 	get_parent().add_child(laser)
 
@@ -122,5 +80,5 @@ func fade():
 	free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
