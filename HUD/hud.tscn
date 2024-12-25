@@ -16,7 +16,7 @@ offset_top = 609.0
 offset_right = 40.0
 offset_bottom = 649.0
 
-[node name="HudColorR" type="Sprite2D" parent="HBoxContainer"]
+[node name="HudSprite" type="Sprite2D" parent="HBoxContainer"]
 position = Vector2(70, -23)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0dipl")

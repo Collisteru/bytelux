@@ -12,10 +12,16 @@ var player_is_alive
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
+@onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
 @onready var laser_scene = load("res://entities/player_laser/playerLaser.tscn")
+
+# Preload HUD textures
+@onready var hud_red = preload('res://assets/hud_color_r.png')
+@onready var hud_blue = preload('res://assets/hud_color_b.png')
+@onready var hud_green = preload('res://assets/hud_color_g.png')
 
 
 
@@ -107,14 +113,18 @@ func _input(event: InputEvent) -> void:
 					if not is_default_color_locked():
 						self.lens = LENS_COLOR.RED
 						change_eye_color()
+						change_hud('R')
 				KEY_2:
 					if not is_default_color_locked():
 						self.lens = LENS_COLOR.BLUE
 						change_eye_color()
+						change_hud('B')
+
 				KEY_3:
 					if not is_default_color_locked():
 						self.lens = LENS_COLOR.GREEN
 						change_eye_color()
+						change_hud('G')
 				KEY_BRACKETRIGHT:
 					if player_camera.zoom.x < 10:
 						player_camera.zoom.x += 1
@@ -129,6 +139,14 @@ func _input(event: InputEvent) -> void:
 					# Kill self (debugging purposes)
 					# TODO: Remove
 					self.die()
+
+func change_hud(color):
+	if color == 'R':
+		color_hud.set_texture(hud_red)
+	if color == 'G':
+		color_hud.set_texture(hud_green)
+	if color == 'B':
+		color_hud.set_texture(hud_blue)
 
 func die(camera = player_camera) -> void:
 	
