@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://tatu8ps7mq2h"]
+[gd_scene load_steps=2 format=3 uid="uid://tatu8ps7mq2h"]
+
+[ext_resource type="Texture2D" uid="uid://bce1wxna65p0t" path="res://assets/hud_color_r.png" id="1_0dipl"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -10,5 +12,11 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
+offset_top = 609.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 649.0
+
+[node name="HudColorR" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(70, -23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0dipl")

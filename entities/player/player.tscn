@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=25 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="PackedScene" uid="uid://h8odvwv2neqd" path="res://entities/player_laser/playerLaser.tscn" id="2_gqt28"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="11_qf7pn"]
 [ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
 [ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
+[ext_resource type="PackedScene" uid="uid://tatu8ps7mq2h" path="res://HUD/hud.tscn" id="14_wp8t4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
 animations = [{
@@ -159,7 +160,6 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_hj6c1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(0.654052, 9.53674e-07)
 scale = Vector2(0.226738, 0.24508)
 shadow_enabled = true
@@ -177,5 +177,14 @@ collision_mask = 16
 position = Vector2(1.3081, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_f4xep")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_wp8t4")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
