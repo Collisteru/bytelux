@@ -56,6 +56,9 @@ func mtrx(columns: int, rows: int) -> void:
 
 # called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if viewport_size != get_viewport_rect().size:
+		_ready()
+	
 	move += delta
 	if move > 0.15:
 		mtrx(columns, rows)
