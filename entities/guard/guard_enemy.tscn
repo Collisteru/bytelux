@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ix1qb"]
 shader = ExtResource("1_r4krv")
-shader_parameter/Mask = Color(0, 1, 0, 1)
+shader_parameter/Mask = Color(0.72549, 0.270588, 0.701961, 1)
 shader_parameter/Clip = 0.01
 shader_parameter/ClipFeather = 0.5
 shader_parameter/TargetColor = Color(1, 0, 0, 1)
