@@ -66,7 +66,7 @@ func create_laser():
 	newLaser.name = str(2)
 	newLaser.position = self.position
 	newLaser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position)
-	newLaser.bounces = 2
+	newLaser.bounces = 1
 	get_parent().add_child(newLaser)
 
 func is_default_color_locked() -> bool:

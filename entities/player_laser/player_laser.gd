@@ -59,6 +59,8 @@ func create_laser():
 	var normal = get_collision_normal()
 	var post_reflect = pre_reflect.bounce(normal).normalized()
 	
+	print("This laser is going to ", self.target_position, " and the normal seen is ", normal)
+	
 	laser.name = str(bounces-1)
 	laser.position = self.get_collision_point()
 	laser.target_position = laser_length * (post_reflect)
