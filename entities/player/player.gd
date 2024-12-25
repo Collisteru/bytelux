@@ -40,6 +40,8 @@ func _ready():
 		var trail = eye_trail_scene.instantiate()
 		eye_trails.append(trail)
 		add_child(trail)
+	
+	change_eye_color()
 		
 # TODO: remove if not being used
 #func translate_to_center(position: Vector2) -> Vector2:
@@ -141,6 +143,7 @@ func _input(event: InputEvent) -> void:
 							self.lens = LENS_COLOR.BLUE
 							change_eye_color()
 							change_hud('G', 'B')
+				# This is for zooming
 				KEY_BRACKETRIGHT:
 					if player_camera.zoom.x < 10:
 						player_camera.zoom.x += 1
@@ -295,6 +298,8 @@ func change_eye_color():
 			cPrime = Color(0, 255, 0)
 		LENS_COLOR.BLUE:
 			cPrime = Color(0, 0, 255)
+		LENS_COLOR.WHITE:
+			cPrime = Color(255, 255, 255)
 	
 	for n in eyes.size():
 		eyes[n].self_modulate = cPrime
