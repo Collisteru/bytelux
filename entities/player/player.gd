@@ -60,8 +60,13 @@ func create_laser():
 	laser.bounces = 2
 	get_parent().add_child(laser)
 
+func is_default_color_locked() -> bool:
+	if self.lens == LENS_COLOR.WHITE:
+		return true
+	else:
+		return false
+
 func _input(event: InputEvent) -> void:
-	
 	if player_is_alive:
 		# Get player's response to mouse events
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -99,14 +104,17 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventKey and event.pressed:
 			match event.keycode:
 				KEY_1:
-					self.lens = LENS_COLOR.RED
-					change_eye_color()
+					if not is_default_color_locked():
+						self.lens = LENS_COLOR.RED
+						change_eye_color()
 				KEY_2:
-					self.lens = LENS_COLOR.BLUE
-					change_eye_color()
+					if not is_default_color_locked():
+						self.lens = LENS_COLOR.BLUE
+						change_eye_color()
 				KEY_3:
-					self.lens = LENS_COLOR.GREEN
-					change_eye_color()
+					if not is_default_color_locked():
+						self.lens = LENS_COLOR.GREEN
+						change_eye_color()
 				KEY_BRACKETRIGHT:
 					if player_camera.zoom.x < 10:
 						player_camera.zoom.x += 1
