@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var hitbox = $"Hitbox"
 @onready var timer = $"Timer"
 @onready var spawnNode = $"Bullet Spawn point"
-@onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
+@onready var projectile_scene = load("res://entities/projectile/Projectile.tscn")
 
 enum frames {AIMING = 0, NEUTRAL = 1}
 
@@ -34,7 +34,7 @@ func death() -> void:
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
-	if health == 0:
+	if health <= 0:
 		death()
 
 	if targetNode:
@@ -58,11 +58,11 @@ func _input(event: InputEvent) -> void:
 				fire()
 
 func can_see(target):
-	return (self.position - targetNode.position).length() < AGRO_RANGE
+	return (self.position - target.position).length() < AGRO_RANGE
 
 func custom_move(target):
-	look_at(targetNode.position)
-	var dist = (self.position - targetNode.position).length()
+	look_at(target.position)
+	var dist = (self.position - target.position).length()
 	
 	#-1 to retreat and 1 to approach. Used in figuring out which direction to go
 	var approach = 2*int(dist > ENGAGE_DIST) - 1
@@ -99,7 +99,7 @@ func fire():
 	get_parent().add_child(projectile)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
-	print("HI")
+	print("I'VE BEEN HIT")
 	health -= 1
 
 
