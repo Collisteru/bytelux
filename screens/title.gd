@@ -93,6 +93,7 @@ func _on_exit_pressed() -> void:
 
 func _on_start_pressed() -> void:
 	#TODO move to tutorial
+	get_tree().change_scene_to_file("res://levels/vic_level_design_for_funsies.tscn")
 	pass
 
 
