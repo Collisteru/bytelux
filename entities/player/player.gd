@@ -108,23 +108,38 @@ func _input(event: InputEvent) -> void:
 			
 		# Get player's response to key events
 		if event is InputEventKey and event.pressed:
+			# Handle changing lens colors
 			match event.keycode:
-				KEY_1:
+				KEY_Q: # (blue to green, green to red, red to blue
+					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
-						self.lens = LENS_COLOR.RED
-						change_eye_color()
-						change_hud('R')
-				KEY_2:
+						if (self.lens == LENS_COLOR.BLUE):
+							self.lens = LENS_COLOR.GREEN
+							change_eye_color()
+							change_hud('G')
+						elif (self.lens == LENS_COLOR.GREEN):
+							self.lens = LENS_COLOR.RED
+							change_eye_color()
+							change_hud('R')
+						elif (self.lens == LENS_COLOR.RED):
+							self.lens = LENS_COLOR.BLUE
+							change_eye_color()
+							change_hud('B')
+				KEY_E: # (blue to red, red to green, green to blue
+					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
-						self.lens = LENS_COLOR.BLUE
-						change_eye_color()
-						change_hud('B')
-
-				KEY_3:
-					if not is_default_color_locked():
-						self.lens = LENS_COLOR.GREEN
-						change_eye_color()
-						change_hud('G')
+						if (self.lens == LENS_COLOR.BLUE):
+							self.lens = LENS_COLOR.RED
+							change_eye_color()
+							change_hud('R')
+						elif (self.lens == LENS_COLOR.RED):
+							self.lens = LENS_COLOR.GREEN
+							change_eye_color()
+							change_hud('G')
+						elif (self.lens == LENS_COLOR.GREEN):
+							self.lens = LENS_COLOR.BLUE
+							change_eye_color()
+							change_hud('B')
 				KEY_BRACKETRIGHT:
 					if player_camera.zoom.x < 10:
 						player_camera.zoom.x += 1
