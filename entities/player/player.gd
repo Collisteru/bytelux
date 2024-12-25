@@ -12,10 +12,16 @@ var player_is_alive
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
+@onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
 @onready var laser_scene = load("res://entities/player_laser/playerLaser.tscn")
+
+# Preload HUD textures
+@onready var hud_red = preload('res://assets/hud_color_r.png')
+@onready var hud_blue = preload('res://assets/hud_color_b.png')
+@onready var hud_green = preload('res://assets/hud_color_g.png')
 
 
 
@@ -102,19 +108,38 @@ func _input(event: InputEvent) -> void:
 			
 		# Get player's response to key events
 		if event is InputEventKey and event.pressed:
+			# Handle changing lens colors
 			match event.keycode:
-				KEY_1:
+				KEY_Q: # (blue to green, green to red, red to blue
+					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
-						self.lens = LENS_COLOR.RED
-						change_eye_color()
-				KEY_2:
+						if (self.lens == LENS_COLOR.BLUE):
+							self.lens = LENS_COLOR.GREEN
+							change_eye_color()
+							change_hud('G')
+						elif (self.lens == LENS_COLOR.GREEN):
+							self.lens = LENS_COLOR.RED
+							change_eye_color()
+							change_hud('R')
+						elif (self.lens == LENS_COLOR.RED):
+							self.lens = LENS_COLOR.BLUE
+							change_eye_color()
+							change_hud('B')
+				KEY_E: # (blue to red, red to green, green to blue
+					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
-						self.lens = LENS_COLOR.BLUE
-						change_eye_color()
-				KEY_3:
-					if not is_default_color_locked():
-						self.lens = LENS_COLOR.GREEN
-						change_eye_color()
+						if (self.lens == LENS_COLOR.BLUE):
+							self.lens = LENS_COLOR.RED
+							change_eye_color()
+							change_hud('R')
+						elif (self.lens == LENS_COLOR.RED):
+							self.lens = LENS_COLOR.GREEN
+							change_eye_color()
+							change_hud('G')
+						elif (self.lens == LENS_COLOR.GREEN):
+							self.lens = LENS_COLOR.BLUE
+							change_eye_color()
+							change_hud('B')
 				KEY_BRACKETRIGHT:
 					if player_camera.zoom.x < 10:
 						player_camera.zoom.x += 1
@@ -129,6 +154,14 @@ func _input(event: InputEvent) -> void:
 					# Kill self (debugging purposes)
 					# TODO: Remove
 					self.die()
+
+func change_hud(color):
+	if color == 'R':
+		color_hud.set_texture(hud_red)
+	if color == 'G':
+		color_hud.set_texture(hud_green)
+	if color == 'B':
+		color_hud.set_texture(hud_blue)
 
 func die(camera = player_camera) -> void:
 	
