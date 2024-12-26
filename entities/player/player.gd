@@ -27,6 +27,13 @@ var player_is_alive
 @onready var hud_ired = preload('res://assets/hud_inverse_r.png')
 @onready var hud_igreen = preload('res://assets/hud_inverse_g.png')
 
+# Preload HUD tilted textures
+@onready var hud_ltilt_r = preload('res://assets/hud_ltilrt_r.png')
+@onready var hud_rtilt_r = preload('res://assets/hud_rtilt_r.png')
+@onready var hud_ltilt_g = preload('res://assets/hud_ltilt_g.png')
+@onready var hud_rtilt_g = preload('res://assets/hud_rtilt_g.png')
+@onready var hud_ltilt_b = preload('res://assets/hud_ltilt_b.png')
+@onready var hud_rtilt_b = preload('res://assets/hud_rtilt_b.png')
 
 
 func _ready():
@@ -160,32 +167,57 @@ func _input(event: InputEvent) -> void:
 					self.die()
 
 func change_hud(old_color, new_color):
+	var tick = 0.07
 	if old_color == 'R':
 		if new_color == 'G':
+			color_hud.set_texture(hud_rtilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_iblue)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_ltilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_green)
 		elif new_color == 'B':
+			color_hud.set_texture(hud_ltilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_igreen)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_rtilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_blue)
 	if old_color == 'G':
 		if new_color == 'R':
+			color_hud.set_texture(hud_ltilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_iblue)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_rtilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_red)
 		elif new_color == 'B':
+			color_hud.set_texture(hud_rtilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_ired)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_ltilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_blue)
 	if old_color == 'B':
 		if new_color == 'G':
+			color_hud.set_texture(hud_ltilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_ired)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_rtilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_green)
 		elif new_color == 'R':
+			color_hud.set_texture(hud_rtilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_igreen)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_ltilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_red)
 
 
