@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://entities/guard/guard_enemy.gd" id="1_q3pa1"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="1_r4krv"]
 [ext_resource type="Texture2D" uid="uid://bvarxerhusnr1" path="res://assets/Enemy_SecurityGuard_GunOut_blue.png" id="2_i2oif"]
-[ext_resource type="Texture2D" path="res://assets/Enemy_SecurityGuard_Standing_blue.png" id="2_klm83"]
 [ext_resource type="PackedScene" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
+[ext_resource type="Texture2D" uid="uid://ct60rwitu3wlc" path="res://assets/security guard enemy.png" id="4_vr0si"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phnn8"]
 shader = ExtResource("1_r4krv")
@@ -20,7 +20,7 @@ animations = [{
 "texture": ExtResource("2_i2oif")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_klm83")
+"texture": ExtResource("4_vr0si")
 }],
 "loop": true,
 "name": &"default",
