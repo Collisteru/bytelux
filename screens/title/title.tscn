@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d28huhw1lumpj"]
 
-[ext_resource type="Script" path="res://screens/title.gd" id="1_isxua"]
+[ext_resource type="Script" path="res://screens/title/title.gd" id="1_qlo3y"]
 [ext_resource type="FontFile" uid="uid://53nsmglrurhe" path="res://font/CARBON-DROID.otf" id="2_63wvj"]
 
 [sub_resource type="Theme" id="Theme_d8yu1"]
@@ -16,7 +16,7 @@ default_font = ExtResource("2_63wvj")
 default_font_size = 60
 
 [node name="Title" type="Node2D"]
-script = ExtResource("1_isxua")
+script = ExtResource("1_qlo3y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
