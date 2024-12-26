@@ -7,10 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="5_ycopj"]
 [ext_resource type="Texture2D" uid="uid://c63le1iwj280a" path="res://assets/tile_green.png" id="6_k7chu"]
 [ext_resource type="PackedScene" uid="uid://5we3eofv6eq4" path="res://entities/door/door.tscn" id="9_7tir0"]
-[ext_resource type="Script" path="res://blue_walls.gd" id="9_ajp4k"]
-[ext_resource type="Script" path="res://red_walls.gd" id="10_yksy0"]
-[ext_resource type="Script" path="res://green_walls.gd" id="11_pnba5"]
-[ext_resource type="Script" path="res://background_filter.gd" id="12_vt4jb"]
 [ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="13_jtegw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35oom"]
@@ -329,6 +325,89 @@ sources/2 = SubResource("TileSetAtlasSource_sjsvm")
 sources/3 = SubResource("TileSetAtlasSource_grt4i")
 sources/4 = SubResource("TileSetAtlasSource_i8tjs")
 
+[sub_resource type="GDScript" id="GDScript_auhln"]
+script/source = "extends TileMapLayer
+
+@onready var player = $'../Player'
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if player:
+		if LensColor.lens == LensColor.LENS_COLOR.BLUE:
+			collision_enabled = false
+			visible = false
+		else:
+			collision_enabled = true
+			visible = true
+"
+
+[sub_resource type="GDScript" id="GDScript_x55gs"]
+script/source = "extends TileMapLayer
+
+@onready var player = $'../Player'
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if player:
+		if LensColor.lens == LensColor.LENS_COLOR.RED:
+			collision_enabled = false
+			visible = false
+		else:
+			collision_enabled = true
+			visible = true
+"
+
+[sub_resource type="GDScript" id="GDScript_jl2a5"]
+script/source = "extends TileMapLayer
+
+@onready var player = $'../Player'
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if player:
+		if LensColor.lens == LensColor.LENS_COLOR.GREEN:
+			collision_enabled = false
+			visible = false
+		else:
+			collision_enabled = true
+			visible = true
+"
+
+[sub_resource type="GDScript" id="GDScript_7lyhr"]
+script/source = "extends CanvasModulate
+
+@onready var player = $'../Player'
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	match LensColor.LENS_COLOR:
+		LensColor.LENS_COLOR.RED:
+			self.color = Color('PINK')
+		LensColor.LENS_COLOR.GREEN:
+			self.color = Color('PALE_GREEN')
+		LensColor.LENS_COLOR.BLUE:
+			self.color = Color('SKY_BLUE')
+		LensColor.LENS_COLOR.WHITE:
+			self.visible = false
+"
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_1yqn3")
 
@@ -341,15 +420,15 @@ collision_enabled = false
 
 [node name="BlueWalls" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_thnpv")
-script = ExtResource("9_ajp4k")
+script = SubResource("GDScript_auhln")
 
 [node name="RedWalls" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_thnpv")
-script = ExtResource("10_yksy0")
+script = SubResource("GDScript_x55gs")
 
 [node name="GreenWalls" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_thnpv")
-script = ExtResource("11_pnba5")
+script = SubResource("GDScript_jl2a5")
 
 [node name="GrayWalls" type="TileMapLayer" parent="."]
 position = Vector2(0, -3)
@@ -357,7 +436,7 @@ tile_map_data = PackedByteArray("AAD4//L/AQAGAAAAAAD5//L/AQAGAAAAAAD6//L/AQAGAAA
 tile_set = SubResource("TileSet_thnpv")
 
 [node name="background_filter" type="CanvasModulate" parent="."]
-script = ExtResource("12_vt4jb")
+script = SubResource("GDScript_7lyhr")
 
 [node name="Player" parent="." instance=ExtResource("13_jtegw")]
 position = Vector2(-58, 3)
