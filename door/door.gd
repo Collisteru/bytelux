@@ -27,5 +27,5 @@ func onSwitchScene():
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Player'):
 		body.visible = false
-		await get_tree().create_timer(0.5).timeout  # wait for 2 seconds
+		await get_tree().create_timer(0.5).timeout
 		onSwitchScene()

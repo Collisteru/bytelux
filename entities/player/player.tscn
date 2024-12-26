@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=23 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
@@ -105,14 +105,10 @@ fill = 1
 fill_from = Vector2(0.489316, 0.461538)
 fill_to = Vector2(0.502137, 0)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
-radius = 4.36035
-height = 12.3778
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.52893, 1.3465)
 collision_layer = 2
-collision_mask = 21
+collision_mask = 5
 script = ExtResource("1_3f2xq")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]
@@ -168,12 +164,12 @@ zoom = Vector2(2, 2)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 17
+collision_mask = 16
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1.3081, 0)
-scale = Vector2(1.5, 1.5)
-shape = SubResource("CapsuleShape2D_hj6c1")
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CapsuleShape2D_f4xep")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

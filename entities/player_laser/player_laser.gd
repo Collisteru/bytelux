@@ -23,8 +23,9 @@ func _ready():
 func project():
 	self.force_raycast_update()
 	
+	# TODO: delete debugging	
 	hit_circle.position = 0.001 * self.target_position
-	hit_circle.visible = true
+	#hit_circle.visible = true
 	
 	if self.is_colliding():
 		# Get global collision point

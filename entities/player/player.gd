@@ -26,6 +26,13 @@ var player_is_alive
 @onready var hud_ired = preload('res://assets/hud_inverse_r.png')
 @onready var hud_igreen = preload('res://assets/hud_inverse_g.png')
 
+# Preload HUD tilted textures
+@onready var hud_ltilt_r = preload('res://assets/hud_ltilrt_r.png')
+@onready var hud_rtilt_r = preload('res://assets/hud_rtilt_r.png')
+@onready var hud_ltilt_g = preload('res://assets/hud_ltilt_g.png')
+@onready var hud_rtilt_g = preload('res://assets/hud_rtilt_g.png')
+@onready var hud_ltilt_b = preload('res://assets/hud_ltilt_b.png')
+@onready var hud_rtilt_b = preload('res://assets/hud_rtilt_b.png')
 
 
 func _ready():
@@ -159,32 +166,57 @@ func _input(event: InputEvent) -> void:
 					self.die()
 
 func change_hud(old_color, new_color):
+	var tick = 0.07
 	if old_color == 'R':
 		if new_color == 'G':
+			color_hud.set_texture(hud_rtilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_iblue)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_ltilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_green)
 		elif new_color == 'B':
+			color_hud.set_texture(hud_ltilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_igreen)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_rtilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_blue)
 	if old_color == 'G':
 		if new_color == 'R':
+			color_hud.set_texture(hud_ltilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_iblue)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_rtilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_red)
 		elif new_color == 'B':
+			color_hud.set_texture(hud_rtilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_ired)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_ltilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_blue)
 	if old_color == 'B':
 		if new_color == 'G':
+			color_hud.set_texture(hud_ltilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_ired)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_rtilt_g)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_green)
 		elif new_color == 'R':
+			color_hud.set_texture(hud_rtilt_b)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_igreen)
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(tick).timeout
+			color_hud.set_texture(hud_ltilt_r)
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_red)
 
 
@@ -227,32 +259,15 @@ func die(camera = player_camera) -> void:
 	#queue_free()
 	#
 	# Wait for a time equal to the duration of the particle effect then 
+	
+	
+	
+	get_tree().change_scene_to_file("res://screens/lose/lose.tscn")
 
 func _physics_process(_delta: float) -> void:
-	##get the viewport size and divide by 2 since this is where the camera is positioned
-	#var view = get_viewport_rect().size / 2
-	#var view_pos = get_viewport_transform()
-	##print("VIew pos x: ", view_pos.x)
-	##print("View pos y:", view_pos.y)
-#
-	##get the camera position
-	#var camera_pos = player_camera.global_position
-	#
-#
-	## TODO: Figure out cause of incorrent left bound bug
-	#var bounds_left = camera_pos.x - view.x #the camera bounds at the left
-	#
-	#var bounds_right = camera_pos.x + view.x #the camera bounds at the right
-	#var bounds_top = camera_pos.y + view.y #the camera bounds at the top
-	#var bounds_bottom = camera_pos.y - view.y #the camera bounds at the top
-#
-	##after the character is moved clamp its position to the end of the camera bounds
-	#self.global_position.x = clamp(self.global_position.x, bounds_left, bounds_right)
-	#self.global_position.y = clamp(self.global_position.y, bounds_bottom, bounds_top)
-	
-	
 	# Get the input direction
 	if player_is_alive:
+		
 		var direction_x := Input.get_axis("ui_left", "ui_right")
 		var direction_y := Input.get_axis("ui_up", "ui_down")
 
