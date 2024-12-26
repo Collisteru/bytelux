@@ -58,7 +58,7 @@ func create_laser():
 	
 	newLaser.name = str(2)
 	newLaser.position = self.position
-	newLaser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position)
+	newLaser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position).normalized()
 	newLaser.bounces = 2
 	get_parent().add_child(newLaser)
 
