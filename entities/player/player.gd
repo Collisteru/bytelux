@@ -268,7 +268,6 @@ func die(camera = player_camera) -> void:
 func _physics_process(_delta: float) -> void:
 	# Get the input direction
 	if player_is_alive:
-		change_eye_color()
 		
 		var direction_x := Input.get_axis("ui_left", "ui_right")
 		var direction_y := Input.get_axis("ui_up", "ui_down")
@@ -315,7 +314,7 @@ func change_eye_color():
 		LENS_COLOR.BLUE:
 			cPrime = Color(0, 0, 255)
 		LENS_COLOR.WHITE:
-			cPrime = Color(255, 255, 255)
+			cPrime = Color(0,0,0)
 	
 	for n in eyes.size():
 		eyes[n].self_modulate = cPrime
