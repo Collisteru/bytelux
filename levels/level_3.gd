@@ -4,11 +4,8 @@ extends Node2D
 @onready var door = $Door
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	player.lens = player.LENS_COLOR.WHITE
-	player.change_eye_color()
-	
-	door.set_next_level("res://levels/vic_level_design_for_funsies.tscn")
+func _ready() -> void:	
+	door.set_next_level("res://levels/Level_vic.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
