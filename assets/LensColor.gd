@@ -1,4 +1,8 @@
-class_name LensColor
+extends Node
+
+signal lens_changed(c: LensColor.LENS_COLOR)
+
+var lens = LENS_COLOR.WHITE
 
 enum LENS_COLOR {
 	RED, 
@@ -19,3 +23,8 @@ static func translate_color(c: LENS_COLOR) -> Color:
 			return Color(255,255,255)
 	push_error("Unrecognized color")
 	return Color(0, 0, 0)
+
+func change_lens(c: LENS_COLOR):
+	print("Sending signal")
+	lens_changed.emit(c)
+	lens = c
