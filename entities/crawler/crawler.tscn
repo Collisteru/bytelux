@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://6es4h5dybpbn"]
+[gd_scene load_steps=13 format=3 uid="uid://6es4h5dybpbn"]
 
 [ext_resource type="Script" path="res://entities/enemy_base/enemy_base.gd" id="1_wkxgs"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="2_87ypk"]
-[ext_resource type="Texture2D" uid="uid://cv40lhf2sl0pf" path="res://assets/Crawler.png" id="3_maopg"]
+[ext_resource type="Texture2D" uid="uid://cu6x07lumarjb" path="res://assets/Crawler_Idle.png" id="3_pj26d"]
+[ext_resource type="Texture2D" uid="uid://df1e64unfr30i" path="res://assets/Crawler_walk_1.png" id="4_6iojk"]
+[ext_resource type="Texture2D" uid="uid://iu6kb32fdmp2" path="res://assets/Crawler_walk_2.png" id="6_rrstg"]
+[ext_resource type="Texture2D" uid="uid://biyag0ql1di3w" path="res://assets/Crawler_walk_4.png" id="7_oqux4"]
+[ext_resource type="Texture2D" uid="uid://ckwiphjbjpqyj" path="res://assets/Crawler_walk_3.png" id="7_ylx2l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnjtj"]
 
@@ -20,12 +24,24 @@ shader_parameter/TargetColor = Color(1, 0, 0, 1)
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqh0m"]
 animations = [{
 "frames": [{
+"duration": 1.5,
+"texture": ExtResource("3_pj26d")
+}, {
 "duration": 1.0,
-"texture": ExtResource("3_maopg")
+"texture": ExtResource("4_6iojk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rrstg")
+}, {
+"duration": 1.5,
+"texture": ExtResource("7_ylx2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oqux4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="Crawler" type="CharacterBody2D"]
@@ -62,6 +78,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
 sprite_frames = SubResource("SpriteFrames_aqh0m")
+frame_progress = 0.0919366
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

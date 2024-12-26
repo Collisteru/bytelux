@@ -706,4 +706,4 @@ position = Vector2(92, 451)
 
 [node name="Crawler" parent="." instance=ExtResource("10_3msg4")]
 script = ExtResource("11_coawq")
-myColor = 1
+myColor = 2

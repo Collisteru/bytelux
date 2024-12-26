@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv40lhf2sl0pf"
-path="res://.godot/imported/Crawler.png-304640ea67b772348ee482a30990faef.ctex"
+uid="uid://ckwiphjbjpqyj"
+path="res://.godot/imported/Crawler_walk_3.png-8f4d895ae1fb137e2474b2d8d124a03d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Crawler.png"
-dest_files=["res://.godot/imported/Crawler.png-304640ea67b772348ee482a30990faef.ctex"]
+source_file="res://assets/Crawler_walk_3.png"
+dest_files=["res://.godot/imported/Crawler_walk_3.png-8f4d895ae1fb137e2474b2d8d124a03d.ctex"]
 
 [params]
 
