@@ -6,8 +6,7 @@ class_name EnemyBase
 
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
-@onready var onSprite = $"On"
-@onready var offSprite = $"Off"
+@onready var sprite = $"AnimatedSprite2D" #if you change the name of the sprite node this needs to reflect that
 
 # to be used for turning an enemy on/off
 var mode = true
@@ -19,6 +18,13 @@ const SPEED = 100.0
 const ACCELERATION = 10.0
 const ENGAGE_DIST = 150.0
 const AGRO_RANGE = 300.0
+
+func _ready() -> void:
+	var targetColor = LensColor.translate_color(myColor)
+	applyColor(targetColor)
+	
+func applyColor(color: Color) -> void:
+	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func death() -> void:
 	#TODO animation

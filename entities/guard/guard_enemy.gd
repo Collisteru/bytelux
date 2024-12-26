@@ -5,13 +5,6 @@ extends "res://entities/enemy_base/enemy_base.gd"
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
 @onready var sprite = $"AnimatedSprite2D"
 
-func _ready() -> void:
-	var targetColor = LensColor.translate_color(myColor)
-	applyColor(targetColor)
-	
-func applyColor(color: Color) -> void:
-	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
-
 func death() -> void:
 	#TODO animation
 	queue_free()
