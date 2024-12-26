@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const ACCELERATION = 30.0
-var lens : LensColor.LENS_COLOR = LensColor.LENS_COLOR.RED
+enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
+var lens = LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
@@ -76,8 +77,7 @@ func create_laser():
 	get_parent().add_child(newLaser)
 
 func is_default_color_locked() -> bool:
-	pass
-	if self.lens == LensColor.LENS_COLOR.WHITE:
+	if self.lens == LENS_COLOR.WHITE:
 		return true
 	else:
 		return false
@@ -123,31 +123,31 @@ func _input(event: InputEvent) -> void:
 				KEY_Q: # (blue to green, green to red, red to blue
 					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
-						if (self.lens == LensColor.LENS_COLOR.BLUE):
-							self.lens = LensColor.LENS_COLOR.GREEN
+						if (self.lens == LENS_COLOR.BLUE):
+							self.lens = LENS_COLOR.GREEN
 							change_eye_color()
 							change_hud('B', 'G')
-						elif (self.lens == LensColor.LENS_COLOR.GREEN):
-							self.lens = LensColor.LENS_COLOR.RED
+						elif (self.lens == LENS_COLOR.GREEN):
+							self.lens = LENS_COLOR.RED
 							change_eye_color()
 							change_hud('G', 'R')
-						elif (self.lens == LensColor.LENS_COLOR.RED):
-							self.lens = LensColor.LENS_COLOR.BLUE
+						elif (self.lens == LENS_COLOR.RED):
+							self.lens = LENS_COLOR.BLUE
 							change_eye_color()
 							change_hud('R', 'B')
 				KEY_E: # (blue to red, red to green, green to blue
 					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
-						if (self.lens == LensColor.LENS_COLOR.BLUE):
-							self.lens = LensColor.LENS_COLOR.RED
+						if (self.lens == LENS_COLOR.BLUE):
+							self.lens = LENS_COLOR.RED
 							change_eye_color()
 							change_hud('B', 'R')
-						elif (self.lens == LensColor.LENS_COLOR.RED):
-							self.lens = LensColor.LENS_COLOR.GREEN
+						elif (self.lens == LENS_COLOR.RED):
+							self.lens = LENS_COLOR.GREEN
 							change_eye_color()
 							change_hud('R', 'G')
-						elif (self.lens == LensColor.LENS_COLOR.GREEN):
-							self.lens = LensColor.LENS_COLOR.BLUE
+						elif (self.lens == LENS_COLOR.GREEN):
+							self.lens = LENS_COLOR.BLUE
 							change_eye_color()
 							change_hud('G', 'B')
 				# This is for zooming
@@ -159,6 +159,7 @@ func _input(event: InputEvent) -> void:
 					if player_camera.zoom.x > 2:
 						player_camera.zoom.x -= 1
 						player_camera.zoom.y -= 1
+
 				# TODO: Remove this before shipping (but leave until the end so we can test)
 				KEY_K:
 					# Kill self (debugging purposes)
@@ -262,12 +263,33 @@ func die(camera = player_camera) -> void:
 	
 	
 	
-	get_tree().change_scene_to_file("res://screens/lose/lose.tscn")
+	get_tree().change_scene_to_file("res://screens/title/title.tscn")
 
 func _physics_process(_delta: float) -> void:
+	##get the viewport size and divide by 2 since this is where the camera is positioned
+	#var view = get_viewport_rect().size / 2
+	#var view_pos = get_viewport_transform()
+	##print("VIew pos x: ", view_pos.x)
+	##print("View pos y:", view_pos.y)
+#
+	##get the camera position
+	#var camera_pos = player_camera.global_position
+	#
+#
+	## TODO: Figure out cause of incorrent left bound bug
+	#var bounds_left = camera_pos.x - view.x #the camera bounds at the left
+	#
+	#var bounds_right = camera_pos.x + view.x #the camera bounds at the right
+	#var bounds_top = camera_pos.y + view.y #the camera bounds at the top
+	#var bounds_bottom = camera_pos.y - view.y #the camera bounds at the top
+#
+	##after the character is moved clamp its position to the end of the camera bounds
+	#self.global_position.x = clamp(self.global_position.x, bounds_left, bounds_right)
+	#self.global_position.y = clamp(self.global_position.y, bounds_bottom, bounds_top)
+	
+	
 	# Get the input direction
 	if player_is_alive:
-		
 		var direction_x := Input.get_axis("ui_left", "ui_right")
 		var direction_y := Input.get_axis("ui_up", "ui_down")
 
@@ -304,7 +326,16 @@ func _physics_process(_delta: float) -> void:
 			eye_trails[n].tick(eyes[n].global_position, is_moving)
 
 func change_eye_color():
-	var cPrime = LensColor.translate_color(lens)
+	var cPrime
+	match lens:
+		LENS_COLOR.RED:
+			cPrime = Color(255, 0, 0)
+		LENS_COLOR.GREEN:
+			cPrime = Color(0, 255, 0)
+		LENS_COLOR.BLUE:
+			cPrime = Color(0, 0, 255)
+		LENS_COLOR.WHITE:
+			cPrime = Color(255, 255, 255)
 	
 	for n in eyes.size():
 		eyes[n].self_modulate = cPrime

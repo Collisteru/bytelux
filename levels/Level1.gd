@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player.lens = player.LENS_COLOR.WHITE
+	player.lens = LensColor.LENS_COLOR.WHITE
 	player.change_eye_color()
 	
 	door.set_next_level("res://levels/vic_level_design_for_funsies.tscn")
