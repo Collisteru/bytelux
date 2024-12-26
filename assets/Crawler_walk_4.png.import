@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y88of54f7awh"
-path="res://.godot/imported/Enemy_SecurityGuard_Standing_Green.png-49a4a369c9586b7bbe7c16f96f2ce8cd.ctex"
+uid="uid://biyag0ql1di3w"
+path="res://.godot/imported/Crawler_walk_4.png-71dfdb34ba5f038fa84c9abc13b144d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemy_SecurityGuard_Standing_Green.png"
-dest_files=["res://.godot/imported/Enemy_SecurityGuard_Standing_Green.png-49a4a369c9586b7bbe7c16f96f2ce8cd.ctex"]
+source_file="res://assets/Crawler_walk_4.png"
+dest_files=["res://.godot/imported/Crawler_walk_4.png-71dfdb34ba5f038fa84c9abc13b144d8.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://c8hpmtxcujd27"]
+[gd_scene load_steps=65 format=4 uid="uid://c8hpmtxcujd27"]
 
 [ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_xxipl"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_mw75e"]
@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ua0xjunnuley" path="res://assets/walls_x.png" id="7_0pgqk"]
 [ext_resource type="Script" path="res://background_filter.gd" id="7_vyd5j"]
 [ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="8_o6jmg"]
-[ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/guard/guard_enemy.tscn" id="9_dfe4e"]
+[ext_resource type="PackedScene" uid="uid://6es4h5dybpbn" path="res://entities/crawler/crawler.tscn" id="10_3msg4"]
+[ext_resource type="Script" path="res://entities/crawler/crawler.gd" id="11_coawq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkdyh"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -721,3 +722,6 @@ position = Vector2(92, 451)
 [node name="GuardEnemy" parent="." instance=ExtResource("9_dfe4e")]
 myColor = 1
 position = Vector2(270, 11)
+[node name="Crawler" parent="." instance=ExtResource("10_3msg4")]
+script = ExtResource("11_coawq")
+myColor = 2
