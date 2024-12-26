@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnp6k76mriddr"
-path="res://.godot/imported/Enemy_SecurityGuard_Standing_Red.png-a20319b6b0c1b9c07d8e83c3cee44b46.ctex"
+uid="uid://c1hb3omltddxo"
+path="res://.godot/imported/security guard enemy aiming.png-72e3c1d3abdd128dfb8233f55c57fe98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemy_SecurityGuard_Standing_Red.png"
-dest_files=["res://.godot/imported/Enemy_SecurityGuard_Standing_Red.png-a20319b6b0c1b9c07d8e83c3cee44b46.ctex"]
+source_file="res://assets/security guard enemy aiming.png"
+dest_files=["res://.godot/imported/security guard enemy aiming.png-72e3c1d3abdd128dfb8233f55c57fe98.ctex"]
 
 [params]
 

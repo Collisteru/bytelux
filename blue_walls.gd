@@ -9,7 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if player:
-		if player.lens == player.LENS_COLOR.BLUE:
+		if LensColor.lens == LensColor.LENS_COLOR.BLUE:
 			collision_enabled = false
 			visible = false
 		else:

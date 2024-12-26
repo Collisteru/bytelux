@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
+signal lens_changed(c: LensColor.LENS_COLOR)
+
 const SPEED = 300.0
 const ACCELERATION = 30.0
-enum LENS_COLOR {RED, BLUE, GREEN, WHITE}
-var lens = LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
@@ -39,7 +39,7 @@ var player_is_alive
 func _ready():
 	# Set player living/death flag
 	player_is_alive = true
-	
+	LensColor.connect("lens_changed", _on_lens_changed)
 	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_R)
 	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_L)
 	
@@ -47,8 +47,6 @@ func _ready():
 		var trail = eye_trail_scene.instantiate()
 		eye_trails.append(trail)
 		add_child(trail)
-	
-	change_eye_color()
 		
 # TODO: remove if not being used
 #func translate_to_center(position: Vector2) -> Vector2:
@@ -77,7 +75,7 @@ func create_laser():
 	get_parent().add_child(newLaser)
 
 func is_default_color_locked() -> bool:
-	if self.lens == LENS_COLOR.WHITE:
+	if LensColor.lens == LensColor.LENS_COLOR.WHITE:
 		return true
 	else:
 		return false
@@ -108,7 +106,7 @@ func _input(event: InputEvent) -> void:
 			create_laser()
 			#laser.fire_laser(self)
 
-			
+
 			#pointer.move(click_position, global_position)
 			
 			#print("\n position: ", self.position)
@@ -123,32 +121,26 @@ func _input(event: InputEvent) -> void:
 				KEY_Q: # (blue to green, green to red, red to blue
 					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
-						if (self.lens == LENS_COLOR.BLUE):
-							self.lens = LENS_COLOR.GREEN
-							change_eye_color()
+						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
+							LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
 							change_hud('B', 'G')
-						elif (self.lens == LENS_COLOR.GREEN):
-							self.lens = LENS_COLOR.RED
-							change_eye_color()
+						elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
+							LensColor.change_lens(LensColor.LENS_COLOR.RED)
 							change_hud('G', 'R')
-						elif (self.lens == LENS_COLOR.RED):
-							self.lens = LENS_COLOR.BLUE
-							change_eye_color()
+						elif (LensColor.lens == LensColor.LENS_COLOR.RED):
+							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
 							change_hud('R', 'B')
 				KEY_E: # (blue to red, red to green, green to blue
 					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
-						if (self.lens == LENS_COLOR.BLUE):
-							self.lens = LENS_COLOR.RED
-							change_eye_color()
+						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
+							LensColor.change_lens(LensColor.LENS_COLOR.RED)
 							change_hud('B', 'R')
-						elif (self.lens == LENS_COLOR.RED):
-							self.lens = LENS_COLOR.GREEN
-							change_eye_color()
+						elif (LensColor.lens == LensColor.LENS_COLOR.RED):
+							LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
 							change_hud('R', 'G')
-						elif (self.lens == LENS_COLOR.GREEN):
-							self.lens = LENS_COLOR.BLUE
-							change_eye_color()
+						elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
+							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
 							change_hud('G', 'B')
 				# This is for zooming
 				KEY_BRACKETRIGHT:
@@ -257,18 +249,39 @@ func die(camera = player_camera) -> void:
 	get_parent().add_child(particle_scene)
 	
 	# Clear player from scene
-	#queue_free()
-	#
 	# Wait for a time equal to the duration of the particle effect then 
 	
+	var tree = get_tree()
 	
-	
-	get_tree().change_scene_to_file("res://screens/lose/lose.tscn")
+	await tree.create_timer(3.0).timeout
+
+	tree.change_scene_to_file("res://screens/title/title.tscn")
 
 func _physics_process(_delta: float) -> void:
+	##get the viewport size and divide by 2 since this is where the camera is positioned
+	#var view = get_viewport_rect().size / 2
+	#var view_pos = get_viewport_transform()
+	##print("VIew pos x: ", view_pos.x)
+	##print("View pos y:", view_pos.y)
+#
+	##get the camera position
+	#var camera_pos = player_camera.global_position
+	#
+#
+	## TODO: Figure out cause of incorrent left bound bug
+	#var bounds_left = camera_pos.x - view.x #the camera bounds at the left
+	#
+	#var bounds_right = camera_pos.x + view.x #the camera bounds at the right
+	#var bounds_top = camera_pos.y + view.y #the camera bounds at the top
+	#var bounds_bottom = camera_pos.y - view.y #the camera bounds at the top
+#
+	##after the character is moved clamp its position to the end of the camera bounds
+	#self.global_position.x = clamp(self.global_position.x, bounds_left, bounds_right)
+	#self.global_position.y = clamp(self.global_position.y, bounds_bottom, bounds_top)
+	
+	
 	# Get the input direction
 	if player_is_alive:
-		
 		var direction_x := Input.get_axis("ui_left", "ui_right")
 		var direction_y := Input.get_axis("ui_up", "ui_down")
 
@@ -304,24 +317,32 @@ func _physics_process(_delta: float) -> void:
 		for n in eye_trails.size():
 			eye_trails[n].tick(eyes[n].global_position, is_moving)
 
-func change_eye_color():
+func change_eye_color(lens):
 	var cPrime
 	match lens:
-		LENS_COLOR.RED:
+		LensColor.LENS_COLOR.RED:
 			cPrime = Color(255, 0, 0)
-		LENS_COLOR.GREEN:
+		LensColor.LENS_COLOR.GREEN:
 			cPrime = Color(0, 255, 0)
-		LENS_COLOR.BLUE:
+		LensColor.LENS_COLOR.BLUE:
 			cPrime = Color(0, 0, 255)
-		LENS_COLOR.WHITE:
-			cPrime = Color(0,0,0)
+		LensColor.LENS_COLOR.WHITE:
+			cPrime = Color(255, 255, 255)
 	
 	for n in eyes.size():
 		eyes[n].self_modulate = cPrime
 		eye_trails[n].default_color = cPrime
 
+# Handle bullet death
+# TODO: rename function?
 func _on_area_2d_area_entered(_area: Area2D) -> void:
-	die()
+	self.die()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	die()
+	self.die()
+
+
+func _on_lens_changed(lens: LensColor.LENS_COLOR) -> void:
+	print("Signal received")
+	change_eye_color(lens)
+	pass # Replace with function body.
