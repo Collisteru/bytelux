@@ -6,14 +6,26 @@ var lens : LensColor.LENS_COLOR = LensColor.LENS_COLOR.RED
 var player_is_alive
 
 # Import child nodes
-@onready var laser = $PlayerLaser
 #@onready var sprite = $PlayerSprite # TODO: remove when done debugging
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
+@onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
+@onready var laser_scene = load("res://entities/player_laser/playerLaser.tscn")
+
+# Preload HUD textures
+@onready var hud_red = preload('res://assets/hud_color_r.png')
+@onready var hud_blue = preload('res://assets/hud_color_b.png')
+@onready var hud_green = preload('res://assets/hud_color_g.png')
+
+# Preload HUD inverse textures
+@onready var hud_iblue = preload('res://assets/hud_inverse_b.png')
+@onready var hud_ired = preload('res://assets/hud_inverse_r.png')
+@onready var hud_igreen = preload('res://assets/hud_inverse_g.png')
+
 
 
 func _ready():
@@ -25,11 +37,10 @@ func _ready():
 	
 	for n in eyes.size():
 		var trail = eye_trail_scene.instantiate()
-		print(trail)
 		eye_trails.append(trail)
-		print(get_parent())
-		print(eye_trails)
 		add_child(trail)
+	
+	change_eye_color()
 		
 # TODO: remove if not being used
 #func translate_to_center(position: Vector2) -> Vector2:
@@ -40,12 +51,33 @@ func _ready():
 		## Translate the position to be relative to the center
 		#return position - screen_center
 
+#func fire():
+	#var projectile = projectile_scene.instantiate()
+	#
+	#projectile.global_position = global_position
+	#projectile.direction = Vector2.RIGHT.rotated(global_rotation)
+	#get_parent().add_child(projectile)
+
+func create_laser():
+	var newLaser = laser_scene.instantiate()
+	var laser_length = 1000
+	
+	newLaser.name = str(2)
+	newLaser.position = self.position
+	newLaser.target_position = laser_length * (get_parent().get_local_mouse_position() - self.position).normalized()
+	newLaser.bounces = 2
+	get_parent().add_child(newLaser)
+
+func is_default_color_locked() -> bool:
+	if self.lens == LENS_COLOR.WHITE:
+		return true
+	else:
+		return false
 
 func _input(event: InputEvent) -> void:
-	
 	if player_is_alive:
 		# Get player's response to mouse events
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			# By default, the click position is done with reference to the screen. We want it to be done with reference to the player position
 			
 			# Get positions
@@ -56,17 +88,17 @@ func _input(event: InputEvent) -> void:
 			#var global_player_position = self.position
 			
 			# Get player position with ref to scene
-			var camera_player_position = self.get_global_transform_with_canvas().get_origin()
+			#var camera_player_position = self.get_global_transform_with_canvas().get_origin()
 			
-			var click_position: Vector2 = get_local_mouse_position();
+			#var click_position: Vector2 = get_local_mouse_position();
 			
 			#var screensize = get_viewport().size 
 			
 			# Get position w/ ref to player
 			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
 			#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
-			
-			laser.fire_laser(self)
+			create_laser()
+			#laser.fire_laser(self)
 
 			
 			#pointer.move(click_position, global_position)
@@ -78,21 +110,82 @@ func _input(event: InputEvent) -> void:
 			
 		# Get player's response to key events
 		if event is InputEventKey and event.pressed:
+			# Handle changing lens colors
 			match event.keycode:
-				KEY_1:
-					self.lens = LensColor.LENS_COLOR.RED
-					change_eye_color()
-				KEY_2:
-					self.lens = LensColor.LENS_COLOR.BLUE
-					change_eye_color()
-				KEY_3:
-					self.lens = LensColor.LENS_COLOR.GREEN
-					change_eye_color()
+				KEY_Q: # (blue to green, green to red, red to blue
+					# Rotates lens triangle counterclockwise
+					if not is_default_color_locked():
+						if (self.lens == LensColor.LENS_COLOR.BLUE):
+							self.lens = LensColor.LENS_COLOR.GREEN
+							change_eye_color()
+							change_hud('B', 'G')
+						elif (self.lens == LensColor.LENS_COLOR.GREEN):
+							self.lens = LensColor.LENS_COLOR.RED
+							change_eye_color()
+							change_hud('G', 'R')
+						elif (self.lens == LensColor.LENS_COLOR.RED):
+							self.lens = LensColor.LENS_COLOR.BLUE
+							change_eye_color()
+							change_hud('R', 'B')
+				KEY_E: # (blue to red, red to green, green to blue
+					# Rotates lens triangle clockwise
+					if not is_default_color_locked():
+						if (self.lens == LensColor.LENS_COLOR.BLUE):
+							self.lens = LensColor.LENS_COLOR.RED
+							change_eye_color()
+							change_hud('B', 'R')
+						elif (self.lens == LensColor.LENS_COLOR.RED):
+							self.lens = LensColor.LENS_COLOR.GREEN
+							change_eye_color()
+							change_hud('R', 'G')
+						elif (self.lens == LensColor.LENS_COLOR.GREEN):
+							self.lens = LensColor.LENS_COLOR.BLUE
+							change_eye_color()
+							change_hud('G', 'B')
+				# This is for zooming
+				KEY_BRACKETRIGHT:
+					if player_camera.zoom.x < 10:
+						player_camera.zoom.x += 1
+						player_camera.zoom.y += 1
+				KEY_BRACKETLEFT:
+					if player_camera.zoom.x > 2:
+						player_camera.zoom.x -= 1
+						player_camera.zoom.y -= 1
 				# TODO: Remove this before shipping (but leave until the end so we can test)
 				KEY_K:
 					# Kill self (debugging purposes)
 					# TODO: Remove
 					self.die()
+
+func change_hud(old_color, new_color):
+	if old_color == 'R':
+		if new_color == 'G':
+			color_hud.set_texture(hud_iblue)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_green)
+		elif new_color == 'B':
+			color_hud.set_texture(hud_igreen)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_blue)
+	if old_color == 'G':
+		if new_color == 'R':
+			color_hud.set_texture(hud_iblue)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_red)
+		elif new_color == 'B':
+			color_hud.set_texture(hud_ired)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_blue)
+	if old_color == 'B':
+		if new_color == 'G':
+			color_hud.set_texture(hud_ired)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_green)
+		elif new_color == 'R':
+			color_hud.set_texture(hud_igreen)
+			await get_tree().create_timer(0.15).timeout
+			color_hud.set_texture(hud_red)
+
 
 func die(camera = player_camera) -> void:
 	
@@ -134,7 +227,7 @@ func die(camera = player_camera) -> void:
 	#
 	# Wait for a time equal to the duration of the particle effect then 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	##get the viewport size and divide by 2 since this is where the camera is positioned
 	#var view = get_viewport_rect().size / 2
 	#var view_pos = get_viewport_transform()
@@ -201,5 +294,8 @@ func change_eye_color():
 		eyes[n].self_modulate = cPrime
 		eye_trails[n].default_color = cPrime
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
+	die()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	die()

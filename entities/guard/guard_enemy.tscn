@@ -24,6 +24,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ru0l5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i2oif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_klm83")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="GuardEnemy" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
@@ -54,6 +68,8 @@ autostart = true
 material = SubResource("ShaderMaterial_ix1qb")
 sprite_frames = SubResource("SpriteFrames_iegpf")
 animation = &"idle"
+[node name="Bullet Spawn point" type="Node2D" parent="."]
+position = Vector2(226.25, 20)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
