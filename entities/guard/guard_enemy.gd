@@ -1,24 +1,32 @@
-extends CharacterBody2D
+extends "res://entities/enemy_base/enemy_base.gd"
 
 #@onready var hitbox = $Hitbox
 #@onready hitbox.connect
-@onready var targetNode = $'../Player'
+###################
+@onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
 @onready var sprite = $"Sprite"
-@onready var hitbox = $"Hitbox"
-@onready var timer = $"Timer"
-@onready var spawnNode = $"Bullet Spawn point"
-@onready var projectile_scene = load("res://entities/projectile/Projectile.tscn")
 
 enum frames {AIMING = 0, NEUTRAL = 1}
 
-var health = 1
-const SPEED = 100.0
-const ACCELERATION = 10.0
-const ENGAGE_DIST = 150.0
-const AGRO_RANGE = 300.0
 var readied = false
 const RELOAD_TIME = 2.0
 const AIM_TIME = 1.0
+
+func _ready() -> void:
+	var targetColor = LensColor.translate_color(myColor)
+	applyColor(targetColor)
+	health = 1
+	SPEED = 100.0
+	ACCELERATION = 10.0
+	ENGAGE_DIST = 150.0
+	AGRO_RANGE = 300.0
+
+	
+func applyColor(color: Color) -> void:
+	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
+
+@onready var spawnNode = $"Bullet Spawn point"
+
 
 func death() -> void:
 	#TODO animation
