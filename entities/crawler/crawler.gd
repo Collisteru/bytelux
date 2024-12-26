@@ -3,7 +3,6 @@ extends "res://entities/enemy_base/enemy_base.gd"
 #@onready var hitbox = $Hitbox
 #@onready hitbox.connect
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
-@onready var sprite = $"AnimatedSprite2D"
 
 func _ready() -> void:
 	var targetColor = LensColor.translate_color(myColor)
