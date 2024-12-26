@@ -3,7 +3,8 @@ class_name LensColor
 enum LENS_COLOR {
 	RED, 
 	BLUE, 
-	GREEN
+	GREEN,
+	WHITE
 }
 
 static func translate_color(c: LENS_COLOR) -> Color:
@@ -14,5 +15,7 @@ static func translate_color(c: LENS_COLOR) -> Color:
 			return Color(0, 255, 0)
 		LENS_COLOR.BLUE:
 			return Color(0, 0, 255)
+		LENS_COLOR.WHITE:
+			return Color(255,255,255)
 	push_error("Unrecognized color")
 	return Color(0, 0, 0)

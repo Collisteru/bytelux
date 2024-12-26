@@ -8,6 +8,7 @@ class_name EnemyBase
 @onready var hitbox = $"Hitbox"
 @onready var onSprite = $"On"
 @onready var offSprite = $"Off"
+@onready var timer = $"Timer"
 
 # to be used for turning an enemy on/off
 var mode = true
@@ -15,10 +16,10 @@ var mode = true
 var lens = LensColor.LENS_COLOR.RED
 
 var health = 1
-const SPEED = 100.0
-const ACCELERATION = 10.0
-const ENGAGE_DIST = 150.0
-const AGRO_RANGE = 300.0
+var SPEED = 100.0
+var ACCELERATION = 10.0
+var ENGAGE_DIST = 150.0
+var AGRO_RANGE = 300.0
 
 func death() -> void:
 	#TODO animation

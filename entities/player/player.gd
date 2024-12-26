@@ -69,7 +69,8 @@ func create_laser():
 	get_parent().add_child(newLaser)
 
 func is_default_color_locked() -> bool:
-	if self.lens == LENS_COLOR.WHITE:
+	pass
+	if self.lens == LensColor.LENS_COLOR.WHITE:
 		return true
 	else:
 		return false

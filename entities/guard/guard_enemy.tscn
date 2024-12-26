@@ -1,28 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfpaw4les5y2i"]
+[gd_scene load_steps=10 format=3 uid="uid://dfpaw4les5y2i"]
 
 [ext_resource type="Script" path="res://entities/guard/guard_enemy.gd" id="1_q3pa1"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="1_r4krv"]
+[ext_resource type="Texture2D" uid="uid://bvarxerhusnr1" path="res://assets/Enemy_SecurityGuard_GunOut_blue.png" id="2_i2oif"]
 [ext_resource type="Texture2D" uid="uid://bi036wks6gn2" path="res://assets/Enemy_SecurityGuard_Standing_blue.png" id="2_klm83"]
 [ext_resource type="PackedScene" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
-[ext_resource type="Texture2D" uid="uid://ct60rwitu3wlc" path="res://assets/security guard enemy.png" id="5_bw31a"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ix1qb"]
-shader = ExtResource("1_r4krv")
-shader_parameter/Mask = Color(0, 1, 0, 1)
-shader_parameter/Clip = 0.01
-shader_parameter/ClipFeather = 0.5
-shader_parameter/TargetColor = Color(1, 0, 0, 1)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_iegpf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_bw31a")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://bic5s5gfpkyi4" path="res://assets/test_sprite.png" id="6_qxsbx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ru0l5"]
 animations = [{
@@ -38,19 +21,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm5dt"]
+shader = ExtResource("1_r4krv")
+shader_parameter/Mask = Color(0, 1, 0, 1)
+shader_parameter/Clip = null
+shader_parameter/ClipFeather = null
+shader_parameter/TargetColor = Color(1, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_msusr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qxsbx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="GuardEnemy" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_q3pa1")
 
-[node name="On" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_klm83")
-
-[node name="Off" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_klm83")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ru0l5")
+frame_progress = 0.523612
 
 [node name="Physics" parent="." instance=ExtResource("3_fuou0")]
 
@@ -64,12 +61,13 @@ collision_mask = 8
 wait_time = 1.5
 autostart = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_ix1qb")
-sprite_frames = SubResource("SpriteFrames_iegpf")
-animation = &"idle"
 [node name="Bullet Spawn point" type="Node2D" parent="."]
 position = Vector2(226.25, 20)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pm5dt")
+sprite_frames = SubResource("SpriteFrames_msusr")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
