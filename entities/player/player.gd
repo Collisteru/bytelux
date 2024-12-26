@@ -106,7 +106,7 @@ func _input(event: InputEvent) -> void:
 			create_laser()
 			#laser.fire_laser(self)
 
-			
+
 			#pointer.move(click_position, global_position)
 			
 			#print("\n position: ", self.position)
@@ -249,13 +249,13 @@ func die(camera = player_camera) -> void:
 	get_parent().add_child(particle_scene)
 	
 	# Clear player from scene
-	#queue_free()
-	#
 	# Wait for a time equal to the duration of the particle effect then 
 	
+	var tree = get_tree()
 	
-	
-	get_tree().change_scene_to_file("res://screens/title/title.tscn")
+	await tree.create_timer(3.0).timeout
+
+	tree.change_scene_to_file("res://screens/title/title.tscn")
 
 func _physics_process(_delta: float) -> void:
 	##get the viewport size and divide by 2 since this is where the camera is positioned
@@ -333,11 +333,13 @@ func change_eye_color(lens):
 		eyes[n].self_modulate = cPrime
 		eye_trails[n].default_color = cPrime
 
+# Handle bullet death
+# TODO: rename function?
 func _on_area_2d_area_entered(_area: Area2D) -> void:
-	die()
+	self.die()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	die()
+	self.die()
 
 
 func _on_lens_changed(lens: LensColor.LENS_COLOR) -> void:
