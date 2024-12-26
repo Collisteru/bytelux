@@ -58,12 +58,13 @@ func change_activeness():
 		set_off()
 	
 func set_off():
-	onSprite.visible = false
-	offSprite.visible = true
+	var target = LensColor.translate_color(myColor)
+	target = target.darkened(.2)
+	applyColor(target)
 	
 func set_on():
-	onSprite.visible = true
-	offSprite.visible = false
+	var target = LensColor.translate_color(myColor)
+	applyColor(target)
 	
 func can_see(target):
 	return (self.position - targetNode.position).length() < AGRO_RANGE

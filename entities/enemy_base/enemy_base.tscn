@@ -29,7 +29,6 @@ material = SubResource("ShaderMaterial_tnjtj")
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_1gi2x")
-myColor = null
 
 [node name="Physics" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-101, -99, 100, -100, 101, 98, -100, 101)
