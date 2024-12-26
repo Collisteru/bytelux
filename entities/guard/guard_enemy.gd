@@ -4,7 +4,7 @@ extends "res://entities/enemy_base/enemy_base.gd"
 #@onready hitbox.connect
 ###################
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
-@onready var sprite = $"AnimatedSprite2D"
+@onready var sprite = $"Sprite"
 
 enum frames {AIMING = 0, NEUTRAL = 1}
 
