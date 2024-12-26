@@ -260,6 +260,10 @@ func die(camera = player_camera) -> void:
 	#queue_free()
 	#
 	# Wait for a time equal to the duration of the particle effect then 
+	
+	
+	
+	get_tree().change_scene_to_file("res://screens/title.tscn")
 
 func _physics_process(_delta: float) -> void:
 	##get the viewport size and divide by 2 since this is where the camera is positioned
