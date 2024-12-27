@@ -101,6 +101,9 @@ func fire():
 	projectile.global_rotation = global_rotation
 	get_parent().add_child(projectile)
 	
+func _on_hitbox_area_entered(_area: Area2D) -> void:
+	super._on_hitbox_area_entered(_area)		
+
 func _on_timer_timeout() -> void:
 	if targetNode.player_is_alive:
 		if readied:
