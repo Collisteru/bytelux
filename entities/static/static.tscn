@@ -49,7 +49,6 @@ offset_bottom = 1300.0
 stretch_mode = 1
 
 [node name="StaticSprite" type="Sprite2D" parent="Background"]
-modulate = Color(0.481789, 0.481789, 0.481789, 1)
 texture_repeat = 2
 position = Vector2(1000, 700)
 scale = Vector2(2, 2)
