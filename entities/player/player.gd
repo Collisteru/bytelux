@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal lens_changed(c: LensColor.LENS_COLOR)
+#signal lens_changed(c: LensColor.LENS_COLOR)
 
 const SPEED = 300.0
 const ACCELERATION = 30.0
@@ -213,7 +213,7 @@ func change_hud(old_color, new_color):
 			color_hud.set_texture(hud_red)
 
 
-func die(camera = player_camera) -> void:
+func die(_camera = player_camera) -> void:
 	
 	# Set player_is_alive flag to false, making it impossible to perform player actions
 	player_is_alive = false
@@ -338,7 +338,7 @@ func change_eye_color(lens):
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	self.die()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	self.die()
 
 

@@ -42,7 +42,7 @@ alignment = 1
 [node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_he0j1")
-text = "\"TITLE\""
+text = "MALWARE"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -8,6 +8,7 @@ var direction_x = 0
 var direction_y = 0
 var direction = Vector2.ZERO
 
+var previousSpeed = Vector2.ZERO
 
 var charging = false
 var CHARGING_ACCELERATION = 4*ACCELERATION
@@ -62,7 +63,9 @@ func custom_move(target):
 	if charging:
 		accelerationMagnitude = CHARGING_ACCELERATION
 		topSpeed = CHARGING_SPEED
+	
 
+	
 	var targetSpeed = direction * topSpeed
 	
 	
@@ -70,13 +73,14 @@ func custom_move(target):
 	
 	print("accel", currentAcceleration)
 	
+	previousSpeed = velocity
 	
 	velocity.x = move_toward(velocity.x,targetSpeed.x,currentAcceleration.x+1)
 	velocity.y = move_toward(velocity.y,targetSpeed.y,currentAcceleration.y+1)
 	
 	print(velocity.length())
 
-	if velocity.length() >= topSpeed or velocity.length() == 0:
+	if velocity.length() >= topSpeed or velocity.length() == 0 or previousSpeed.x == velocity.x or previousSpeed.y == velocity.y:
 		charging = false
 	
 	
@@ -95,5 +99,6 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	charging = true
+	sprite.play()
 	pass
 	#fire()

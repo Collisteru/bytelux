@@ -40,6 +40,11 @@ func project():
 		
 	else:
 		laser_line.points = [Vector2.ZERO, self.target_position]
+		
+		var newHurtLine = SegmentShape2D.new()
+		newHurtLine.a = Vector2.ZERO
+		newHurtLine.b = self.target_position
+		laser_hurt.shape = newHurtLine
 	laser_line.modulate.a = 1.0;
 	laser_line.visible = true
 			
@@ -60,7 +65,13 @@ func create_laser():
 	var normal = get_collision_normal()
 	var post_reflect = pre_reflect.bounce(normal).normalized()
 	
-	print("This laser is going to ", self.target_position, " and the normal seen is ", normal)
+	#print("This laser is going to ", self.target_position, " and the normal seen is ", normal)
+	
+	var area_child_index = 1
+	
+	laser.get_child(area_child_index).set_collision_layer_value(5,true)
+	#print("DANGER!!!", laser.get_child(area_child_index).get_collision_layer_value(5))
+	
 	
 	laser.name = str(bounces-1)
 	laser.position = self.get_collision_point()
