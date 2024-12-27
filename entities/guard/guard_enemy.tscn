@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfpaw4les5y2i"]
+[gd_scene load_steps=8 format=3 uid="uid://dfpaw4les5y2i"]
 
 [ext_resource type="Script" path="res://entities/guard/guard_enemy.gd" id="1_q3pa1"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="1_r4krv"]
