@@ -14,17 +14,9 @@ var CHARGING_ACCELERATION = 4*ACCELERATION
 const CHARGING_SPEED = 300.0
 
 func _ready() -> void:
-	var targetColor = LensColor.translate_color(myColor)
-	health = 1
-	SPEED = 0
-	ACCELERATION = 10.0
-	ENGAGE_DIST = 150.0
-	AGRO_RANGE = 300.0
-	applyColor(targetColor)
+	sprites["sprite"] = $"Sprite"
+	super()
 	
-func applyColor(color: Color) -> void:
-	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
-
 func death() -> void:
 	#TODO animation
 	queue_free()
