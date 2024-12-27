@@ -111,8 +111,12 @@ func custom_move(target):
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
-	print("HI")
-	health -= 1
+	if self.myColor == LensColor.lens:
+		print('enemy color and player color match')
+		print('HIT and UNAFFECTED')
+		health -= 1
+	else:
+		print('HIT and AFFECTED')
 
 func _on_timer_timeout() -> void:
 	pass

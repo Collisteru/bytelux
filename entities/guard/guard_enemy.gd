@@ -102,9 +102,7 @@ func fire():
 	get_parent().add_child(projectile)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
-	print("I'VE BEEN HIT")
-	health -= 1
-
+	super._on_hitbox_area_entered(_area)		
 
 func _on_timer_timeout() -> void:
 	if targetNode.player_is_alive:
