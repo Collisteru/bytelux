@@ -34,8 +34,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_oqux4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6iojk")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 12.0
 }]
@@ -46,9 +49,15 @@ scale = Vector2(0.2, 0.2)
 collision_layer = 20
 script = ExtResource("1_43vhq")
 
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_oto3a")
+rotation = 1.5708
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_aqh0m")
+
 [node name="Physics" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
-polygon = PackedVector2Array(-115, 165, -115, -9.99999, -170, -100, -155, -205, -135, -110, -105, -15, 105, -15, 135, -110, 150, -205, 170, -105, 110, -5, 110, 150, 40, 150, 40, 225, -55, 225)
+polygon = PackedVector2Array(-115, 165, -115, -9.99999, -175, -69.9994, -220.001, -144.999, -145, -89.9995, -110, -14.9996, 105, -15, 145, -90.0005, 214.999, -145.001, 170, -70.0006, 110, -10.0004, 110, 150, 40, 150, 40, 225, -55, 225)
 
 [node name="Hitbox" type="Area2D" parent="."]
 rotation = 1.5708
@@ -56,17 +65,11 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="Area" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-115, 165, -115, -9.99999, -170, -100, -155, -205, -135, -110, -105, -15, 105, -15, 135, -110, 150, -205, 170, -105, 110, -5, 110, 150, 40, 150, 40, 225, -55, 225)
+polygon = PackedVector2Array(-115, 165, -115, -9.99999, -175, -69.9994, -220.001, -144.999, -145, -89.9995, -110, -14.9996, 105, -15, 145, -90.0005, 214.999, -145.001, 170, -70.0006, 110, -10.0004, 110, 150, 40, 150, 40, 225, -55, 225)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_oto3a")
-rotation = 1.5708
-sprite_frames = SubResource("SpriteFrames_aqh0m")
-frame_progress = 0.0919366
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
