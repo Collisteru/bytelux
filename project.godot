@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="bytelux"
-run/main_scene="res://levels/test_level.tscn"
+run/main_scene="res://screens/title/title.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-LensColor="res://assets/lens_color.gd"
+LensColor="*res://assets/LensColor.gd"
 
 [input]
 

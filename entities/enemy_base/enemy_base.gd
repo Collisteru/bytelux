@@ -6,7 +6,8 @@ class_name EnemyBase
 
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
-@onready var sprite = $"AnimatedSprite2D" #if you change the name of the sprite node this needs to reflect that
+@onready var sprite = $"Sprite"
+@onready var timer = $"Timer"
 
 # to be used for turning an enemy on/off
 var mode = true
@@ -14,10 +15,19 @@ var mode = true
 var lens = LensColor.LENS_COLOR.RED
 
 var health = 1
-const SPEED = 100.0
-const ACCELERATION = 10.0
-const ENGAGE_DIST = 150.0
-const AGRO_RANGE = 300.0
+var SPEED = 100.0
+var ACCELERATION = 10.0
+var ENGAGE_DIST = 150.0
+var AGRO_RANGE = 300.0
+
+func _ready() -> void:
+	var targetColor = LensColor.translate_color(myColor)
+	applyColor(targetColor)
+	health = 1
+	SPEED = 100.0
+	ACCELERATION = 10.0
+	ENGAGE_DIST = 150.0
+	AGRO_RANGE = 300.0
 
 func _ready() -> void:
 	var targetColor = LensColor.translate_color(myColor)
@@ -31,7 +41,6 @@ func death() -> void:
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
-	reset_lens()
 	if health == 0:
 		death()
 
@@ -47,8 +56,8 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-func reset_lens():
-	lens = targetNode.lens
+func applyColor(color: Color) -> void:
+	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func change_activeness():
 	mode = not mode
@@ -57,6 +66,7 @@ func change_activeness():
 	else:
 		set_off()
 	
+#TODO make sprite/functionality change here!
 func set_off():
 	var target = LensColor.translate_color(myColor)
 	target = target.darkened(.2)

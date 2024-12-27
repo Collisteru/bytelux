@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0t4eugfel6pk"]
+
+[ext_resource type="Script" path="res://screens/lose/lose.gd" id="1_7pjr0"]
+[ext_resource type="FontFile" uid="uid://53nsmglrurhe" path="res://font/CARBON-DROID.otf" id="2_d88rx"]
+[ext_resource type="FontFile" uid="uid://cs0n77pefj4fp" path="res://font/CARBON-DROID.ttf" id="2_xd1r5"]
+
+[sub_resource type="Theme" id="Theme_0fbrd"]
+default_font = ExtResource("2_xd1r5")
+default_font_size = 200
+
+[sub_resource type="Theme" id="Theme_4uxec"]
+default_font = ExtResource("2_d88rx")
+default_font_size = 60
+
+[sub_resource type="Theme" id="Theme_atos6"]
+default_font = ExtResource("2_d88rx")
+default_font_size = 60
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_7pjr0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -579.5
+offset_top = -96.5
+offset_right = 579.5
+offset_bottom = 96.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_0fbrd")
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -574.0
+offset_top = -139.0
+offset_right = 577.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="title" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_4uxec")
+text = "MAIN MENU"
+
+[node name="exit" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_atos6")
+text = "EXIT"

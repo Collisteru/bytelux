@@ -1,0 +1,188 @@
+[gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
+[ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
+[ext_resource type="Texture2D" uid="uid://5nir8gdxwv6v" path="res://assets/character sprite body walking 1.png" id="4_mdog6"]
+[ext_resource type="Texture2D" uid="uid://dix043ipat66m" path="res://assets/character sprite body walking 3.png" id="5_4iomr"]
+[ext_resource type="Texture2D" uid="uid://bwfl2181g2gcs" path="res://assets/character sprite body walking 2.png" id="6_wjt1c"]
+[ext_resource type="Texture2D" uid="uid://dpj1rqvxy8m47" path="res://assets/character sprite body walking 1 mirror.png" id="7_rb7vk"]
+[ext_resource type="Texture2D" uid="uid://chl453o1178r7" path="res://assets/character sprite body walking 2 mirror.png" id="8_6oghk"]
+[ext_resource type="Texture2D" uid="uid://c332hotjolfik" path="res://assets/character sprite body walking 3 mirror.png" id="9_2yc4q"]
+[ext_resource type="Script" path="res://entities/player/body_sprite.gd" id="10_2cpae"]
+[ext_resource type="Texture2D" uid="uid://dv3nggne5gmsn" path="res://assets/character sprite head.png" id="11_qf7pn"]
+[ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
+[ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
+[ext_resource type="PackedScene" uid="uid://tatu8ps7mq2h" path="res://HUD/hud.tscn" id="14_wp8t4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1nkbj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1nkbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mdog6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4iomr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wjt1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mdog6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1nkbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rb7vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6oghk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2yc4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6oghk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rb7vk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ipka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qf7pn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_e77mv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mva8t"]
+gradient = SubResource("Gradient_e77mv")
+fill = 1
+fill_from = Vector2(0.491453, 0.459402)
+
+[sub_resource type="Gradient" id="Gradient_sldgn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b21un"]
+gradient = SubResource("Gradient_sldgn")
+fill = 1
+fill_from = Vector2(0.502137, 0.487179)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4xep"]
+radius = 4.36035
+height = 12.3778
+
+[sub_resource type="Gradient" id="Gradient_y6gn6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wqiig"]
+gradient = SubResource("Gradient_y6gn6")
+width = 1500
+height = 1500
+fill = 1
+fill_from = Vector2(0.489316, 0.461538)
+fill_to = Vector2(0.502137, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hj6c1"]
+radius = 4.36035
+height = 12.3778
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(1.52893, 1.3465)
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_3f2xq")
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_m7s6k")
+animation = &"walk"
+autoplay = "walk"
+script = ExtResource("10_2cpae")
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_1ipka")
+script = ExtResource("12_krybn")
+
+[node name="Eyes" type="Node2D" parent="HeadSprite"]
+
+[node name="EyeGlowAmbient_R" type="Sprite2D" parent="HeadSprite/Eyes"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-13, 68)
+texture = SubResource("GradientTexture2D_mva8t")
+
+[node name="EyeGlowCore_R" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_R"]
+z_index = 2
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("14_p3wd8")
+
+[node name="EyeGlowAmbient_L" type="Sprite2D" parent="HeadSprite/Eyes"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-13, -68)
+texture = SubResource("GradientTexture2D_b21un")
+
+[node name="EyeGlowCore_L" type="Sprite2D" parent="HeadSprite/Eyes/EyeGlowAmbient_L"]
+z_index = 2
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("14_p3wd8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.3081, 0)
+scale = Vector2(1.8, 1.8)
+shape = SubResource("CapsuleShape2D_f4xep")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.654052, 9.53674e-07)
+scale = Vector2(0.226738, 0.24508)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_wqiig")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0.654052, -7.42666)
+zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 17
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.3081, 0)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_hj6c1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_wp8t4")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

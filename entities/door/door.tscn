@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://5we3eofv6eq4"]
+
+[ext_resource type="Script" path="res://entities/door/door.gd" id="1_txonn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuqkg"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_8idfq"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oiyii"]
+gradient = SubResource("Gradient_8idfq")
+fill = 1
+fill_from = Vector2(0.487179, 0.5)
+fill_to = Vector2(0.536325, 1)
+
+[node name="Door" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_txonn")
+
+[node name="DoorCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_xuqkg")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -17)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_oiyii")
+texture_scale = 8.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
