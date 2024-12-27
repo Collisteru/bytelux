@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://c8hpmtxcujd27"]
+[gd_scene load_steps=66 format=4 uid="uid://c8hpmtxcujd27"]
 
 [ext_resource type="Texture2D" uid="uid://cxivnfp3sh3ya" path="res://Art Assets/shadows.png" id="1_xxipl"]
 [ext_resource type="Texture2D" uid="uid://chbm4aqefqbci" path="res://assets/test_walls.png" id="2_mw75e"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://background_filter.gd" id="7_vyd5j"]
 [ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="8_o6jmg"]
 [ext_resource type="PackedScene" uid="uid://6es4h5dybpbn" path="res://entities/crawler/crawler.tscn" id="10_3msg4"]
-[ext_resource type="Script" path="res://entities/crawler/crawler.gd" id="11_coawq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkdyh"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -720,5 +719,4 @@ script = ExtResource("7_vyd5j")
 position = Vector2(92, 451)
 
 [node name="Crawler" parent="." instance=ExtResource("10_3msg4")]
-script = ExtResource("11_coawq")
 myColor = 2

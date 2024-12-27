@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7pt0siydaclu"]
+[gd_scene load_steps=7 format=3 uid="uid://b7pt0siydaclu"]
 
 [ext_resource type="Script" path="res://entities/enemy_base/enemy_base.gd" id="1_1gi2x"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="2_e8mdg"]
@@ -24,10 +24,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_2shnh"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_bks1b"]
-
 [node name="enemy template" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_tnjtj")
 collision_layer = 4
@@ -37,14 +33,6 @@ script = ExtResource("1_1gi2x")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
 sprite_frames = SubResource("SpriteFrames_aqh0m")
-
-[node name="On" type="Sprite2D" parent="."]
-scale = Vector2(200, 200)
-texture = SubResource("CanvasTexture_2shnh")
-
-[node name="Off" type="Sprite2D" parent="."]
-scale = Vector2(100, 100)
-texture = SubResource("CanvasTexture_bks1b")
 
 [node name="Physics" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-101, -99, 100, -100, 101, 98, -100, 101)
