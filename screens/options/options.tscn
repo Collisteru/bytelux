@@ -1,25 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://qpypfjo7xpny"]
+[gd_scene load_steps=6 format=3 uid="uid://qpypfjo7xpny"]
 
 [ext_resource type="FontFile" uid="uid://cs0n77pefj4fp" path="res://font/CARBON-DROID.ttf" id="1_ekn2k"]
+[ext_resource type="Script" path="res://screens/options/options.gd" id="1_o46qc"]
 [ext_resource type="FontFile" uid="uid://53nsmglrurhe" path="res://font/CARBON-DROID.otf" id="2_vjw1m"]
 
 [sub_resource type="Theme" id="Theme_e71tj"]
 default_font = ExtResource("1_ekn2k")
 default_font_size = 200
 
-[sub_resource type="Theme" id="Theme_a63wm"]
-default_font = ExtResource("2_vjw1m")
-default_font_size = 60
-
-[sub_resource type="Theme" id="Theme_n3o8o"]
-default_font = ExtResource("2_vjw1m")
-default_font_size = 60
-
 [sub_resource type="Theme" id="Theme_7ywu7"]
 default_font = ExtResource("2_vjw1m")
 default_font_size = 60
 
 [node name="Options" type="Node2D"]
+script = ExtResource("1_o46qc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -60,22 +54,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="settings" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_a63wm")
-text = "OPTIONS"
-
-[node name="start" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_n3o8o")
-text = "PLAY"
-
 [node name="exit" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_7ywu7")
-text = "EXIT"
+text = "RETURN"
