@@ -10,6 +10,7 @@ class_name EnemyBase
 
 # to be used for turning an enemy on/off
 var mode = true
+var sprites = {}
 # enemies may care about the current lens
 var lens = LensColor.LENS_COLOR.RED
 
@@ -19,6 +20,9 @@ var ACCELERATION = 10.0
 var ENGAGE_DIST = 150.0
 var AGRO_RANGE = 300.0
 
+# okay so big thing here: this is overriden by the declaration of _ready() in a 
+# child class so if you need the stuff in this function to happen in a child class you need to call 
+# the 'super()' function when you want this code to run
 func _ready() -> void:
 	var targetColor = LensColor.translate_color(myColor)
 	applyColor(targetColor)
@@ -111,4 +115,7 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 	health -= 1
 
 func _on_timer_timeout() -> void:
+	pass
+
+func try_stop() -> void:
 	pass

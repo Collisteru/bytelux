@@ -12,13 +12,9 @@ const RELOAD_TIME = 2.0
 const AIM_TIME = 1.0
 
 func _ready() -> void:
-	var targetColor = LensColor.translate_color(myColor)
-	applyColor(targetColor)
-	health = 1
-	SPEED = 100.0
-	ACCELERATION = 10.0
-	ENGAGE_DIST = 150.0
-	AGRO_RANGE = 300.0
+	sprites["bodySprite"] = $"BodySprite"
+	sprites["legSprite"] = $"LegSprite"
+	super()
 
 #func applyColor(color: Color) -> void:
 	#sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
@@ -46,10 +42,11 @@ func _physics_process(_delta: float) -> void:
 	if targetNode:
 		if can_see(targetNode) and targetNode.player_is_alive:
 			custom_move(targetNode)
+			sprites["legSprite"].play('walk')
 		else:
 			velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
-			
+			sprites["legSprite"].stop()
 	else:
 		print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 		# Should only happen if you don't give this node a target node
@@ -115,10 +112,12 @@ func _on_timer_timeout() -> void:
 			fire()
 			timer.start(RELOAD_TIME)
 			readied = false
-			sprite.frame = frames.NEUTRAL
+			sprites["bodySprite"].frame = frames.NEUTRAL
 		else:
 			timer.start(AIM_TIME)
 			readied = true
-			sprite.frame = frames.AIMING
+			sprites["bodySprite"].frame = frames.AIMING
 
-		
+func try_stop():
+	if sprites["legsSprite"].frame == 6 or sprites["legSprite"].frame == 0:
+		sprites["legSprite"].stop()
