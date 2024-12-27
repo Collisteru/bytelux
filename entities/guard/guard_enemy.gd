@@ -95,7 +95,7 @@ func custom_move(target):
 
 func fire():
 	var projectile = projectile_scene.instantiate()
-	
+	projectile.color = myColor
 	projectile.global_position = spawnNode.global_position
 	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
 	projectile.global_rotation = global_rotation
