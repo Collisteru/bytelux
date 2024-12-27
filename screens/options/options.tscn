@@ -59,3 +59,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_7ywu7")
 text = "RETURN"
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/exit" to="." method="_on_exit_pressed"]
