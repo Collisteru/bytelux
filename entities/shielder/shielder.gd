@@ -9,6 +9,7 @@ extends "res://entities/enemy_base/enemy_base.gd"
 func _ready() -> void:
 	sprites["sprite"] = $"Sprite"
 	super()
+	ENGAGE_DIST = 150
 	
 func death() -> void:
 	#TODO animation

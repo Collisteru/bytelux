@@ -9,8 +9,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oto3a"]
 shader = ExtResource("2_b5dyv")
 shader_parameter/Mask = Color(0.72549, 0.270588, 0.701961, 1)
-shader_parameter/Clip = null
-shader_parameter/ClipFeather = null
+shader_parameter/Clip = 0.01
+shader_parameter/ClipFeather = 0.1
 shader_parameter/TargetColor = Color(1, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqh0m"]
@@ -52,6 +52,7 @@ rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_aqh0m")
 
 [node name="Shield" type="Area2D" parent="."]
+visible = false
 rotation = -1.5708
 collision_mask = 0
 
