@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://5we3eofv6eq4"]
 
-[ext_resource type="Script" path="res://door/door.gd" id="1_txonn"]
+[ext_resource type="Script" path="res://entities/door/door.gd" id="1_txonn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xuqkg"]
 size = Vector2(32, 32)
@@ -23,7 +23,7 @@ position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_xuqkg")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(16, -17)
+position = Vector2(0, -17)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_oiyii")
 texture_scale = 8.0

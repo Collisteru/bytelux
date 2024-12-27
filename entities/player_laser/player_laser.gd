@@ -62,6 +62,10 @@ func create_laser():
 	
 	print("This laser is going to ", self.target_position, " and the normal seen is ", normal)
 	
+	var area_child_index = 1
+	
+	laser.get_child(area_child_index).set_collision_layer_value(5,true)
+	
 	laser.name = str(bounces-1)
 	laser.position = self.get_collision_point()
 	laser.target_position = laser_length * (post_reflect)
