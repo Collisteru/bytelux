@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oto3a"]
 shader = ExtResource("2_e8mdg")
-shader_parameter/Mask = Color(0, 1, 0, 1)
+shader_parameter/Mask = Color(0.72549, 0.270588, 0.701961, 1)
 shader_parameter/Clip = null
 shader_parameter/ClipFeather = null
 shader_parameter/TargetColor = Color(1, 0, 0, 1)
@@ -30,10 +30,6 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_1gi2x")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_oto3a")
-sprite_frames = SubResource("SpriteFrames_aqh0m")
-
 [node name="Physics" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-101, -99, 100, -100, 101, 98, -100, 101)
 
@@ -47,6 +43,10 @@ polygon = PackedVector2Array(-101, -99, 100, -100, 101, 98, -100, 101)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_oto3a")
+sprite_frames = SubResource("SpriteFrames_aqh0m")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
