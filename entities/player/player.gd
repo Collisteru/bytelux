@@ -343,6 +343,6 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 
 
 func _on_lens_changed(lens: LensColor.LENS_COLOR) -> void:
-	print("Signal received")
+	#print("Signal received")
 	change_eye_color(lens)
 	pass # Replace with function body.
