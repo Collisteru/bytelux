@@ -4,7 +4,6 @@ extends "res://entities/enemy_base/enemy_base.gd"
 #@onready hitbox.connect
 ###################
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
-@onready var sprite = $"Sprite"
 
 enum frames {AIMING = 0, NEUTRAL = 1}
 
@@ -21,9 +20,8 @@ func _ready() -> void:
 	ENGAGE_DIST = 150.0
 	AGRO_RANGE = 300.0
 
-	
-func applyColor(color: Color) -> void:
-	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
+#func applyColor(color: Color) -> void:
+	#sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 @onready var spawnNode = $"Bullet Spawn point"
 

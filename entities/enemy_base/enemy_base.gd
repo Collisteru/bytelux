@@ -6,8 +6,7 @@ class_name EnemyBase
 
 @onready var targetNode = $'../Player'
 @onready var hitbox = $"Hitbox"
-@onready var onSprite = $"On"
-@onready var offSprite = $"Off"
+@onready var sprite = $"Sprite"
 @onready var timer = $"Timer"
 
 # to be used for turning an enemy on/off
@@ -21,12 +20,20 @@ var ACCELERATION = 10.0
 var ENGAGE_DIST = 150.0
 var AGRO_RANGE = 300.0
 
+func _ready() -> void:
+	var targetColor = LensColor.translate_color(myColor)
+	applyColor(targetColor)
+	health = 1
+	SPEED = 100.0
+	ACCELERATION = 10.0
+	ENGAGE_DIST = 150.0
+	AGRO_RANGE = 300.0
+
 func death() -> void:
 	#TODO animation
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
-	reset_lens()
 	if health == 0:
 		death()
 
@@ -42,8 +49,8 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-func reset_lens():
-	lens = targetNode.lens
+func applyColor(color: Color) -> void:
+	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func change_activeness():
 	mode = not mode
@@ -52,13 +59,16 @@ func change_activeness():
 	else:
 		set_off()
 	
+#TODO make sprite/functionality change here!
 func set_off():
-	onSprite.visible = false
-	offSprite.visible = true
+	pass
+	#onSprite.visible = false
+	#offSprite.visible = true
 	
 func set_on():
-	onSprite.visible = true
-	offSprite.visible = false
+	pass
+	#onSprite.visible = true
+	#offSprite.visible = false
 	
 func can_see(target):
 	return (self.position - targetNode.position).length() < AGRO_RANGE
