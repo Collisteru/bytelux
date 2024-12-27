@@ -2,16 +2,28 @@ extends RigidBody2D
 
 const SPEED: float = 100.0
 @export var lifespan: float = 3.0
+@onready var light2D = $PointLight2D
 
 # direction of projectile
 var direction: Vector2 = Vector2.ZERO
+var color
 
 # timer to track projectile's lifespan
 var life_timer: float = 0.0
 
 func _ready():
+	set_color()
 	# initialize the timer
 	life_timer = lifespan
+	
+func set_color():
+	if color == LensColor.LENS_COLOR.RED:
+		light2D.color = Color('RED')
+	elif color == LensColor.LENS_COLOR.BLUE:
+		light2D.color = Color('BLUE')
+	elif color == LensColor.LENS_COLOR.GREEN:
+		light2D.color = Color('GREEN')
+	
 
 func _process(delta):
 	# reduce the lifespan timer

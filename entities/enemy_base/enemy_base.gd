@@ -6,6 +6,7 @@ class_name EnemyBase
 
 @onready var targetNode = $'../Player'
 @onready var sprite = $"Sprite"
+@onready var hitbox = $"Hitbox"
 @onready var timer = $"Timer"
 
 # to be used for turning an enemy on/off
@@ -24,6 +25,7 @@ var AGRO_RANGE = 300.0
 # child class so if you need the stuff in this function to happen in a child class you need to call 
 # the 'super()' function when you want this code to run
 func _ready() -> void:
+	LensColor.connect("lens_changed", _phase_out)
 	var targetColor = LensColor.translate_color(myColor)
 	applyColor(targetColor)
 	health = 1
@@ -111,11 +113,21 @@ func custom_move(target):
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
-	print("HI")
 	health -= 1
 
 func _on_timer_timeout() -> void:
 	pass
 
 func try_stop() -> void:
+	pass
+
+func _phase_out(lens: LensColor.LENS_COLOR):
+	if self.myColor != lens:
+		#print("Phasing Out")
+		self.set_collision_layer_value(3,false)
+		hitbox.set_collision_mask_value(4,false)
+	else:
+		#print("Phasing In")
+		self.set_collision_layer_value(3,true)
+		hitbox.set_collision_mask_value(4,true)
 	pass
