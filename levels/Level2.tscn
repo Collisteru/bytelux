@@ -387,7 +387,6 @@ func _process(_delta: float) -> void:
 "
 
 [node name="Level2" type="Node2D"]
-position = Vector2(-96, 5)
 script = ExtResource("1_uirw4")
 
 [node name="Floor" type="TileMapLayer" parent="."]
