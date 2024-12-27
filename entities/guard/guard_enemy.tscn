@@ -97,7 +97,6 @@ animation = &"draw_weapon"
 
 [node name="LegSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j4sf0")
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_h323k")
 animation = &"walk"
 frame = 2
