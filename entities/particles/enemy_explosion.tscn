@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://rlhu8qsp4ubt"]
+[gd_scene load_steps=5 format=3 uid="uid://d18hgssis23bd"]
 
 [ext_resource type="Script" path="res://entities/particles/player_death_particles.gd" id="1_yarrq"]
 
@@ -16,7 +16,8 @@ _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.664336, 4.30753), 0.0, 0.0, 0,
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_fk1qp"]
-colors = PackedColorArray(0.166667, 0, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [node name="EnemyExplosion" type="Node2D"]
 
