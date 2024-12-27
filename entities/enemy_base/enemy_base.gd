@@ -28,10 +28,6 @@ func _ready() -> void:
 	ACCELERATION = 10.0
 	ENGAGE_DIST = 150.0
 	AGRO_RANGE = 300.0
-
-func _ready() -> void:
-	var targetColor = LensColor.translate_color(myColor)
-	applyColor(targetColor)
 	
 func applyColor(color: Color) -> void:
 	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
@@ -56,8 +52,6 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-func applyColor(color: Color) -> void:
-	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func change_activeness():
 	mode = not mode
