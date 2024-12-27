@@ -52,7 +52,6 @@ rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_aqh0m")
 
 [node name="Shield" type="Area2D" parent="."]
-visible = false
 rotation = -1.5708
 collision_mask = 0
 
