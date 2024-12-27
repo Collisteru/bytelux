@@ -102,5 +102,6 @@ func _on_start_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
+	get_tree().change_scene_to_file("res://screens/options/options.tscn")
 	# TODO move to settings
 	pass

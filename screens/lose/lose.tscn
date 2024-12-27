@@ -69,3 +69,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_atos6")
 text = "EXIT"
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/title" to="." method="_on_title_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/exit" to="." method="_on_exit_pressed"]
