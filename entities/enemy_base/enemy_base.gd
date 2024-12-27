@@ -5,7 +5,6 @@ class_name EnemyBase
 @export var myColor : LensColor.LENS_COLOR
 
 @onready var targetNode = $'../Player'
-@onready var hitbox = $"Hitbox"
 @onready var sprite = $"Sprite"
 @onready var timer = $"Timer"
 
@@ -28,6 +27,9 @@ func _ready() -> void:
 	ACCELERATION = 10.0
 	ENGAGE_DIST = 150.0
 	AGRO_RANGE = 300.0
+	
+func applyColor(color: Color) -> void:
+	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func death() -> void:
 	#TODO animation
@@ -49,8 +51,6 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-func applyColor(color: Color) -> void:
-	sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func change_activeness():
 	mode = not mode
@@ -61,14 +61,13 @@ func change_activeness():
 	
 #TODO make sprite/functionality change here!
 func set_off():
-	pass
-	#onSprite.visible = false
-	#offSprite.visible = true
+	var target = LensColor.translate_color(myColor)
+	target = target.darkened(.2)
+	applyColor(target)
 	
 func set_on():
-	pass
-	#onSprite.visible = true
-	#offSprite.visible = false
+	var target = LensColor.translate_color(myColor)
+	applyColor(target)
 	
 func can_see(target):
 	return (self.position - targetNode.position).length() < AGRO_RANGE

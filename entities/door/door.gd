@@ -4,7 +4,7 @@ extends Area2D
 @onready var door = $DoorCollision
 
 # TODO: reset this as game over or other screen
-var pscene = load('res://levels/test_level.tscn')
+var pscene#= load('res://levels/test_level.tscn')
 
 # reference this door within your level scene
 # and then pass the next level scene into this function
@@ -17,7 +17,7 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func onSwitchScene():

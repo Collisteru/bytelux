@@ -88,7 +88,7 @@ func custom_move(target):
 	
 	print(velocity.length())
 
-	if velocity.length() >= topSpeed or velocity.length() == 0 or previousSpeed == velocity:
+	if velocity.length() >= topSpeed or velocity.length() == 0 or previousSpeed.x == velocity.x or previousSpeed.y == velocity.y:
 		charging = false
 	
 	
@@ -107,5 +107,6 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	charging = true
+	sprite.play()
 	pass
 	#fire()
