@@ -52,7 +52,6 @@ script = ExtResource("1_43vhq")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
 rotation = 1.5708
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_aqh0m")
 
 [node name="Physics" type="CollisionPolygon2D" parent="."]
