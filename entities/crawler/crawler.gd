@@ -17,6 +17,7 @@ const CHARGING_SPEED = 300.0
 func _ready() -> void:
 	sprites["sprite"] = $"Sprite"
 	super()
+	SPEED = 0.0
 	
 func death() -> void:
 	#TODO animation
