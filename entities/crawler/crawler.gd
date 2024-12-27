@@ -24,7 +24,7 @@ func death() -> void:
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
-	if health == 0:
+	if health <= 0:
 		death()
 
 	if targetNode:
