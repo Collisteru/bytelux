@@ -7,7 +7,7 @@ func _ready() -> void:
 	LensColor.change_lens(LensColor.LENS_COLOR.RED)
 	$Background/StaticSprite/StaticAnim.play("static")
 
-	door.set_next_level("res://levels/Level8.tscn")
+	door.set_next_level("res://levels/Level7.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
