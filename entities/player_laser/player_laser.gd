@@ -38,6 +38,9 @@ func project():
 		newHurtLine.b = collision_point+reach*collision_point.normalized()
 		laser_hurt.shape = newHurtLine
 		
+		if (self.get_collider() is EnemyBase):
+			bounces = 0
+		
 	else:
 		laser_line.points = [Vector2.ZERO, self.target_position]
 		
