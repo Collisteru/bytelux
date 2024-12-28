@@ -8,10 +8,13 @@ extends "res://entities/enemy_base/enemy_base.gd"
 enum frames {AIMING = 0, NEUTRAL = 1}
 
 var readied = false
-const RELOAD_TIME = 2.0
+var RELOAD_TIME = 1.8
 const AIM_TIME = 1.0
 
 func _ready() -> void:
+	var rng = RandomNumberGenerator.new()
+
+	RELOAD_TIME = RELOAD_TIME + rng.randf_range(-0.5, 0.6)
 	sprites["bodySprite"] = $"BodySprite"
 	sprites["legSprite"] = $"LegSprite"
 	super()
@@ -20,20 +23,6 @@ func _ready() -> void:
 	#sprite.get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 @onready var spawnNode = $"Bullet Spawn point"
-
-
-func death() -> void:
-	#TODO animation
-	# Instance the particle scene
-	var particle_scene = preload("res://entities/particles/enemy_explosion.tscn").instantiate()
-	
-	# Assign position of the particles to be the same as the enemy
-	particle_scene.position = self.position
-	
-	# Add the particle scene to the parent
-	get_parent().add_child(particle_scene)
-	
-	queue_free()
 
 func _physics_process(_delta: float) -> void:	
 	if health <= 0:

@@ -18,7 +18,7 @@ var lens = LensColor.LENS_COLOR.RED
 var health = 1
 var SPEED = 100.0
 var ACCELERATION = 10.0
-var ENGAGE_DIST = 150.0
+var ENGAGE_DIST = 180.0
 var AGRO_RANGE = 300.0
 
 # okay so big thing here: this is overriden by the declaration of _ready() in a 
@@ -31,7 +31,7 @@ func _ready() -> void:
 	health = 1
 	SPEED = 100.0
 	ACCELERATION = 10.0
-	ENGAGE_DIST = 150.0
+	ENGAGE_DIST = 180.0
 	AGRO_RANGE = 300.0
 	
 func applyColor(color: Color) -> void:
@@ -45,6 +45,15 @@ func applyColor(color: Color) -> void:
 
 func death() -> void:
 	#TODO animation
+	# Instance the particle scene
+	var particle_scene = preload("res://entities/particles/enemy_explosion.tscn").instantiate()
+	
+	# Assign position of the particles to be the same as the enemy
+	particle_scene.position = self.position
+	
+	# Add the particle scene to the parent
+	get_parent().add_child(particle_scene)
+	
 	queue_free()
 
 func _physics_process(_delta: float) -> void:	
