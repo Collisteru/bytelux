@@ -7,8 +7,8 @@ extends Node2D
 func _ready() -> void:
 	LensColor.change_lens(LensColor.LENS_COLOR.RED)
 	$Background/StaticSprite/StaticAnim.play("static")
-	door.set_next_level("res://levels/Level2.tscn")
-	LastLevelUpdater.set_last_level("res://levels/Level1.tscn")
+	door.set_next_level("res://levels/Level10.tscn")
+	LastLevelUpdater.set_last_level("res://levels/Level9_5.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
