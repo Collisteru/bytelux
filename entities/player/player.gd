@@ -255,7 +255,8 @@ func die(_camera = player_camera) -> void:
 	
 	await tree.create_timer(3.0).timeout
 
-	tree.change_scene_to_file("res://screens/lose/lose.tscn")
+	#tree.change_scene_to_file("res://screens/lose/lose.tscn")
+	tree.change_scene_to_file("res://levels/Shield Intro Vic/Shielder Intro.tscn")
 
 func _physics_process(_delta: float) -> void:
 	##get the viewport size and divide by 2 since this is where the camera is positioned
