@@ -10,8 +10,12 @@ var player_is_alive
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
 @onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
+
+# Import Player SFX
 @onready var death_sfx = $DeathSFX
 @onready var lens_sfx = $LensShiftSFX
+@onready var laser_sfx = $LaserSFX
+
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
@@ -65,6 +69,9 @@ func _ready():
 	#get_parent().add_child(projectile)
 
 func create_laser():
+	
+	laser_sfx.playing = true
+	
 	var newLaser = laser_scene.instantiate()
 	var laser_length = 1000
 	
