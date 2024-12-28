@@ -485,7 +485,7 @@ position = Vector2(-121, -11)
 collision_mask = 21
 
 [node name="Door" parent="." instance=ExtResource("9_ciqm7")]
-position = Vector2(525, 432)
+position = Vector2(529, 257)
 
 [node name="background_filter" type="CanvasModulate" parent="."]
 script = ExtResource("10_qdlsa")
