@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://blgjpcm5pxc63"]
+[gd_scene load_steps=3 format=3 uid="uid://blgjpcm5pxc63"]
 
 [ext_resource type="AudioStream" uid="uid://buklon67ayisg" path="res://audio/music/title_screen_1b.wav" id="1_earlj"]
+[ext_resource type="Script" path="res://audio/menu_music_player_s.gd" id="2_nmwcb"]
 
 [node name="MenuPlayerS" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_earlj")
 autoplay = true
+script = ExtResource("2_nmwcb")

@@ -16,15 +16,3 @@ func _ready() -> void:
 		
 func _process(_delta: float) -> void:
 	pass
-
-#
-#func _on_scene_change() -> void:
-	#print("On scene changed called")
-		## Check the current scene's path
-	#var current_scene_path = get_tree().current_scene.scene_file_path
-	#if current_scene_path in excluded_scenes:
-		#stop()  # Stop the audio if the current scene is excluded
-	#else:
-		#print("Should play now!")
-		#play()
-	#pass
