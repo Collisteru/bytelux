@@ -11,6 +11,7 @@ var player_is_alive
 @onready var player_camera = $Camera2D
 @onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
 @onready var death_sfx = $DeathSFX
+@onready var lens_sfx = $LensShiftSFX
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
@@ -118,6 +119,7 @@ func _input(event: InputEvent) -> void:
 			# Handle changing lens colors
 			match event.keycode:
 				KEY_Q: # (blue to green, green to red, red to blue
+					lens_sfx.playing = true
 					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
 						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
@@ -130,6 +132,7 @@ func _input(event: InputEvent) -> void:
 							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
 							change_hud('R', 'B')
 				KEY_E: # (blue to red, red to green, green to blue
+					lens_sfx.playing = true
 					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
 						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
