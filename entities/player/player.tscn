@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=24 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
 [ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
 [ext_resource type="PackedScene" uid="uid://tatu8ps7mq2h" path="res://HUD/hud.tscn" id="14_wp8t4"]
+[ext_resource type="AudioStream" uid="uid://cjj0a21e2amyf" path="res://audio/sfx/PLAYER DEATH_1A_TS.wav" id="14_ya8wa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
 animations = [{
@@ -179,6 +180,10 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ya8wa")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -10,6 +10,7 @@ var player_is_alive
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
 @onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
+@onready var death_sfx = $DeathSFX
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
@@ -218,6 +219,9 @@ func die(_camera = player_camera) -> void:
 	
 	# Stop level music
 	LevelMusicPlayerS.playing = false
+	
+	# Play Death sound
+	death_sfx.playing = true
 
 	# Spawn playerdeathparticles
 	
@@ -238,7 +242,7 @@ func die(_camera = player_camera) -> void:
 	
 	var tree = get_tree()
 	
-	await tree.create_timer(3.0).timeout
+	await tree.create_timer(3.3).timeout
 
 	tree.change_scene_to_file("res://screens/lose/lose.tscn")
 	#tree.change_scene_to_file("res://levels/Shield Intro Vic/Shielder Intro.tscn")
