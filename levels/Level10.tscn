@@ -603,15 +603,17 @@ tile_map_data = PackedByteArray("AAD//xgAAQAGAAAAAAAAABgAAQAGAAAAAAABABgAAQAGAAA
 tile_set = SubResource("TileSet_55mno")
 
 [node name="BlueWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAVABMAAgAFAAEAAAAVABQAAgAFAAEAAAAVABUAAgAFAAEAAAAVABYAAgAFAAEAAAAVABcAAgAFAAEAAAA=")
 tile_set = SubResource("TileSet_frkhi")
 script = SubResource("GDScript_1qnoh")
 
 [node name="RedWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAYABMAAwADAAIAAAAYABQAAwADAAUAAAAYABUAAwADAAQAAAAYABYAAwADAAMAAAAZABQAAwADAAIAAAAZABUAAwADAAMAAAAXABcAAwADAAMAAAAWABcAAwADAAQAAAAXABYAAwADAAQAAAAXABMAAwADAAUAAAA=")
 tile_set = SubResource("TileSet_frkhi")
 script = SubResource("GDScript_vj5p7")
 
 [node name="GreenWalls" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAQAAQABAAEAAAAAAARAAQABAAEAAAAAAASAAQABAAEAAAAAAATAAQABAAEAAAAAAAOABMABAAEAAEAAAAOABQABAAEAAEAAAAOABUABAAEAAEAAAAOABYABAAEAAEAAAAOABcABAAEAAEAAAA=")
+tile_map_data = PackedByteArray("AAAOABMABAAEAAEAAAAOABQABAAEAAEAAAAOABUABAAEAAEAAAAOABYABAAEAAEAAAAOABcABAAEAAEAAAAQAAgABAAEAAAAAAARAAgABAAEAAAAAAASAAgABAAEAAAAAAATAAgABAAEAAAAAAA=")
 tile_set = SubResource("TileSet_frkhi")
 script = SubResource("GDScript_c4vim")
 
@@ -626,4 +628,12 @@ scale = Vector2(1, 1.5)
 position = Vector2(-119, 342)
 
 [node name="Rcharger" parent="." instance=ExtResource("11_p15dr")]
-position = Vector2(287, 51)
+position = Vector2(293, 112)
+
+[node name="charger" parent="." instance=ExtResource("11_p15dr")]
+position = Vector2(270, 105)
+myColor = 1
+
+[node name="charger2" parent="." instance=ExtResource("11_p15dr")]
+position = Vector2(309, 96)
+myColor = 2
