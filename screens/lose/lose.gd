@@ -12,6 +12,10 @@ var rows: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	# Start replaying menu music to be dramatic
+	MenuMusicPlayerS.playing = true
+	
 	viewport_size = get_viewport_rect().size
 	columns = int(viewport_size.x / FONT_SIZE)
 	rows = int(viewport_size.y / FONT_SIZE)-8
@@ -99,6 +103,12 @@ func _on_title_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
+	
+	# Switch music tracks
+	MenuMusicPlayerS.playing = false
+	LevelMusicPlayerS.playing = true
+	
+	
 	print(LastLevelUpdater.get_last_level())
 	get_tree().change_scene_to_file(LastLevelUpdater.get_last_level())
 	pass # Replace with function body.

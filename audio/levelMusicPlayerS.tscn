@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvckdgpa56dn"]
+
+[ext_resource type="AudioStream" uid="uid://skjfxhemvtd8" path="res://audio/music/electronic_shooter_2B.wav" id="1_nhytp"]
+[ext_resource type="Script" path="res://audio/level_music_player_s.gd" id="2_qcnlh"]
+
+[node name="levelMusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_nhytp")
+autoplay = true
+script = ExtResource("2_qcnlh")

@@ -13,6 +13,7 @@ var rows: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	viewport_size = get_viewport_rect().size
 	columns = int(viewport_size.x / FONT_SIZE)
 	rows = int(viewport_size.y / FONT_SIZE)-8
@@ -98,6 +99,14 @@ func _on_exit_pressed() -> void:
 
 
 func _on_start_pressed() -> void:
+	
+	# Stop playing level music
+	MenuMusicPlayerS.playing = false
+	
+	# Start playing in-level music
+	LevelMusicPlayerS.playing = true
+	
+	# Go to level 1
 	get_tree().change_scene_to_file("res://levels/Level1.tscn")
 
 
