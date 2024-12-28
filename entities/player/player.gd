@@ -216,21 +216,8 @@ func die(_camera = player_camera) -> void:
 	# Set player_is_alive flag to false, making it impossible to perform player actions
 	player_is_alive = false
 	
-	# TODO: remove this if player isn't queue freed for death
-	## Duplicate camera
-	## (the player camera is a child of the original class, so we need to create a new one with the same properites to 
-	## properly play the death animation)
-	#var new_camera = camera.duplicate() as Camera2D
-#
-	## Set the new camera's position and properties to match the original
-	#new_camera.global_position = camera.global_position
-	#new_camera.zoom = camera.zoom
-	#new_camera.offset = camera.offset
-	#get_parent().add_child(new_camera)
-	#
-	## Switch to this camera
-	#new_camera.make_current()
-	
+	# Stop level music
+	LevelMusicPlayerS.playing = false
 
 	# Spawn playerdeathparticles
 	

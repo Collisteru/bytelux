@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 LensColor="*res://assets/LensColor.gd"
 LastLevelUpdater="*res://screens/last_level_updater.gd"
+LevelMusicPlayerS="*res://audio/levelMusicPlayerS.tscn"
 
 [input]
 

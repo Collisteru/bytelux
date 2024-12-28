@@ -98,6 +98,11 @@ func _on_exit_pressed() -> void:
 
 
 func _on_start_pressed() -> void:
+	
+	# Start playing in-level music
+	LevelMusicPlayerS.playing = true
+	
+	# Go to level 1
 	get_tree().change_scene_to_file("res://levels/Level1.tscn")
 
 
