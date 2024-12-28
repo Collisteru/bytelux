@@ -631,6 +631,7 @@ position = Vector2(0, 5.96046e-08)
 
 [node name="GuardEnemy" parent="." instance=ExtResource("11_k7b8u")]
 position = Vector2(-79, 536)
+myColor = 2
 
 [node name="GuardEnemy2" parent="." instance=ExtResource("11_k7b8u")]
 position = Vector2(315, 548)
@@ -640,6 +641,7 @@ position = Vector2(411, -12)
 
 [node name="GuardEnemy4" parent="." instance=ExtResource("11_k7b8u")]
 position = Vector2(-234, 387)
+myColor = 1
 
 [node name="Door" parent="." instance=ExtResource("13_k255t")]
 position = Vector2(481, 609)
