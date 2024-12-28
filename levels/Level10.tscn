@@ -573,6 +573,7 @@ func _process(_delta: float) -> void:
 script = ExtResource("1_aqqva")
 
 [node name="Crawler2" parent="." instance=ExtResource("13_jb4cy")]
+myColor = null
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0
@@ -667,6 +668,7 @@ myColor = 1
 
 [node name="Crawler3" parent="." instance=ExtResource("13_jb4cy")]
 position = Vector2(-8, 452)
+myColor = null
 
 [node name="Crawler4" parent="." instance=ExtResource("13_jb4cy")]
 position = Vector2(155, 461)
@@ -678,6 +680,7 @@ myColor = 2
 
 [node name="Crawler6" parent="." instance=ExtResource("13_jb4cy")]
 position = Vector2(217, 457)
+myColor = null
 
 [node name="Crawler7" parent="." instance=ExtResource("13_jb4cy")]
 position = Vector2(73, 455)
@@ -689,6 +692,7 @@ myColor = 2
 
 [node name="Crawler9" parent="." instance=ExtResource("13_jb4cy")]
 position = Vector2(387, 460)
+myColor = null
 
 [node name="shielder" parent="." instance=ExtResource("14_rmu6c")]
 position = Vector2(517, 437)

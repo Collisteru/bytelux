@@ -634,6 +634,7 @@ myColor = 2
 
 [node name="Crawler2" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(377, 153)
+myColor = null
 
 [node name="Crawler3" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(619, 458)
@@ -641,15 +642,19 @@ myColor = 1
 
 [node name="Crawler4" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(-204, 359)
+myColor = null
 
 [node name="Crawler5" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(509, 225)
+myColor = null
 
 [node name="Crawler6" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(770, 448)
+myColor = null
 
 [node name="Crawler7" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(476, 546)
+myColor = null
 
 [node name="Crawler8" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(510, 444)
@@ -661,6 +666,7 @@ myColor = 2
 
 [node name="Crawler10" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(243, 486)
+myColor = null
 
 [node name="Crawler11" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(110, 391)
@@ -672,9 +678,11 @@ myColor = 2
 
 [node name="Crawler13" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(306, 255)
+myColor = null
 
 [node name="Crawler14" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(772, 188)
+myColor = null
 
 [node name="GuardEnemy" parent="." instance=ExtResource("12_3b7ni")]
 position = Vector2(759, 65)
@@ -721,6 +729,7 @@ myColor = 1
 
 [node name="Crawler16" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(93, 270)
+myColor = null
 
 [node name="GuardEnemy10" parent="." instance=ExtResource("12_3b7ni")]
 position = Vector2(452, 347)
