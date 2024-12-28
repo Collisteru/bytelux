@@ -20,7 +20,7 @@ static func translate_color(c: LENS_COLOR) -> Color:
 		LENS_COLOR.BLUE:
 			return Color(0, 0, 255)
 		LENS_COLOR.WHITE:
-			return Color(255,255,255)
+			return Color(0,0,0)
 	push_error("Unrecognized color")
 	return Color(0, 0, 0)
 
