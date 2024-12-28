@@ -47,6 +47,7 @@ animations = [{
 material = SubResource("ShaderMaterial_tnjtj")
 scale = Vector2(0.2, 0.2)
 collision_layer = 20
+collision_mask = 5
 script = ExtResource("1_43vhq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
