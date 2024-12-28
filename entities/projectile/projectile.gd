@@ -37,12 +37,12 @@ func _process(delta):
 		linear_velocity = direction * SPEED
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("HITTT area")
+	#print("HITTT area")
 	if area.get_collision_layer_value(3):
 		print("oops, area was a shield")
 	else:
 		queue_free()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	print("HITTT body")
+	#print("HITTT body")
 	queue_free()

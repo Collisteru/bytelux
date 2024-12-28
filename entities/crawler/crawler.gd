@@ -19,10 +19,6 @@ func _ready() -> void:
 	super()
 	SPEED = 0.0
 	
-func death() -> void:
-	#TODO animation
-	queue_free()
-
 func _physics_process(_delta: float) -> void:	
 	if health <= 0:
 		death()
