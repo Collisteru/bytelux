@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qpypfjo7xpny"]
+[gd_scene load_steps=11 format=3 uid="uid://qpypfjo7xpny"]
 
 [ext_resource type="FontFile" uid="uid://cs0n77pefj4fp" path="res://font/CARBON-DROID.ttf" id="1_ekn2k"]
 [ext_resource type="Script" path="res://screens/options/options.gd" id="1_o46qc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cvcpeyjsrrwsq" path="res://assets/transistor_bg.jpg" id="4_vdfme"]
 [ext_resource type="Texture2D" uid="uid://b6pllbcmyiy5h" path="res://assets/bytelux_lever_frame_1.png" id="5_e64pt"]
 [ext_resource type="Texture2D" uid="uid://dsjkx21dtve5f" path="res://assets/bytelux_lever_frame_2.png" id="6_xxxwr"]
+[ext_resource type="Script" path="res://screens/options/sfx.gd" id="7_bu8tp"]
+[ext_resource type="Script" path="res://screens/options/music.gd" id="7_ob8vk"]
 
 [sub_resource type="Theme" id="Theme_e71tj"]
 default_font = ExtResource("1_ekn2k")
@@ -95,12 +97,14 @@ offset_left = 816.0
 offset_top = 131.0
 offset_right = 846.0
 offset_bottom = 485.0
+script = ExtResource("7_bu8tp")
 
 [node name="Music" type="VSlider" parent="."]
 offset_left = 336.0
 offset_top = 131.0
 offset_right = 366.0
 offset_bottom = 486.0
+script = ExtResource("7_ob8vk")
 
 [node name="MusicLabel" type="HBoxContainer" parent="."]
 offset_left = 136.0

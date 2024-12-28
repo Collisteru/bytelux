@@ -5,6 +5,9 @@ extends "res://entities/enemy_base/enemy_base.gd"
 ###################
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
 
+# Import SFX
+@onready var shoot_sfx = $ShootSFX
+
 enum frames {AIMING = 0, NEUTRAL = 1}
 
 var readied = false
@@ -83,6 +86,9 @@ func custom_move(target):
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 
 func fire():
+	# Spawn sound
+	shoot_sfx.playing = true
+	
 	var projectile = projectile_scene.instantiate()
 	projectile.color = myColor
 	projectile.global_position = spawnNode.global_position

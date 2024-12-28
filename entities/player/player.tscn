@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=27 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
@@ -13,6 +13,10 @@
 [ext_resource type="Script" path="res://entities/player/head_sprite.gd" id="12_krybn"]
 [ext_resource type="Texture2D" uid="uid://ng3qvom606yq" path="res://assets/point light center.png" id="14_p3wd8"]
 [ext_resource type="PackedScene" uid="uid://tatu8ps7mq2h" path="res://HUD/hud.tscn" id="14_wp8t4"]
+[ext_resource type="AudioStream" uid="uid://cjj0a21e2amyf" path="res://audio/sfx/PLAYER DEATH_1A_TS.wav" id="14_ya8wa"]
+[ext_resource type="AudioStream" uid="uid://nlrahyh67u5g" path="res://audio/sfx/LENSE CHANGING_1A_TS.wav" id="15_jpl1x"]
+[ext_resource type="AudioStream" uid="uid://cvoh0lvbe32k7" path="res://audio/sfx/PLAYER ONE SHOT_1E_TS.wav" id="16_76e31"]
+[ext_resource type="AudioStream" uid="uid://u0rgnsl18hj7" path="res://audio/sfx/PLAYER WALKING_1A_TS.wav" id="17_e081x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m7s6k"]
 animations = [{
@@ -179,6 +183,26 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ya8wa")
+bus = &"SFX"
+
+[node name="LensShiftSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_jpl1x")
+bus = &"SFX"
+
+[node name="LaserSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_76e31")
+volume_db = -2.0
+pitch_scale = 4.0
+bus = &"SFX"
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_e081x")
+volume_db = -15.0
+pitch_scale = 0.37
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -10,6 +10,13 @@ var player_is_alive
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
 @onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
+
+# Import Player SFX
+@onready var death_sfx = $DeathSFX
+@onready var lens_sfx = $LensShiftSFX
+@onready var laser_sfx = $LaserSFX
+@onready var walk_sfx = $WalkSFX
+
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
 @onready var eye_trails = [] # eyes right to left
@@ -41,6 +48,8 @@ func _ready():
 	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_R)
 	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_L)
 	
+	walk_sfx.playing = false
+	
 	for n in eyes.size():
 		var trail = eye_trail_scene.instantiate()
 		eye_trails.append(trail)
@@ -63,6 +72,9 @@ func _ready():
 	#get_parent().add_child(projectile)
 
 func create_laser():
+	
+	laser_sfx.playing = true
+	
 	var newLaser = laser_scene.instantiate()
 	var laser_length = 1000
 	
@@ -117,6 +129,7 @@ func _input(event: InputEvent) -> void:
 			# Handle changing lens colors
 			match event.keycode:
 				KEY_Q: # (blue to green, green to red, red to blue
+					lens_sfx.playing = true
 					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
 						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
@@ -129,6 +142,7 @@ func _input(event: InputEvent) -> void:
 							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
 							change_hud('R', 'B')
 				KEY_E: # (blue to red, red to green, green to blue
+					lens_sfx.playing = true
 					# Rotates lens triangle clockwise
 					if not is_default_color_locked():
 						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
@@ -218,6 +232,9 @@ func die(_camera = player_camera) -> void:
 	
 	# Stop level music
 	LevelMusicPlayerS.playing = false
+	
+	# Play Death sound
+	death_sfx.playing = true
 
 	# Spawn playerdeathparticles
 	
@@ -238,7 +255,7 @@ func die(_camera = player_camera) -> void:
 	
 	var tree = get_tree()
 	
-	await tree.create_timer(3.0).timeout
+	await tree.create_timer(3.3).timeout
 
 	tree.change_scene_to_file("res://screens/lose/lose.tscn")
 	#tree.change_scene_to_file("res://levels/Shield Intro Vic/Shielder Intro.tscn")
@@ -292,11 +309,15 @@ func _physics_process(_delta: float) -> void:
 				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 		
 		var is_moving = false
+		print(walk_sfx.playing)
 		if(velocity.length() != 0):
+			if (!walk_sfx.playing): 
+				walk_sfx.playing = true
 			is_moving = true
 			body.pointForwards(velocity.angle())
 			body.play("walk")
 		else:
+			walk_sfx.playing = false
 			body.tryStop()
 
 		move_and_slide()

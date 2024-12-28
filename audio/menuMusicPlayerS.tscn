@@ -6,4 +6,5 @@
 [node name="MenuPlayerS" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_earlj")
 autoplay = true
+bus = &"Music"
 script = ExtResource("2_nmwcb")
