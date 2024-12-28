@@ -630,6 +630,7 @@ scale = Vector2(1, 1.5)
 
 [node name="Crawler" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(516, 82)
+myColor = 1
 
 [node name="Crawler2" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(377, 153)
@@ -654,6 +655,7 @@ position = Vector2(510, 444)
 
 [node name="Crawler9" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(132, 45)
+myColor = 1
 
 [node name="Crawler10" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(243, 486)
@@ -663,6 +665,7 @@ position = Vector2(110, 391)
 
 [node name="Crawler12" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(240, 43)
+myColor = 1
 
 [node name="Crawler13" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(306, 255)
