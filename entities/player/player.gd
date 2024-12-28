@@ -15,6 +15,7 @@ var player_is_alive
 @onready var death_sfx = $DeathSFX
 @onready var lens_sfx = $LensShiftSFX
 @onready var laser_sfx = $LaserSFX
+@onready var walk_sfx = $WalkSFX
 
 @onready var eyes = [] # eyes right to left
 @onready var eye_trail_scene = load("res://entities/player/eye_trail.tscn")
@@ -46,6 +47,8 @@ func _ready():
 	LensColor.connect("lens_changed", _on_lens_changed)
 	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_R)
 	eyes.append($HeadSprite/Eyes/EyeGlowAmbient_L)
+	
+	walk_sfx.playing = false
 	
 	for n in eyes.size():
 		var trail = eye_trail_scene.instantiate()
@@ -306,11 +309,15 @@ func _physics_process(_delta: float) -> void:
 				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 		
 		var is_moving = false
+		print(walk_sfx.playing)
 		if(velocity.length() != 0):
+			if (!walk_sfx.playing): 
+				walk_sfx.playing = true
 			is_moving = true
 			body.pointForwards(velocity.angle())
 			body.play("walk")
 		else:
+			walk_sfx.playing = false
 			body.tryStop()
 
 		move_and_slide()
