@@ -137,3 +137,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="drag_ended" from="SFX" to="." method="_on_sfx_drag_ended"]
+[connection signal="drag_ended" from="Music" to="." method="_on_music_drag_ended"]

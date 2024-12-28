@@ -21,6 +21,7 @@ LensColor="*res://assets/LensColor.gd"
 LastLevelUpdater="*res://screens/last_level_updater.gd"
 LevelMusicPlayerS="*res://audio/levelMusicPlayerS.tscn"
 MenuMusicPlayerS="*res://audio/menuMusicPlayerS.tscn"
+AudioSettings="*res://globals/audio_settings.tscn"
 
 [input]
 
