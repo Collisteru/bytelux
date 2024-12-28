@@ -15,6 +15,7 @@ func initialize(player: Node2D) -> void:
 	shooter = player
 
 func _ready():
+	laser_line.default_color = LensColor.translate_color(LensColor.lens)
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	project()
