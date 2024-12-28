@@ -1,14 +1,15 @@
-[gd_scene load_steps=66 format=4 uid="uid://of0pnm1j7lkf"]
+[gd_scene load_steps=67 format=4 uid="uid://of0pnm1j7lkf"]
 
-[ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="1_kg6tb"]
-[ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="2_pvwm4"]
-[ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="3_uk0ck"]
-[ext_resource type="Texture2D" uid="uid://cl4x3y76qhdoe" path="res://assets/tile_blue.png" id="4_325th"]
-[ext_resource type="Texture2D" uid="uid://myuoyichq1rb" path="res://assets/tile_red.png" id="5_je5ue"]
-[ext_resource type="Texture2D" uid="uid://c63le1iwj280a" path="res://assets/tile_green.png" id="6_6gs7g"]
-[ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="7_g6tll"]
-[ext_resource type="PackedScene" uid="uid://5we3eofv6eq4" path="res://entities/door/door.tscn" id="8_hga4f"]
-[ext_resource type="PackedScene" uid="uid://dw87ms7bbikhk" path="res://entities/shielder/shielder.tscn" id="9_txgbk"]
+[ext_resource type="Script" path="res://levels/level_8_5.gd" id="1_ikxp1"]
+[ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_j3ps8"]
+[ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="3_2d4m3"]
+[ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="4_l0igq"]
+[ext_resource type="Texture2D" uid="uid://cl4x3y76qhdoe" path="res://assets/tile_blue.png" id="5_vhj6r"]
+[ext_resource type="Texture2D" uid="uid://myuoyichq1rb" path="res://assets/tile_red.png" id="6_ievyv"]
+[ext_resource type="Texture2D" uid="uid://c63le1iwj280a" path="res://assets/tile_green.png" id="7_csolb"]
+[ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="8_fguhh"]
+[ext_resource type="PackedScene" uid="uid://5we3eofv6eq4" path="res://entities/door/door.tscn" id="9_uy6e7"]
+[ext_resource type="PackedScene" uid="uid://dw87ms7bbikhk" path="res://entities/shielder/shielder.tscn" id="10_ofwpc"]
 
 [sub_resource type="Animation" id="Animation_0khet"]
 length = 0.001
@@ -48,7 +49,7 @@ _data = {
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mpfu3"]
-texture = ExtResource("2_pvwm4")
+texture = ExtResource("3_2d4m3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -109,7 +110,7 @@ polygon = PackedVector2Array(-0.53125, 0.3125, 8, -8, 8, 8, -8, 8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -0.34375, 0.0625)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37vdj"]
-texture = ExtResource("3_uk0ck")
+texture = ExtResource("4_l0igq")
 6:0/0 = 0
 6:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ddap5")
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -166,7 +167,7 @@ polygon = PackedVector2Array(-0.34375, 0.125, 8, -8, 8, 8, -8, 8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -0.28125, 0.0625)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kybuy"]
-texture = ExtResource("4_325th")
+texture = ExtResource("5_vhj6r")
 2:0/0 = 0
 2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_x7lry")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -241,7 +242,7 @@ polygon = PackedVector2Array(-0.34375, 0.125, 8, -8, 8, 8, -8, 8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -0.09375, 0.1875)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6nsha"]
-texture = ExtResource("5_je5ue")
+texture = ExtResource("6_ievyv")
 0:0/0 = 0
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_o1o87")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -316,7 +317,7 @@ polygon = PackedVector2Array(-0.09375, -0.125, 8, -8, 8, 8, -8, 8)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, 1.71875, 1.625)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7gmq"]
-texture = ExtResource("6_6gs7g")
+texture = ExtResource("7_csolb")
 1:0/0 = 0
 1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rlqpa")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -446,7 +447,8 @@ func _process(_delta: float) -> void:
 			self.visible = false
 "
 
-[node name="IntroduceShielder" type="Node2D"]
+[node name="Level8_5" type="Node2D"]
+script = ExtResource("1_ikxp1")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0
@@ -460,7 +462,7 @@ modulate = Color(0.423651, 0.423651, 0.423651, 1)
 texture_repeat = 2
 position = Vector2(1000, 700)
 scale = Vector2(2, 2)
-texture = ExtResource("1_kg6tb")
+texture = ExtResource("2_j3ps8")
 offset = Vector2(1, 0)
 hframes = 7
 vframes = 7
@@ -500,13 +502,13 @@ tile_set = SubResource("TileSet_3j2es")
 [node name="background_filter" type="CanvasModulate" parent="."]
 script = SubResource("GDScript_wsv65")
 
-[node name="Player" parent="." instance=ExtResource("7_g6tll")]
+[node name="Player" parent="." instance=ExtResource("8_fguhh")]
 position = Vector2(-58, 3)
 collision_mask = 21
 
-[node name="Door" parent="." instance=ExtResource("8_hga4f")]
+[node name="Door" parent="." instance=ExtResource("9_uy6e7")]
 position = Vector2(609, 13)
 
-[node name="shielder" parent="." instance=ExtResource("9_txgbk")]
+[node name="shielder" parent="." instance=ExtResource("10_ofwpc")]
 position = Vector2(518, 3)
 rotation = -3.13453
