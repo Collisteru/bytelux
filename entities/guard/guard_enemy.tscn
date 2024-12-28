@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfpaw4les5y2i"]
+[gd_scene load_steps=17 format=3 uid="uid://dfpaw4les5y2i"]
 
 [ext_resource type="Script" path="res://entities/guard/guard_enemy.gd" id="1_q3pa1"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="1_r4krv"]
 [ext_resource type="Texture2D" uid="uid://c1hb3omltddxo" path="res://assets/security guard enemy aiming.png" id="3_f88cp"]
-[ext_resource type="PackedScene" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
+[ext_resource type="PackedScene" uid="uid://fviega6hwtft" path="res://assets/guard_hitbox.tscn" id="3_fuou0"]
 [ext_resource type="Texture2D" uid="uid://ct60rwitu3wlc" path="res://assets/security guard enemy.png" id="4_vr0si"]
 [ext_resource type="Texture2D" uid="uid://b1m1fmpq30c28" path="res://assets/security_guard_enemy_walking_1.png" id="5_4xw6i"]
 [ext_resource type="Texture2D" uid="uid://b06jod5derifv" path="res://assets/security_guard_enemy_walking_2.png" id="6_mye1p"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c242vuh3nldc4" path="res://assets/security_guard_enemy_walking_1_mirror.png" id="8_alr8s"]
 [ext_resource type="Texture2D" uid="uid://cno1818d658t8" path="res://assets/security_guard_enemy_walking_2_mirror.png" id="9_n0hmm"]
 [ext_resource type="Texture2D" uid="uid://cnjtrgggulc0p" path="res://assets/security_guard_enemy_walking_3_mirror.png" id="10_aqisr"]
+[ext_resource type="AudioStream" uid="uid://bupyoie00ihdj" path="res://audio/sfx/ENEMY SHOOTING_1A_TS.wav" id="12_otin1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phnn8"]
 shader = ExtResource("1_r4krv")
@@ -116,6 +117,12 @@ autostart = true
 
 [node name="Bullet Spawn point" type="Node2D" parent="."]
 position = Vector2(226.25, 20)
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_otin1")
+pitch_scale = 2.0
+max_distance = 1000.0
+attenuation = 2.63902
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

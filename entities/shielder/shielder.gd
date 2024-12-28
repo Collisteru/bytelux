@@ -5,8 +5,11 @@ extends "res://entities/enemy_base/enemy_base.gd"
 @onready var projectile_scene = load("res://entities/projectile/projectile.tscn")
 @onready var shield = $"Shield"
 
+@onready var shield_sfx = $ShieldSFX
+
 
 func _ready() -> void:
+	shield_sfx.playing = true
 	sprites["sprite"] = $"Sprite"
 	super()
 	ENGAGE_DIST = 75
