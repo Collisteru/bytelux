@@ -218,7 +218,7 @@ func change_hud(old_color, new_color):
 			color_hud.set_texture(hud_green)
 		elif new_color == 'R':
 			color_hud.set_texture(hud_rtilt_b)
-			await get_tree().create_timer(tick).timesout
+			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_igreen)
 			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_ltilt_r)
