@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 
 # Define the excluded scenes
 var excluded_scenes = [
