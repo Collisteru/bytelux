@@ -10,6 +10,7 @@ var player_is_alive
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
 @onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
+@onready var hitbox = $Area2D/Hitbox
 
 # Import Player SFX
 @onready var death_sfx = $DeathSFX
@@ -217,7 +218,7 @@ func change_hud(old_color, new_color):
 			color_hud.set_texture(hud_green)
 		elif new_color == 'R':
 			color_hud.set_texture(hud_rtilt_b)
-			await get_tree().create_timer(tick).timeout
+			await get_tree().create_timer(tick).timesout
 			color_hud.set_texture(hud_igreen)
 			await get_tree().create_timer(tick).timeout
 			color_hud.set_texture(hud_ltilt_r)
@@ -237,12 +238,14 @@ func die(_camera = player_camera) -> void:
 	death_sfx.playing = true
 
 	# Spawn playerdeathparticles
-	
 	# Instance the particle scene
 	var particle_scene = preload("res://entities/particles/player_explosion_node.tscn").instantiate()
 	
 	# Make player invisible.
 	self.visible = false
+	
+	# Remove player hitbox
+	hitbox.queue_free()
 	
 	# Assign position of the particles to be the same as the player
 	particle_scene.position = self.position
