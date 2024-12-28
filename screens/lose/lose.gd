@@ -103,7 +103,12 @@ func _on_title_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
+	
+	# Switch music tracks
+	MenuMusicPlayerS.playing = false
 	LevelMusicPlayerS.playing = true
+	
+	
 	print(LastLevelUpdater.get_last_level())
 	get_tree().change_scene_to_file(LastLevelUpdater.get_last_level())
 	pass # Replace with function body.
