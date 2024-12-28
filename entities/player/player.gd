@@ -165,11 +165,7 @@ func _input(event: InputEvent) -> void:
 						player_camera.zoom.x -= 1
 						player_camera.zoom.y -= 1
 
-				# TODO: Remove this before shipping (but leave until the end so we can test)
-				KEY_K:
-					# Kill self (debugging purposes)
-					# TODO: Remove
-					self.die()
+
 
 func change_hud(old_color, new_color):
 	var tick = 0.07
