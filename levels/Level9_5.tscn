@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dpw0dvtius7nn" path="res://entities/player/player.tscn" id="7_q200t"]
 [ext_resource type="PackedScene" uid="uid://5we3eofv6eq4" path="res://entities/door/door.tscn" id="8_2d0ao"]
 [ext_resource type="PackedScene" uid="uid://clo3n4jlqqkgd" path="res://entities/charger/charger.tscn" id="9_knttb"]
+[ext_resource type="Script" path="res://levels/background_filter.gd" id="11_ejjry"]
 
 [sub_resource type="Animation" id="Animation_0khet"]
 length = 0.001
@@ -424,29 +425,6 @@ func _process(_delta: float) -> void:
 			visible = true
 "
 
-[sub_resource type="GDScript" id="GDScript_5e30q"]
-script/source = "extends CanvasModulate
-
-@onready var player = $'../Player'
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	match LensColor.LENS_COLOR:
-		LensColor.LENS_COLOR.RED:
-			self.color = Color('PINK')
-		LensColor.LENS_COLOR.GREEN:
-			self.color = Color('PALE_GREEN')
-		LensColor.LENS_COLOR.BLUE:
-			self.color = Color('SKY_BLUE')
-		LensColor.LENS_COLOR.WHITE:
-			self.visible = false
-"
-
 [node name="ChargerIntro" type="Node2D"]
 script = ExtResource("1_8bjny")
 
@@ -500,7 +478,7 @@ tile_map_data = PackedByteArray("AAD4//L/AQAGAAAAAAD5//L/AQAGAAAAAAD6//L/AQAGAAA
 tile_set = SubResource("TileSet_1kasn")
 
 [node name="background_filter" type="CanvasModulate" parent="."]
-script = SubResource("GDScript_5e30q")
+script = ExtResource("11_ejjry")
 
 [node name="Player" parent="." instance=ExtResource("7_q200t")]
 position = Vector2(-58, 3)
