@@ -155,15 +155,6 @@ func _input(event: InputEvent) -> void:
 						elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
 							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
 							change_hud('G', 'B')
-				# This is for zooming
-				KEY_BRACKETRIGHT:
-					if player_camera.zoom.x < 10:
-						player_camera.zoom.x += 1
-						player_camera.zoom.y += 1
-				KEY_BRACKETLEFT:
-					if player_camera.zoom.x > 2:
-						player_camera.zoom.x -= 1
-						player_camera.zoom.y -= 1
 
 
 
