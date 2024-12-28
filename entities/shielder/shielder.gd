@@ -93,6 +93,7 @@ func _phase_out(lens: LensColor.LENS_COLOR):
 		hitbox.set_collision_mask_value(4,false)
 		hitbox.set_collision_layer_value(3,false)
 		shield.set_collision_layer_value(1,false)
+		shield.set_collision_layer_value(3,false)
 		
 	else:
 		#print("Phasing In")
@@ -100,4 +101,5 @@ func _phase_out(lens: LensColor.LENS_COLOR):
 		hitbox.set_collision_mask_value(4,true)
 		hitbox.set_collision_layer_value(3,true)
 		shield.set_collision_layer_value(1,true)
+		shield.set_collision_layer_value(3,true)
 	pass

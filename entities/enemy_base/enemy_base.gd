@@ -125,9 +125,11 @@ func _phase_out(lens: LensColor.LENS_COLOR):
 	if self.myColor != lens:
 		#print("Phasing Out")
 		self.set_collision_layer_value(3,false)
+		hitbox.set_collision_layer_value(3,false)
 		hitbox.set_collision_mask_value(4,false)
 	else:
 		#print("Phasing In")
 		self.set_collision_layer_value(3,true)
+		hitbox.set_collision_layer_value(3,true)
 		hitbox.set_collision_mask_value(4,true)
 	pass
