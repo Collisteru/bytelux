@@ -33,7 +33,7 @@ func _process(delta):
 
 	# Maintain constant velocity in the given direction
 	if direction != Vector2.ZERO:
-		print(direction)
+		#print(direction)
 		linear_velocity = direction * SPEED
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

@@ -35,8 +35,13 @@ func _ready() -> void:
 	AGRO_RANGE = 300.0
 	
 func applyColor(color: Color) -> void:
-	for sprite in sprites:
-		sprites[sprite].get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
+	print("I, ", self, " am applying shaders to the following with my target of ", color)
+	for sprite in sprites:		
+		var newMaterial = sprites[sprite].get_material().duplicate()
+		newMaterial.set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
+		sprites[sprite].set_material(newMaterial)
+		
+		#sprites[sprite].get_material().set_shader_parameter("TargetColor", Vector4(color.r, color.g, color.b, 1.0))
 
 func death() -> void:
 	#TODO animation

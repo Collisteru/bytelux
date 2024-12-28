@@ -345,4 +345,11 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 func _on_lens_changed(lens: LensColor.LENS_COLOR) -> void:
 	#print("Signal received")
 	change_eye_color(lens)
+	match lens:
+		LensColor.LENS_COLOR.RED:
+			color_hud.set_texture(hud_red)
+		LensColor.LENS_COLOR.GREEN:
+			color_hud.set_texture(hud_green)
+		LensColor.LENS_COLOR.BLUE:
+			color_hud.set_texture(hud_blue)
 	pass # Replace with function body.
