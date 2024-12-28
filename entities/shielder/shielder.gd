@@ -9,7 +9,7 @@ extends "res://entities/enemy_base/enemy_base.gd"
 func _ready() -> void:
 	sprites["sprite"] = $"Sprite"
 	super()
-	ENGAGE_DIST = 150
+	ENGAGE_DIST = 130
 	
 func _physics_process(_delta: float) -> void:	
 	if health <= 0:
