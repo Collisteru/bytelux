@@ -635,28 +635,35 @@ scale = Vector2(1, 1.5)
 
 [node name="Crawler" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(516, 82)
+rotation = 1.58632
 myColor = 1
 
 [node name="Crawler2" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(377, 153)
+rotation = 1.59983
 
 [node name="Crawler3" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(524, 462)
+rotation = 1.53314
 myColor = 1
 
 [node name="Crawler4" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(-35, 560)
+rotation = -1.5395
 myColor = 2
 
 [node name="Crawler5" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(509, 225)
+rotation = 1.51878
 myColor = 2
 
 [node name="Crawler6" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(540, 344)
+rotation = 1.60141
 
 [node name="Crawler7" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(402, 386)
+rotation = 3.01572
 myColor = 2
 
 [node name="Crawler8" parent="." instance=ExtResource("11_p1lym")]
@@ -664,22 +671,28 @@ position = Vector2(363, 512)
 
 [node name="Crawler9" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(132, 45)
+rotation = 1.60724
 myColor = 1
 
 [node name="Crawler10" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(175, 365)
+rotation = -1.55606
 myColor = 2
 
 [node name="Crawler11" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(264, 472)
+rotation = -1.61924
 
 [node name="Crawler12" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(279, 46)
+rotation = 1.62247
 myColor = 2
 
 [node name="Crawler13" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(306, 255)
+rotation = 2.31005
 myColor = 1
 
 [node name="Crawler14" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(459, 301)
+rotation = -3.12314
