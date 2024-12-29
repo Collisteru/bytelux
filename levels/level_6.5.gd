@@ -4,10 +4,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	LensColor.change_lens(LensColor.LENS_COLOR.RED)
+	LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
 	$Background/StaticSprite/StaticAnim.play("static")
-	door.set_next_level("res://levels/Level6.5.tscn")
-	LastLevelUpdater.set_last_level("res://levels/Level6.tscn")
+	door.set_next_level("res://levels/Level7.tscn")
+	LastLevelUpdater.set_last_level("res://levels/Level6.5.tscn")
 
 	#TODO: add door
 
