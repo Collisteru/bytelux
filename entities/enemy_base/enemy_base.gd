@@ -5,7 +5,7 @@ class_name EnemyBase
 @export var myColor : LensColor.LENS_COLOR
 
 @onready var targetNode = $'../Player'
-#@onready var sprite = $"Sprite"
+@onready var sprite = $"Sprite"
 @onready var hitbox = $"Hitbox"
 @onready var timer = $"Timer"
 
