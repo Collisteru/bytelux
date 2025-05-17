@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf1su52512d5s"]
+
+[ext_resource type="Script" path="res://audio/win_music_player_s.gd" id="1_rgl4q"]
+[ext_resource type="AudioStream" uid="uid://dhi4l2phrydd7" path="res://audio/music/Malware_Electronic Shooter_Victory 1B.wav" id="1_vdyek"]
+
+[node name="WinMusicPlayerS" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_vdyek")
+script = ExtResource("1_rgl4q")

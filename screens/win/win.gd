@@ -13,6 +13,12 @@ var rows: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	# Play win music
+	MenuMusicPlayerS.playing = false
+	WinMusicPlayerS.playing = true
+	
+	
 	viewport_size = get_viewport_rect().size
 	columns = int(viewport_size.x / FONT_SIZE)
 	rows = int(viewport_size.y / FONT_SIZE)-8
