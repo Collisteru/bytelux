@@ -159,7 +159,8 @@ func _input(event: InputEvent) -> void:
 
 
 func change_hud(old_color, new_color):
-	var tick = 0.07
+	# True tick is 0.07
+	var tick = 0.09
 	if old_color == 'R':
 		if new_color == 'G':
 			color_hud.set_texture(hud_rtilt_r)
