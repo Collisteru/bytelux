@@ -14,6 +14,7 @@ config/name="bytelux"
 run/main_scene="res://screens/title/title.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+config/windows_native_icon="res://assets/icons/character sprite head.ico"
 
 [autoload]
 
