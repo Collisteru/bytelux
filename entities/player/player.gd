@@ -253,28 +253,6 @@ func die(_camera = player_camera) -> void:
 	
 
 func _physics_process(_delta: float) -> void:
-	##get the viewport size and divide by 2 since this is where the camera is positioned
-	#var view = get_viewport_rect().size / 2
-	#var view_pos = get_viewport_transform()
-	##print("VIew pos x: ", view_pos.x)
-	##print("View pos y:", view_pos.y)
-#
-	##get the camera position
-	#var camera_pos = player_camera.global_position
-	#
-#
-	## TODO: Figure out cause of incorrent left bound bug
-	#var bounds_left = camera_pos.x - view.x #the camera bounds at the left
-	#
-	#var bounds_right = camera_pos.x + view.x #the camera bounds at the right
-	#var bounds_top = camera_pos.y + view.y #the camera bounds at the top
-	#var bounds_bottom = camera_pos.y - view.y #the camera bounds at the top
-#
-	##after the character is moved clamp its position to the end of the camera bounds
-	#self.global_position.x = clamp(self.global_position.x, bounds_left, bounds_right)
-	#self.global_position.y = clamp(self.global_position.y, bounds_bottom, bounds_top)
-	
-	
 	# Get the input direction
 	if player_is_alive:
 		var direction_x := Input.get_axis("ui_left", "ui_right")
