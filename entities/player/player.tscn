@@ -175,15 +175,6 @@ position = Vector2(1.3081, 0)
 scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_f4xep")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_wp8t4")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ya8wa")
 bus = &"SFX"
@@ -203,6 +194,17 @@ stream = ExtResource("17_e081x")
 volume_db = -15.0
 pitch_scale = 0.37
 bus = &"SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_wp8t4")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -648.0
+offset_bottom = -648.0
+grow_horizontal = 1
+grow_vertical = 0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
