@@ -94,69 +94,56 @@ func is_default_color_locked() -> bool:
 func _input(event: InputEvent) -> void:
 	if player_is_alive:
 		# Get player's response to mouse events
-		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			# By default, the click position is done with reference to the screen. We want it to be done with reference to the player position
-			
-			# Get positions
-			# Get the player's global position
-			#var global_position = self.to_global(Vector2.ZERO)
+		if event is InputEventMouseButton and event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
 
-			# Convert the global position to screen space to get player position with reference to camera
-			#var global_player_position = self.position
-			
-			# Get player position with ref to scene
-			#var camera_player_position = self.get_global_transform_with_canvas().get_origin()
-			
-			#var click_position: Vector2 = get_local_mouse_position();
-			
-			#var screensize = get_viewport().size 
-			
-			# Get position w/ ref to player
-			#click_position.x = (event.position.x - camera_player_position.x)#/screensize.x
-			#click_position.y = (event.position.y - camera_player_position.y)#/screensize.y
-			create_laser()
-			#laser.fire_laser(self)
+				create_laser()
+				
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				rotate_right()
 
+			elif event.button_index == MOUSE_BUTTON_MIDDLE:
+				rotate_left()
 
-			#pointer.move(click_position, global_position)
-			
-			#print("\n position: ", self.position)
-			#print("\n calc'd click: ", click_position)
-			#print("\n camera_player_position: ", camera_player_position)
-			#print("\n click: ", get_viewport().get_mouse_position())
 			
 		# Get player's response to key events
 		if event is InputEventKey and event.pressed:
 			# Handle changing lens colors
 			match event.keycode:
 				KEY_META, KEY_ALT, KEY_SHIFT: # (blue to green, green to red, red to blue
-					lens_sfx.playing = true
-					# Rotates lens triangle counterclockwise
-					if not is_default_color_locked():
-						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
-							LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
-							change_hud('B', 'G')
-						elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
-							LensColor.change_lens(LensColor.LENS_COLOR.RED)
-							change_hud('G', 'R')
-						elif (LensColor.lens == LensColor.LENS_COLOR.RED):
-							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
-							change_hud('R', 'B')
+					rotate_left()
 				KEY_SPACE, KEY_CAPSLOCK: # (blue to red, red to green, green to blue
-					lens_sfx.playing = true
-					# Rotates lens triangle clockwise
-					if not is_default_color_locked():
-						if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
-							LensColor.change_lens(LensColor.LENS_COLOR.RED)
-							change_hud('B', 'R')
-						elif (LensColor.lens == LensColor.LENS_COLOR.RED):
-							LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
-							change_hud('R', 'G')
-						elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
-							LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
-							change_hud('G', 'B')
+					rotate_right()
+					
+func rotate_left():
+	lens_sfx.playing = true
+	# Rotates lens triangle counterclockwise
+	if not is_default_color_locked():
+		if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
+			LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
+			change_hud('B', 'G')
+		elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
+			LensColor.change_lens(LensColor.LENS_COLOR.RED)
+			change_hud('G', 'R')
+		elif (LensColor.lens == LensColor.LENS_COLOR.RED):
+			LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
+			change_hud('R', 'B')
+			
+func rotate_right():
+	lens_sfx.playing = true
+	# Rotates lens triangle clockwise
+	if not is_default_color_locked():
+		if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
+			LensColor.change_lens(LensColor.LENS_COLOR.RED)
+			change_hud('B', 'R')
+		elif (LensColor.lens == LensColor.LENS_COLOR.RED):
+			LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
+			change_hud('R', 'G')
+		elif (LensColor.lens == LensColor.LENS_COLOR.GREEN):
+			LensColor.change_lens(LensColor.LENS_COLOR.BLUE)
+			change_hud('G', 'B')
 
-
+	
 
 func change_hud(old_color, new_color):
 	# True tick is 0.07
