@@ -575,17 +575,17 @@ sources/4 = SubResource("TileSetAtlasSource_oj4dx")
 script = ExtResource("1_fdl48")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = -642.0
-offset_top = -705.0
-offset_right = 1358.0
-offset_bottom = 1295.0
+offset_left = -700.0
+offset_top = -700.0
+offset_right = 1300.0
+offset_bottom = 1300.0
 stretch_mode = 1
 
 [node name="StaticSprite" type="Sprite2D" parent="Background"]
 modulate = Color(0.423651, 0.423651, 0.423651, 1)
-texture_repeat = 2
-position = Vector2(360, 546)
-scale = Vector2(1.7, 1.7)
+texture_repeat = 1
+position = Vector2(503, 663)
+scale = Vector2(5.02784, 5.23417)
 texture = ExtResource("2_2kulh")
 offset = Vector2(1, 0)
 hframes = 7

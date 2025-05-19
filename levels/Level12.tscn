@@ -436,14 +436,13 @@ offset_left = -700.0
 offset_top = -700.0
 offset_right = 1300.0
 offset_bottom = 1300.0
-pivot_offset = Vector2(738, 617)
 stretch_mode = 1
 
 [node name="StaticSprite" type="Sprite2D" parent="Background"]
 modulate = Color(0.423651, 0.423651, 0.423651, 1)
-texture_repeat = 2
-position = Vector2(1000, 700)
-scale = Vector2(2, 2)
+texture_repeat = 1
+position = Vector2(927, 683)
+scale = Vector2(5.02784, 5.23417)
 texture = ExtResource("2_7gons")
 offset = Vector2(1, 0)
 hframes = 7

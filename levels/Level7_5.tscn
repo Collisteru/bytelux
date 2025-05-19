@@ -428,17 +428,24 @@ func _process(_delta: float) -> void:
 [node name="Level7_5" type="Node2D"]
 script = ExtResource("1_1c04a")
 
-[node name="StaticSprite" type="Sprite2D" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -700.0
+offset_top = -700.0
+offset_right = 1300.0
+offset_bottom = 1300.0
+stretch_mode = 1
+
+[node name="StaticSprite" type="Sprite2D" parent="Background"]
 modulate = Color(0.423651, 0.423651, 0.423651, 1)
-texture_repeat = 2
-position = Vector2(421, -39)
-scale = Vector2(5, 5)
+texture_repeat = 1
+position = Vector2(1076, 620)
+scale = Vector2(5.28245, 5.53042)
 texture = ExtResource("2_i6g33")
 offset = Vector2(1, 0)
 hframes = 7
 vframes = 7
 
-[node name="StaticAnim" type="AnimationPlayer" parent="StaticSprite"]
+[node name="StaticAnim" type="AnimationPlayer" parent="Background/StaticSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_oqdak")
 }

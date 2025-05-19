@@ -579,9 +579,9 @@ stretch_mode = 1
 
 [node name="StaticSprite" type="Sprite2D" parent="Background"]
 modulate = Color(0.423651, 0.423651, 0.423651, 1)
-texture_repeat = 2
-position = Vector2(1005, 999)
-scale = Vector2(2, 2)
+texture_repeat = 1
+position = Vector2(927, 683)
+scale = Vector2(5.02784, 5.23417)
 texture = ExtResource("1_ortse")
 offset = Vector2(1, 0)
 hframes = 7
