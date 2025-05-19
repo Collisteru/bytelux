@@ -1,6 +1,5 @@
 [gd_scene load_steps=67 format=4 uid="uid://bvteal6ami8c0"]
 
-[ext_resource type="Script" path="res://levels/level_2_5.gd" id="1_n3rd0"]
 [ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_agh04"]
 [ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="3_wdnr2"]
 [ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="4_tv83f"]
@@ -11,6 +10,26 @@
 [ext_resource type="PackedScene" uid="uid://5we3eofv6eq4" path="res://entities/door/door.tscn" id="9_vy2l4"]
 [ext_resource type="Script" path="res://levels/background_filter.gd" id="10_2v1o0"]
 [ext_resource type="PackedScene" uid="uid://dfpaw4les5y2i" path="res://entities/guard/guard_enemy.tscn" id="11_i78b1"]
+
+[sub_resource type="GDScript" id="GDScript_og2bk"]
+script/source = "extends Node2D
+
+@onready var player = $Player
+@onready var door = $Door
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:	
+	LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
+	$Background/StaticSprite/StaticAnim.play(\"static\")
+	LastLevelUpdater.set_last_level(\"res://levels/Level2_5.tscn\")
+
+	door.set_next_level(\"res://levels/Level3.tscn\")
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
 
 [sub_resource type="Animation" id="Animation_0khet"]
 length = 0.001
@@ -49,7 +68,7 @@ _data = {
 "static": SubResource("Animation_xwgjc")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bls78"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_piwar"]
 texture = ExtResource("3_wdnr2")
 0:0/0 = 0
 1:0/0 = 0
@@ -90,7 +109,7 @@ texture = ExtResource("3_wdnr2")
 
 [sub_resource type="TileSet" id="TileSet_jfit6"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_bls78")
+sources/0 = SubResource("TileSetAtlasSource_piwar")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ddap5"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -426,7 +445,7 @@ func _process(_delta: float) -> void:
 "
 
 [node name="Level2_5" type="Node2D"]
-script = ExtResource("1_n3rd0")
+script = SubResource("GDScript_og2bk")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0
