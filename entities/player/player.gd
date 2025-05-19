@@ -211,7 +211,10 @@ func die(_camera = player_camera) -> void:
 	
 	# Play Death sound
 	death_sfx.playing = true
-
+	
+	# Remove walking sound
+	walk_sfx.playing = false
+	
 	# Spawn playerdeathparticles
 	# Instance the particle scene
 	var particle_scene = preload("res://entities/particles/player_explosion_node.tscn").instantiate()
@@ -265,7 +268,6 @@ func _physics_process(_delta: float) -> void:
 				velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 		
 		var is_moving = false
-		print(walk_sfx.playing)
 		if(velocity.length() != 0):
 			if (!walk_sfx.playing): 
 				walk_sfx.playing = true
