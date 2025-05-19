@@ -129,7 +129,7 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventKey and event.pressed:
 			# Handle changing lens colors
 			match event.keycode:
-				KEY_META, KEY_SHIFT: # (blue to green, green to red, red to blue
+				KEY_META, KEY_ALT, KEY_SHIFT: # (blue to green, green to red, red to blue
 					lens_sfx.playing = true
 					# Rotates lens triangle counterclockwise
 					if not is_default_color_locked():
