@@ -11,11 +11,12 @@ extends "res://entities/enemy_base/enemy_base.gd"
 func _ready() -> void:
 	shield_sfx.playing = true
 	sprites["sprite"] = $"Sprite"
+	sprites["sprite"].play('walk')
 	super()
 	ENGAGE_DIST = 75
 	
 func _physics_process(_delta: float) -> void:	
-	if health <= 0:
+	if health <= 0: 	
 		death()
 
 	if targetNode:

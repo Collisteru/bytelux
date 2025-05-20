@@ -60,7 +60,7 @@ animations = [{
 "texture": ExtResource("7_5g8nd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -88,6 +88,7 @@ material = SubResource("ShaderMaterial_oto3a")
 rotation = 0.00447929
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_aqh0m")
+animation = &"walk"
 
 [node name="Shield" type="Area2D" parent="."]
 rotation = -1.5708
