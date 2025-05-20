@@ -44,10 +44,6 @@ collision_mask = 8
 [node name="Area" type="CollisionPolygon2D" parent="Hitbox"]
 polygon = PackedVector2Array(-18.9999, -32.0001, 19.0001, -31.9999, 19, -1.99993, -2.53399e-05, 7, -19, -2.00007)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
-
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
 rotation = -1.5708
@@ -70,4 +66,3 @@ attenuation = 8.87654
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
