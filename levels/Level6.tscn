@@ -595,6 +595,7 @@ vframes = 7
 libraries = {
 "": SubResource("AnimationLibrary_oqdak")
 }
+speed_scale = 4.0
 
 [node name="BlueWalls" type="TileMapLayer" parent="."]
 position = Vector2(-167, 392)

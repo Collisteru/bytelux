@@ -441,13 +441,14 @@ position = Vector2(927, 683)
 scale = Vector2(5.02784, 5.23417)
 texture = ExtResource("2_lut35")
 offset = Vector2(1, 0)
-hframes = 7
-vframes = 7
+hframes = 14
+vframes = 14
 
 [node name="StaticAnim" type="AnimationPlayer" parent="Background/StaticSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_oqdak")
 }
+speed_scale = 4.0
 
 [node name="Floor" type="TileMapLayer" parent="."]
 use_parent_material = true

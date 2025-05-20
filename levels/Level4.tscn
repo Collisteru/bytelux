@@ -596,6 +596,7 @@ vframes = 7
 libraries = {
 "": SubResource("AnimationLibrary_oqdak")
 }
+speed_scale = 4.0
 
 [node name="Floor" type="TileMapLayer" parent="."]
 use_parent_material = true
