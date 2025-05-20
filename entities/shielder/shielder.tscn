@@ -81,7 +81,7 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="Area" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(7.96398e-05, -22, 23.0001, -15.9999, 32, -5.99988, 19.9999, 18.0001, -20.0001, 17.9999, -32, -7.00012, -22.9999, -16.0001)
+polygon = PackedVector2Array(6.15398e-05, -17, 23.0001, -15.9999, 32, -5.99988, 13, 8.00005, -14, 6.99995, -32, -7.00012, -22.9999, -16.0001)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
