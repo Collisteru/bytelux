@@ -19,7 +19,7 @@ func _ready() -> void:
 	rows = int(viewport_size.y / FONT_SIZE)-8
 	
 	# set window title
-	DisplayServer.window_set_title("MALWARE")
+	DisplayServer.window_set_title("COMPUTATRUM")
 
 	# load font
 	font_resource = load("res://font/CARBON-DROID.ttf")
