@@ -9,7 +9,7 @@ var player_is_alive
 #@onready var pointer = $Pointer # TODO: remove when done debugging
 @onready var body = $BodySprite
 @onready var player_camera = $Camera2D
-@onready var color_hud = $CanvasLayer/HUD/HBoxContainer/HudSprite
+@onready var color_hud = $HUDCanvasLayer/HUD/HBoxContainer/HudSprite
 @onready var hitbox = $Area2D/Hitbox
 
 # Import Player SFX

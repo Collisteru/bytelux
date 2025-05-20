@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dpw0dvtius7nn"]
+[gd_scene load_steps=29 format=3 uid="uid://dpw0dvtius7nn"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_3f2xq"]
 [ext_resource type="Texture2D" uid="uid://0luyywalcg5n" path="res://assets/character sprite body.png" id="3_1nkbj"]
@@ -109,6 +109,13 @@ fill = 1
 fill_from = Vector2(0.489316, 0.461538)
 fill_to = Vector2(0.502137, 0)
 
+[sub_resource type="SystemFont" id="SystemFont_jwdmc"]
+font_names = PackedStringArray("Monospace", "Monotype Koufi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4bw18"]
+font = SubResource("SystemFont_jwdmc")
+font_size = 25
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.52893, 1.3465)
 collision_layer = 2
@@ -195,9 +202,9 @@ volume_db = -15.0
 pitch_scale = 0.37
 bus = &"SFX"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_wp8t4")]
+[node name="HUD" parent="HUDCanvasLayer" instance=ExtResource("14_wp8t4")]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
@@ -205,6 +212,39 @@ offset_top = -648.0
 offset_bottom = -648.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="LevelCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="LevelCanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -80.0
+offset_right = -59.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="LevelCanvasLayer/Control"]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -16.0
+offset_right = 100.0
+offset_bottom = 82.0
+color = Color(0, 0, 0, 1)
+
+[node name="Level" type="Label" parent="LevelCanvasLayer/Control"]
+layout_mode = 0
+offset_left = -57.0
+offset_top = 19.0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_4bw18")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
