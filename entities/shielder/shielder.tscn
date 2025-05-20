@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw87ms7bbikhk"]
+[gd_scene load_steps=14 format=3 uid="uid://dw87ms7bbikhk"]
 
 [ext_resource type="Script" path="res://entities/shielder/shielder.gd" id="1_7lviv"]
 [ext_resource type="Shader" path="res://entities/enemy_base/enemy_base.gdshader" id="2_b5dyv"]
-[ext_resource type="Texture2D" uid="uid://dg88037sch2ii" path="res://assets/Shield_Enemy.png" id="3_m4pjy"]
+[ext_resource type="Texture2D" uid="uid://bbeu23jrgwlpr" path="res://assets/shielder_idle.png" id="3_3q4gv"]
+[ext_resource type="Texture2D" uid="uid://df51co6755hy" path="res://assets/shielder_walk_1.png" id="4_12r7j"]
 [ext_resource type="AudioStream" uid="uid://sw3i8hwuwof6" path="res://audio/sfx/SHIELD_1A_TS.wav" id="4_kl3w5"]
+[ext_resource type="Texture2D" uid="uid://cbhsetkow0uth" path="res://assets/shielder_walk_2.png" id="5_rn2xd"]
+[ext_resource type="Texture2D" uid="uid://bhld4kbfmy67h" path="res://assets/shielder_walk_3.png" id="6_t8rlx"]
+[ext_resource type="Texture2D" uid="uid://4i3g2vrf6fx6" path="res://assets/shielder_walk_1_mirror.png" id="7_5g8nd"]
+[ext_resource type="Texture2D" uid="uid://b5plehaxttd1e" path="res://assets/shielder_walk_2_mirror.png" id="8_3cr6q"]
+[ext_resource type="Texture2D" uid="uid://54fs1kqburkv" path="res://assets/shielder_walk_3_mirror.png" id="9_gr81y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnjtj"]
 
@@ -18,10 +24,43 @@ shader_parameter/TargetColor = Color(1, 0, 0, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_m4pjy")
+"texture": ExtResource("3_3q4gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_12r7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rn2xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_t8rlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rn2xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_12r7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3q4gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5g8nd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3cr6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gr81y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3cr6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5g8nd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -34,7 +73,7 @@ myColor = 1
 
 [node name="Physics" type="CollisionPolygon2D" parent="."]
 rotation = -1.5708
-polygon = PackedVector2Array(-18.9999, -32.0001, 19.0001, -31.9999, 19, -1.99993, 24, -3.99991, 30, 7.00011, 28.9999, 21.0001, -0.00011584, 32, -29.0001, 20.9999, -30, 6.99989, -25, -4.00009, -19, -2.00007)
+polygon = PackedVector2Array(-32, -7.00012, -23.9999, -16.0001, -15.9999, -16.0001, 7.96398e-05, -22, 15.0001, -15.9999, 23.0001, -16.9999, 32, -5.99988, 19.9999, 18.0001, 30.9999, 18.0001, 22.9999, 27.0001, -23.0001, 25.9999, -30.0001, 17.9999, -20.0001, 17.9999)
 
 [node name="Hitbox" type="Area2D" parent="."]
 rotation = -1.5708
@@ -42,17 +81,14 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="Area" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(-18.9999, -32.0001, 19.0001, -31.9999, 19, -1.99993, -2.53399e-05, 7, -19, -2.00007)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
+polygon = PackedVector2Array(6.15398e-05, -17, 23.0001, -15.9999, 32, -5.99988, 13, 8.00005, -14, 6.99995, -32, -7.00012, -22.9999, -16.0001)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
-rotation = -1.5708
+rotation = 0.00447929
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_aqh0m")
+animation = &"walk"
 
 [node name="Shield" type="Area2D" parent="."]
 rotation = -1.5708
@@ -60,9 +96,10 @@ collision_layer = 21
 collision_mask = 0
 
 [node name="ShieldArea" type="CollisionPolygon2D" parent="Shield"]
-polygon = PackedVector2Array(0, 6, 25, -4.99991, 31, 7.00011, 29.9999, 22.0001, -0.00011946, 33, -30.0001, 21.9999, -31, 6.99989, -26, -5.00009)
+polygon = PackedVector2Array(30.9999, 18.0001, 22.9999, 27.0001, -23.0001, 25.9999, -31.0001, 17.9999)
 
 [node name="ShieldSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(15, 19)
 stream = ExtResource("4_kl3w5")
 volume_db = -8.0
 max_distance = 1000.0
@@ -70,4 +107,3 @@ attenuation = 8.87654
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

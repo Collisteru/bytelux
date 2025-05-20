@@ -11,11 +11,12 @@ extends "res://entities/enemy_base/enemy_base.gd"
 func _ready() -> void:
 	shield_sfx.playing = true
 	sprites["sprite"] = $"Sprite"
+	sprites["sprite"].play('walk')
 	super()
 	ENGAGE_DIST = 75
 	
 func _physics_process(_delta: float) -> void:	
-	if health <= 0:
+	if health <= 0: 	
 		death()
 
 	if targetNode:
@@ -30,13 +31,6 @@ func _physics_process(_delta: float) -> void:
 		# Should only happen if you don't give this node a target node
 	
 	move_and_slide()
-	
-# TODO: remove after debugging
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_4:
-				fire()
 
 func can_see(target):
 	return (target.player_is_alive) and (self.position - targetNode.position).length() < AGRO_RANGE
@@ -71,19 +65,8 @@ func custom_move(target):
 		else:
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 	
-func fire():
-	var projectile = projectile_scene.instantiate()
-	
-	projectile.global_position = global_position
-	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
-	get_parent().add_child(projectile)
-	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	super._on_hitbox_area_entered(_area)
-
-func _on_timer_timeout() -> void:
-	pass
-	#fire()
 	
 func _phase_out(lens: LensColor.LENS_COLOR):
 	if self.myColor != lens:
