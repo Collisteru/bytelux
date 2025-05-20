@@ -123,6 +123,7 @@ stream = ExtResource("12_otin1")
 pitch_scale = 2.0
 max_distance = 1000.0
 attenuation = 2.63902
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

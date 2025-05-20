@@ -26,7 +26,7 @@ func _on_exit_pressed() -> void:
 
 func slider_to_dB(slider_value: int) -> float:
 	# Define the decibel range
-	var min_dB = -50.0  # Decibels for slider value 0 (silent)
+	var min_dB = -80.0  # Decibels for slider value 0 (silent)
 	var max_dB = 10.0    # Decibels for slider value 100 (maximum volume)
 	var default_dB = 0.0 # Decibels for slider value 50 (default volume)
 

@@ -67,6 +67,7 @@ stream = ExtResource("4_kl3w5")
 volume_db = -8.0
 max_distance = 1000.0
 attenuation = 8.87654
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
