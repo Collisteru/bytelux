@@ -116,9 +116,9 @@ func _input(event: InputEvent) -> void:
 					rotate_right()
 					
 func rotate_left():
-	lens_sfx.playing = true
 	# Rotates lens triangle counterclockwise
 	if not is_default_color_locked():
+		lens_sfx.playing = true
 		if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
 			LensColor.change_lens(LensColor.LENS_COLOR.GREEN)
 			change_hud('B', 'G')
@@ -130,9 +130,9 @@ func rotate_left():
 			change_hud('R', 'B')
 			
 func rotate_right():
-	lens_sfx.playing = true
 	# Rotates lens triangle clockwise
 	if not is_default_color_locked():
+		lens_sfx.playing = true
 		if (LensColor.lens == LensColor.LENS_COLOR.BLUE):
 			LensColor.change_lens(LensColor.LENS_COLOR.RED)
 			change_hud('B', 'R')
