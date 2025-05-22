@@ -66,7 +66,7 @@ animations = [{
 
 [node name="shielder" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_tnjtj")
-collision_layer = 36
+collision_layer = 52
 collision_mask = 37
 script = ExtResource("1_7lviv")
 myColor = 1

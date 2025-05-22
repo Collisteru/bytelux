@@ -62,7 +62,7 @@ shader_parameter/ClipFeather = 0.5
 shader_parameter/TargetColor = Color(1, 0, 0, 1)
 
 [node name="charger" type="CharacterBody2D"]
-collision_layer = 36
+collision_layer = 52
 collision_mask = 39
 script = ExtResource("1_4b11g")
 
