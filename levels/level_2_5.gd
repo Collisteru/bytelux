@@ -10,8 +10,3 @@ func _ready() -> void:
 	LastLevelUpdater.set_last_level("res://levels/Level2_5.tscn")
 
 	door.set_next_level("res://levels/Level3.tscn")
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

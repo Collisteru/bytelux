@@ -12,8 +12,3 @@ func _ready() -> void:
 	LastLevelUpdater.set_last_level("res://levels/Level5.tscn")
 	
 	level_label.text = "Level 6"
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

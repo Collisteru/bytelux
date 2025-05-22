@@ -1,6 +1,6 @@
 [gd_scene load_steps=67 format=4 uid="uid://c0qvjbwyp5hib"]
 
-[ext_resource type="Script" path="res://levels/Level7.5.gd" id="1_1c04a"]
+[ext_resource type="Script" path="res://levels/Level_7_5.gd" id="1_1c04a"]
 [ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_i6g33"]
 [ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="3_xns7w"]
 [ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="4_dp2ac"]

@@ -9,7 +9,3 @@ func _ready() -> void:
 	$Background/StaticSprite/StaticAnim.play("static")
 	door.set_next_level("res://levels/Level2.tscn")
 	LastLevelUpdater.set_last_level("res://levels/Level1.tscn")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

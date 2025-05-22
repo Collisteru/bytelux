@@ -13,7 +13,3 @@ func _ready() -> void:
 	door.set_next_level("res://levels/Level2_5.tscn")
 	
 	level_label.text = "Level 2"
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
