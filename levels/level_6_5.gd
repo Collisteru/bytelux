@@ -12,5 +12,4 @@ func _ready() -> void:
 	door.set_next_level("res://levels/Level7.tscn")
 	LastLevelUpdater.set_last_level("res://levels/Level6_5.tscn")
 
-	#TODO: add door
 	level_label.text = "Level 8"

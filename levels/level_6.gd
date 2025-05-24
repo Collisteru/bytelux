@@ -10,7 +10,5 @@ func _ready() -> void:
 	$Background/StaticSprite/StaticAnim.play("static")
 	door.set_next_level("res://levels/Level6_5.tscn")
 	LastLevelUpdater.set_last_level("res://levels/Level6.tscn")
-
-	#TODO: add door
-	
+		
 	level_label.text = "Level 7"
