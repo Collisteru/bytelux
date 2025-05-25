@@ -32,14 +32,14 @@ parameter_name = "Speed"
 [sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_4r5al"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_p6ype"]
-parameter_name = "Vanishing_value"
+parameter_name = "vanishing_value"
 hint = 1
 
 [resource]
 code = "shader_type canvas_item;
-render_mode blend_mix, unshaded;
+render_mode blend_add, unshaded;
 
-uniform float Vanishing_value : hint_range(0, 1);
+uniform float vanishing_value : hint_range(0, 1);
 uniform vec2 Speed;
 uniform sampler2D basic_texture : source_color, repeat_enable;
 
@@ -51,7 +51,7 @@ void fragment() {
 
 
 // FloatParameter:9
-	float n_out9p0 = Vanishing_value;
+	float n_out9p0 = vanishing_value;
 
 
 // Input:5
@@ -91,8 +91,9 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(248.968, 66.9078)
+graph_offset = Vector2(-45.7524, 89.9478)
 mode = 1
+modes/blend = 1
 flags/unshaded = true
 flags/light_only = false
 nodes/fragment/0/position = Vector2(2260, 600)
@@ -116,4 +117,4 @@ nodes/fragment/10/node = SubResource("VisualShaderNodeInput_3j0r0")
 nodes/fragment/10/position = Vector2(780, 320)
 nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_82pah")
 nodes/fragment/11/position = Vector2(1760, 580)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 0, 5, 0, 6, 0, 6, 0, 4, 2, 7, 0, 6, 1, 3, 0, 8, 2, 9, 0, 8, 0, 10, 0, 11, 0, 8, 0, 11, 1, 11, 0, 0, 0)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 0, 5, 0, 6, 0, 6, 0, 4, 2, 7, 0, 6, 1, 9, 0, 8, 0, 10, 0, 11, 0, 8, 0, 11, 1, 11, 0, 0, 0, 3, 0, 8, 2)
