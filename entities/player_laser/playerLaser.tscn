@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8rrjr"]
 shader = ExtResource("3_fwosw")
-shader_parameter/Vanishing_value = 0.0
+shader_parameter/vanishing_value = null
 shader_parameter/Speed = Vector2(-2, 0)
 shader_parameter/basic_texture = ExtResource("4_84m2r")
 
@@ -32,4 +32,5 @@ collision_mask = 0
 [node name="LaserLine2D" type="Line2D" parent="Laser area"]
 material = SubResource("ShaderMaterial_8rrjr")
 points = PackedVector2Array(0, 1, 50, 59)
+width = 19.0
 texture_mode = 2
