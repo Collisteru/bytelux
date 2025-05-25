@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbkcxlw8g36nu"]
+[gd_scene load_steps=6 format=3 uid="uid://cbkcxlw8g36nu"]
 
 [ext_resource type="Script" path="res://entities/player_laser/player_laser.gd" id="1_k6rj0"]
 [ext_resource type="Texture2D" uid="uid://v0hj0jxch7uu" path="res://assets/rcircle.png" id="2_wggs5"]
+[ext_resource type="Shader" uid="uid://bitgn85xlbc37" path="res://shaders/playerLaser.tres" id="3_fwosw"]
+[ext_resource type="Texture2D" uid="uid://d0jhabgqe6s7d" path="res://assets/vfx_lightning.jpg" id="4_84m2r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rrjr"]
+shader = ExtResource("3_fwosw")
+shader_parameter/Vanishing_value = 0.0
+shader_parameter/Speed = Vector2(-2, 0)
+shader_parameter/basic_texture = ExtResource("4_84m2r")
 
 [node name="PlayerLaser" type="RayCast2D"]
 target_position = Vector2(0, 0)
@@ -22,5 +30,6 @@ collision_mask = 0
 [node name="LaserHurtBox" type="CollisionShape2D" parent="Laser area"]
 
 [node name="LaserLine2D" type="Line2D" parent="Laser area"]
-width = 1.4
+material = SubResource("ShaderMaterial_8rrjr")
+points = PackedVector2Array(0, 1, 50, 59)
 texture_mode = 2
