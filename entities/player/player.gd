@@ -56,22 +56,6 @@ func _ready():
 		eye_trails.append(trail)
 		add_child(trail)
 		
-# TODO: remove if not being used
-#func translate_to_center(position: Vector2) -> Vector2:
-		## Get the size of the viewport
-		#var screen_size = get_viewport().get_visible_rect().size
-		## Calculate the center of the screen
-		#var screen_center = screen_size / 2
-		## Translate the position to be relative to the center
-		#return position - screen_center
-
-#func fire():
-	#var projectile = projectile_scene.instantiate()
-	#
-	#projectile.global_position = global_position
-	#projectile.direction = Vector2.RIGHT.rotated(global_rotation)
-	#get_parent().add_child(projectile)
-
 func create_laser():
 	
 	laser_sfx.playing = true
