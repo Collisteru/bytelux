@@ -635,19 +635,15 @@ position = Vector2(612, 49)
 myColor = 2
 
 [node name="Crawler2" parent="." instance=ExtResource("11_lvqrv")]
-position = Vector2(377, 153)
+position = Vector2(380, 188)
 myColor = null
 
 [node name="Crawler3" parent="." instance=ExtResource("11_lvqrv")]
 position = Vector2(619, 458)
 myColor = 1
 
-[node name="Crawler4" parent="." instance=ExtResource("11_lvqrv")]
-position = Vector2(-204, 359)
-myColor = null
-
 [node name="Crawler5" parent="." instance=ExtResource("11_lvqrv")]
-position = Vector2(509, 225)
+position = Vector2(478, 244)
 myColor = null
 
 [node name="Crawler6" parent="." instance=ExtResource("11_lvqrv")]
@@ -709,19 +705,19 @@ position = Vector2(569, 345)
 rotation = -0.00438188
 
 [node name="GuardEnemy6" parent="." instance=ExtResource("12_3b7ni")]
-position = Vector2(554, 348)
+position = Vector2(540, 344)
 rotation = -0.00438188
 
 [node name="GuardEnemy7" parent="." instance=ExtResource("12_3b7ni")]
-position = Vector2(554, 347)
+position = Vector2(638, 369)
 rotation = -0.00438188
 
 [node name="GuardEnemy8" parent="." instance=ExtResource("12_3b7ni")]
-position = Vector2(552, 345)
+position = Vector2(652, 329)
 rotation = -0.00438188
 
 [node name="GuardEnemy9" parent="." instance=ExtResource("12_3b7ni")]
-position = Vector2(561, 349)
+position = Vector2(613, 353)
 rotation = -0.00438188
 myColor = 2
 
