@@ -81,7 +81,7 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="Area" type="CollisionPolygon2D" parent="Hitbox"]
-polygon = PackedVector2Array(0.00011222, -31, 15.0001, -24.9999, 24.0001, -24.9999, 31.0001, -14.9999, 19, 10.0001, -19, 9.99993, -30.9999, -16.0001, -22.9999, -25.0001, -15.9999, -25.0001)
+polygon = PackedVector2Array(0.00011222, -31, 15.0001, -24.9999, 24.0001, -24.9999, 31.0001, -14.9999, 24, -0.999913, -24, -2.00009, -30.9999, -16.0001, -22.9999, -25.0001, -15.9999, -25.0001)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oto3a")
@@ -97,7 +97,7 @@ collision_layer = 21
 collision_mask = 0
 
 [node name="ShieldArea" type="CollisionPolygon2D" parent="Shield"]
-polygon = PackedVector2Array(31, 10.0001, 30.9999, 23.0001, -0.000119507, 33, -29.0001, 22.9999, -29, 9.9999)
+polygon = PackedVector2Array(31, 10.0001, 30.9999, 23.0001, -0.000119507, 33, -29.0001, 22.9999, -29, 9.9999, -19, 9.99993, -24, -1.00009, 26, 9.40561e-05, 21, 10.0001)
 
 [node name="ShieldSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(15, 19)
