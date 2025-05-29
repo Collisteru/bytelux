@@ -31,7 +31,7 @@ func project():
 	if self.is_colliding():
 		# Get global collision point
 		var collision_point = to_local(get_collision_point())
-		var reach = 5  #how much the hurtbox should extend from the raycast
+		var reach = 2  #how much the hurtbox should extend from the raycast
 		laser_line.points = [Vector2.ZERO, collision_point]
 		
 		var newHurtLine = SegmentShape2D.new()
