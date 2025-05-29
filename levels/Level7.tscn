@@ -632,7 +632,7 @@ script = ExtResource("8_4opdk")
 position = Vector2(0, 5.96046e-08)
 
 [node name="Door" parent="." instance=ExtResource("10_p0hf8")]
-position = Vector2(704, 322)
+position = Vector2(705, 322)
 scale = Vector2(1, 1.5)
 
 [node name="Crawler" parent="." instance=ExtResource("11_p1lym")]
@@ -698,3 +698,7 @@ myColor = 1
 [node name="Crawler14" parent="." instance=ExtResource("11_p1lym")]
 position = Vector2(459, 301)
 rotation = -3.12314
+
+[node name="Crawler15" parent="." instance=ExtResource("11_p1lym")]
+position = Vector2(-32, 177)
+rotation = -1.58862
