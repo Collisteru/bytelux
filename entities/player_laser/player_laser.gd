@@ -41,11 +41,8 @@ func project():
 		
 		var collided = self.get_collider()
 		
-		if (collided is EnemyBase):
+		if (collided is EnemyBase) or ((collided is Area2D) and (not collided.get_collision_layer_value(1))):
 			bounces = 0
-		else:
-			if (collided is Area2D) and (not collided.get_collision_layer_value(1)):
-				bounces = 0
 		
 	else:
 		laser_line.points = [Vector2.ZERO, self.target_position]
@@ -103,7 +100,6 @@ func fade():
 	
 	var millisecond = 0.01
 	
-	
 	# Make the laser line fade out
 	var current_invisibility = laser_line.material.get_shader_parameter('vanishing_value')
 	while (current_invisibility < 1):
@@ -118,7 +114,3 @@ func fade():
 		#laser_line.modulate.a -= (millisecond/(fade_time));
 		
 	free()
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
