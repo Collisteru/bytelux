@@ -572,9 +572,6 @@ sources/4 = SubResource("TileSetAtlasSource_72ik6")
 [node name="Level10" type="Node2D"]
 script = ExtResource("1_aqqva")
 
-[node name="Crawler2" parent="." instance=ExtResource("13_jb4cy")]
-myColor = null
-
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0
 offset_top = -700.0
@@ -668,29 +665,29 @@ position = Vector2(586, 202)
 myColor = 1
 
 [node name="Crawler3" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(-8, 452)
+position = Vector2(-15, 465)
 
 [node name="Crawler4" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(155, 461)
+position = Vector2(152, 459)
 myColor = 1
 
 [node name="Crawler5" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(298, 447)
+position = Vector2(302, 463)
 myColor = 2
 
 [node name="Crawler6" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(217, 457)
+position = Vector2(225, 463)
 myColor = 1
 
 [node name="Crawler7" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(73, 455)
+position = Vector2(80, 464)
 
 [node name="Crawler8" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(-75, 450)
+position = Vector2(-103, 461)
 myColor = 2
 
 [node name="Crawler9" parent="." instance=ExtResource("13_jb4cy")]
-position = Vector2(387, 460)
+position = Vector2(381, 463)
 
 [node name="shielder" parent="." instance=ExtResource("14_rmu6c")]
 position = Vector2(517, 437)
@@ -701,7 +698,7 @@ position = Vector2(274, 569)
 myColor = 0
 
 [node name="shielder3" parent="." instance=ExtResource("14_rmu6c")]
-position = Vector2(270, 625)
+position = Vector2(268, 632)
 myColor = 2
 
 [node name="GuardEnemy3" parent="." instance=ExtResource("12_gktrw")]
@@ -710,6 +707,7 @@ myColor = 2
 
 [node name="GuardEnemy4" parent="." instance=ExtResource("12_gktrw")]
 position = Vector2(178, 616)
+myColor = 1
 
 [node name="charger7" parent="." instance=ExtResource("11_p15dr")]
 position = Vector2(465, 516)
