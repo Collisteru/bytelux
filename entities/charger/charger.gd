@@ -36,13 +36,6 @@ func _physics_process(_delta: float) -> void:
 		# Should only happen if you don't give this node a target node
 	
 	move_and_slide()
-	
-# TODO: remove after debugging
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_4:
-				fire()
 
 func can_see(target):
 	return (target.player_is_alive) and (self.position - targetNode.position).length() < AGRO_RANGE
@@ -80,15 +73,6 @@ func custom_move(target):
 
 	if velocity.length() >= topSpeed or velocity.length() == 0 or previousSpeed.x == velocity.x or previousSpeed.y == velocity.y:
 		charging = false
-	
-	
-	
-func fire():
-	var projectile = projectile_scene.instantiate()
-	
-	projectile.global_position = global_position
-	projectile.direction = Vector2.RIGHT.rotated(global_rotation)
-	get_parent().add_child(projectile)
 	
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	print("HI")

@@ -29,4 +29,12 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_oiyii")
 texture_scale = 8.0
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -33.0
+offset_right = 24.0
+offset_bottom = 7.0
+scale = Vector2(0.796785, 0.799438)
+color = Color(0.964742, 0.964742, 0.964742, 1)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

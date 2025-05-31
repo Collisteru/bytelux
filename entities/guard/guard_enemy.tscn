@@ -87,8 +87,8 @@ animations = [{
 
 [node name="GuardEnemy" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)
-collision_layer = 4
-collision_mask = 7
+collision_layer = 36
+collision_mask = 39
 script = ExtResource("1_q3pa1")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="."]

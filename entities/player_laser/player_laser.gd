@@ -5,7 +5,6 @@ extends RayCast2D
 @onready var hit_circle = $HitCircle
 @onready var laser_scene = load("res://entities/player_laser/playerLaser.tscn")
 
-
 # TODO: This is a placeholder until wall collision code is programmed
 var laser_max_length = 120  # Max length of the laser
 var shooter = null
@@ -15,7 +14,8 @@ func initialize(player: Node2D) -> void:
 	shooter = player
 
 func _ready():
-	laser_line.default_color = LensColor.translate_color(LensColor.lens)
+	laser_line.default_color = set_laser_color(LensColor.lens)
+	
 	hit_circle.visible = false
 	self.enabled = true # Enable Raycast 2D
 	project()
@@ -31,7 +31,7 @@ func project():
 	if self.is_colliding():
 		# Get global collision point
 		var collision_point = to_local(get_collision_point())
-		var reach = 5  #how much the hurtbox should extend from the raycast
+		var reach = 2  #how much the hurtbox should extend from the raycast
 		laser_line.points = [Vector2.ZERO, collision_point]
 		
 		var newHurtLine = SegmentShape2D.new()
@@ -41,11 +41,8 @@ func project():
 		
 		var collided = self.get_collider()
 		
-		if (collided is EnemyBase):
+		if (collided is EnemyBase) or ((collided is Area2D) and (not collided.get_collision_layer_value(1))):
 			bounces = 0
-		else:
-			if (collided is Area2D) and (not collided.get_collision_layer_value(1)):
-				bounces = 0
 		
 	else:
 		laser_line.points = [Vector2.ZERO, self.target_position]
@@ -54,7 +51,7 @@ func project():
 		newHurtLine.a = Vector2.ZERO
 		newHurtLine.b = self.target_position
 		laser_hurt.shape = newHurtLine
-	laser_line.modulate.a = 1.0;
+	laser_line.material.set_shader_parameter('vanishing_value', 0);
 	laser_line.visible = true
 			
 	if bounces > 0:
@@ -63,7 +60,15 @@ func project():
 	else:
 		print("\n")
 
-#func recur(spawn):
+func set_laser_color(color):
+	if color == LensColor.LENS_COLOR.WHITE:
+		return Color(255, 255, 255)
+	elif color == LensColor.LENS_COLOR.RED:
+		return Color(255, 1, 1)
+	elif color == LensColor.LENS_COLOR.BLUE:
+		return Color(1, 1, 255)
+	elif color == LensColor.LENS_COLOR.GREEN:
+		return Color(1, 255, 1)
 #
 
 func create_laser():
@@ -95,13 +100,17 @@ func fade():
 	
 	var millisecond = 0.01
 	
-	# Make the laser line fade otu
-	while (laser_line.modulate.a > 0.0):
+	# Make the laser line fade out
+	var current_invisibility = laser_line.material.get_shader_parameter('vanishing_value')
+	while (current_invisibility < 1):
 		await get_tree().create_timer(millisecond).timeout;
-		laser_line.modulate.a -= (millisecond/(fade_time));
+		var new_invisibility =  current_invisibility+millisecond/(fade_time)
+		if new_invisibility > 1:
+			current_invisibility = 1
+		else:
+			current_invisibility = new_invisibility
+		laser_line.material.set_shader_parameter('vanishing_value', current_invisibility)
+		#laser_line.material.shader_parameter/vanishing_value
+		#laser_line.modulate.a -= (millisecond/(fade_time));
 		
 	free()
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

@@ -12,17 +12,8 @@ func _ready() -> void:
 	sfx_index = AudioServer.get_bus_index("SFX")
 	music_index = AudioServer.get_bus_index("Music")
 
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://screens/title/title.tscn")
-	pass # Replace with function body.
 
 func slider_to_dB(slider_value: int) -> float:
 	# Define the decibel range
@@ -38,17 +29,12 @@ func slider_to_dB(slider_value: int) -> float:
 	else:
 		return lerp(default_dB, max_dB, (slider_value - 50) / 50.0)
 
-
-func _on_sfx_drag_ended(value_changed: bool) -> void:
+func _on_sfx_drag_ended(_value_changed: bool) -> void:
 	print("SFX value changed: ", $SFX.value)
 	AudioSettings.sfx_volume = $SFX.value
 	AudioServer.set_bus_volume_db(sfx_index, slider_to_dB($SFX.value))
-	pass # Replace with function body.
 
-
-func _on_music_drag_ended(value_changed: bool) -> void:
+func _on_music_drag_ended(_value_changed: bool) -> void:
 	print("Music value changed: ", $Music.value)
 	AudioSettings.music_volume = $Music.value
 	AudioServer.set_bus_volume_db(music_index, slider_to_dB($Music.value))
-
-	pass # Replace with function body.

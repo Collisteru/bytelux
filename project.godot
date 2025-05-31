@@ -25,6 +25,10 @@ MenuMusicPlayerS="*res://audio/menuMusicPlayerS.tscn"
 AudioSettings="*res://globals/audio_settings.tscn"
 WinMusicPlayerS="*res://audio/winMusicPlayerS.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 ui_left={

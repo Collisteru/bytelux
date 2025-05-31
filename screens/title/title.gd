@@ -2,7 +2,6 @@ extends Node2D
 
 @export var font_resource: Font
 
-
 const FONT_SIZE = 16
 var viewport_size = 0
 var matrix = []
@@ -39,10 +38,7 @@ func _ready() -> void:
 			else:
 				# Randomize the initial "y" values slightly
 				var random_y = int(randi() % 11) if randi() % 2 == 0 else 0
-				matrix[f].append({"value": Vector2(0, random_y), "delay": 0})
-
-	# Set up padding values for buttons
-	
+				matrix[f].append({"value": Vector2(0, random_y), "delay": 0})	
 	
 	
 func mtrx(columns: int, rows: int) -> void:
