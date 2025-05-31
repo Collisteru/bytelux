@@ -111,6 +111,7 @@ fill_to = Vector2(0.502137, 0)
 
 [sub_resource type="SystemFont" id="SystemFont_jwdmc"]
 font_names = PackedStringArray("Monospace", "Monotype Koufi")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4bw18"]
 font = SubResource("SystemFont_jwdmc")
