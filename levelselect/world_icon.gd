@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name LevelSelect
 
 @export var world_index: int = 1
 

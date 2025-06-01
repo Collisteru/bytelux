@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://igapxb6maesp"]
+[gd_scene load_steps=5 format=3 uid="uid://igapxb6maesp"]
 
 [ext_resource type="PackedScene" uid="uid://e2gi8k4848vs" path="res://levelselect/world_icon.tscn" id="1_7sb37"]
 [ext_resource type="Script" path="res://levelselect/world_select.gd" id="1_bpokt"]
+[ext_resource type="Texture2D" uid="uid://cj2jvmy0upeer" path="res://assets/motherboard.png" id="2_8ty8n"]
 [ext_resource type="PackedScene" uid="uid://bqcc7lass5jxg" path="res://levelselect/player_icon.tscn" id="3_gsulk"]
 
 [node name="WorldSelect" type="Control"]
@@ -13,111 +14,122 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bpokt")
 
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -8.0
+offset_top = -1728.0
+offset_right = 2904.0
+offset_bottom = 176.0
+texture = ExtResource("2_8ty8n")
+
 [node name="WorldIcon" parent="." instance=ExtResource("1_7sb37")]
+offset_left = 208.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 96.0
+world_index = 1
 
 [node name="WorldIcon2" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 128.0
-offset_top = -128.0
-offset_right = 192.0
-offset_bottom = -64.0
-world_index = 2
+offset_left = 320.0
+offset_top = -56.0
+offset_right = 384.0
+offset_bottom = 8.0
 
 [node name="WorldIcon3" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 256.0
-offset_top = 8.0
-offset_right = 320.0
-offset_bottom = 72.0
+offset_left = 320.0
+offset_top = -192.0
+offset_right = 384.0
+offset_bottom = -128.0
 world_index = 3
 
 [node name="WorldIcon4" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 384.0
-offset_top = -256.0
-offset_right = 448.0
-offset_bottom = -192.0
+offset_left = 280.0
+offset_top = -280.0
+offset_right = 344.0
+offset_bottom = -216.0
 world_index = 4
 
 [node name="WorldIcon5" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 448.0
-offset_top = -64.0
-offset_right = 512.0
-offset_bottom = 0.0
+offset_left = 192.0
+offset_top = -344.0
+offset_right = 256.0
+offset_bottom = -280.0
 world_index = 5
 
 [node name="WorldIcon6" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 576.0
-offset_top = -256.0
-offset_right = 640.0
-offset_bottom = -192.0
+offset_left = 272.0
+offset_top = -408.0
+offset_right = 336.0
+offset_bottom = -344.0
 world_index = 6
 
 [node name="WorldIcon7" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 664.0
-offset_top = 32.0
-offset_right = 728.0
-offset_bottom = 96.0
+offset_left = 392.0
+offset_top = -400.0
+offset_right = 456.0
+offset_bottom = -336.0
 world_index = 7
 
 [node name="WorldIcon8" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 800.0
-offset_top = -208.0
-offset_right = 864.0
-offset_bottom = -144.0
+offset_left = 488.0
+offset_top = -392.0
+offset_right = 552.0
+offset_bottom = -328.0
 world_index = 8
 
 [node name="WorldIcon9" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 896.0
-offset_top = 8.0
-offset_right = 960.0
-offset_bottom = 72.0
+offset_left = 528.0
+offset_top = -272.0
+offset_right = 592.0
+offset_bottom = -208.0
 world_index = 9
 
 [node name="WorldIcon10" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1032.0
-offset_top = -152.0
-offset_right = 1096.0
-offset_bottom = -88.0
+offset_left = 416.0
+offset_top = -88.0
+offset_right = 480.0
+offset_bottom = -24.0
 world_index = 10
 
 [node name="WorldIcon11" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1104.0
-offset_top = 120.0
-offset_right = 1168.0
-offset_bottom = 184.0
+offset_left = 520.0
+offset_top = -88.0
+offset_right = 584.0
+offset_bottom = -24.0
 world_index = 11
 
 [node name="WorldIcon12" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1200.0
-offset_top = -96.0
-offset_right = 1264.0
-offset_bottom = -32.0
+offset_left = 624.0
+offset_top = -88.0
+offset_right = 688.0
+offset_bottom = -24.0
 world_index = 12
 
 [node name="WorldIcon13" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1264.0
-offset_top = -304.0
-offset_right = 1328.0
-offset_bottom = -240.0
+offset_left = 736.0
+offset_top = -96.0
+offset_right = 800.0
+offset_bottom = -32.0
 world_index = 13
 
 [node name="WorldIcon14" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1336.0
-offset_top = 56.0
-offset_right = 1400.0
-offset_bottom = 120.0
+offset_left = 904.0
+offset_top = -104.0
+offset_right = 968.0
+offset_bottom = -40.0
 world_index = 14
 
 [node name="WorldIcon15" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1400.0
-offset_top = -184.0
-offset_right = 1464.0
-offset_bottom = -120.0
+offset_left = 1000.0
+offset_top = -176.0
+offset_right = 1064.0
+offset_bottom = -112.0
 world_index = 15
 
 [node name="WorldIcon16" parent="." instance=ExtResource("1_7sb37")]
-offset_left = 1520.0
-offset_top = -288.0
-offset_right = 1584.0
-offset_bottom = -224.0
+offset_left = 1056.0
+offset_top = -272.0
+offset_right = 1120.0
+offset_bottom = -208.0
 world_index = 16
 
 [node name="PlayerIcon" parent="." instance=ExtResource("3_gsulk")]
