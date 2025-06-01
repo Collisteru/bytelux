@@ -40,17 +40,18 @@ func _physics_process(_delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, ACCELERATION)
 			sprites["legSprite"].stop()
 	else:
-		print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
+		#print("AHHHHH, I DON'T KNOW WHAT I'M FOLLOWING")
 		# Should only happen if you don't give this node a target node
+		pass
 	
 	move_and_slide()
 	
 # TODO: remove after debugging
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_4:
-				fire()
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventKey and event.pressed:
+		#match event.keycode:
+			#KEY_4:
+				#fire()
 
 func can_see(target):
 	return (self.position - target.position).length() < AGRO_RANGE

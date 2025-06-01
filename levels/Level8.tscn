@@ -131,6 +131,7 @@ texture = ExtResource("4_6qcho")
 6:5/0 = 0
 6:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_iwbgq")
 6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 1.03125, 1.3125)
+5:0/0 = 0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x7lry"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

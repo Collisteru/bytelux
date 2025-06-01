@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://rtggr1y4jrgs"]
+
+[ext_resource type="Script" path="res://entities/projectile/daemonbullet.gd" id="1_u7coq"]
+[ext_resource type="Texture2D" uid="uid://ckf3f5c0ax6w3" path="res://assets/daemon_bullet.png" id="1_x0wo3"]
+[ext_resource type="Texture2D" uid="uid://dg46i6cdi86tk" path="res://assets/projectile_glow_texture.png" id="2_tlr5m"]
+
+[node name="daemonbullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_u7coq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.929256, 0.921496, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_x0wo3")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.2, 0.2)
+color = Color(1, 0, 0, 1)
+energy = 4.5
+texture = ExtResource("2_tlr5m")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -8, 2, -7, 4, -6, 6, -4, 7, -2, 7, 0, 6, 3, 5, 5, 3, 7, 0, 7, -3, 7, -5, 6, -7, 4, -8, 1, -8, -2, -7, -4, -5, -6)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 11
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -7, 2, -7, 4, -6, 6, -4, 7, -2, 7, 0, 6, 3, 5, 5, 3, 7, 0, 7, -3, 7, -5, 6, -7, 4, -8, 1, -8, -2, -7, -4, -5, -6, -3, -7)

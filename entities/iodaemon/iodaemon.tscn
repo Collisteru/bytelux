@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxkxbibo4bhv2"]
+
+[ext_resource type="Texture2D" uid="uid://bkkdig77chqji" path="res://assets/io_daemon_sprite.png" id="1_sj0w7"]
+[ext_resource type="PackedScene" uid="uid://fviega6hwtft" path="res://assets/guard_hitbox.tscn" id="2_7x3dw"]
+[ext_resource type="AudioStream" uid="uid://bupyoie00ihdj" path="res://audio/sfx/ENEMY SHOOTING_1A_TS.wav" id="3_dv00u"]
+
+[node name="Iodaemon" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_sj0w7")
+
+[node name="Physics" parent="." instance=ExtResource("2_7x3dw")]
+position = Vector2(-23.3423, 43.9392)
+scale = Vector2(0.152587, 0.153547)
+polygon = PackedVector2Array(170, -219, 102, -193, 51, -138, 43, -63, 55, -15, 91, 43, 169, 70, 217.735, 57.6538, 244, 51, 291, -7, 299, -67, 291, -145, 236, -208)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="Area" parent="Hitbox" instance=ExtResource("2_7x3dw")]
+position = Vector2(13.2243, 30.8712)
+scale = Vector2(0.169118, 0.155026)
+polygon = PackedVector2Array(-65, -144, -129, -117, -171, -70, -185, -1, -175, 58, -139, 118, -62, 151, 14, 121, 56, 62, 70, -1, 50, -67, 4, -124)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="bullet_spawn" type="Node2D" parent="."]
+position = Vector2(2, 50)
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dv00u")
+pitch_scale = 2.0
+max_distance = 1000.0
+attenuation = 2.63902
+bus = &"SFX"
