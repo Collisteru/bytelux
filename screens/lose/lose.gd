@@ -111,4 +111,4 @@ func _on_retry_pressed() -> void:
 	
 	print(LastLevelUpdater.get_last_level())
 	get_tree().change_scene_to_file(LastLevelUpdater.get_last_level())
-	pass # Replace with function body.
+	

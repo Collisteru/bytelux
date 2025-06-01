@@ -3,17 +3,19 @@ extends CharacterBody2D
 @onready var projectile_scene = load("res://entities/projectile/daemonbullet.tscn")
 @onready var spawnNode = $"bullet_spawn"
 
+# Horizontal movement for oscillate
 const AMPLITUDE = 200.0  # Peak horizontal speed (px/sec)
 const FREQUENCY = 0.1    # Oscillations per second (0.5 Hz = one cycle in 2s)
-
 var move_type = "oscillate"
-
-var bullet_pattern = "direct_aim, star, sweep"
-
+const patterns = ["direct_aim", "star", "sweep"]
+var curr_pattern
 var time := 0.0
+var fire_cooldown := 0.0
+const FIRE_INTERVAL := 0.3
 
 func _ready():
 	velocity = Vector2.ZERO
+	curr_pattern = patterns[0]
 
 func fire():
 	var projectile = projectile_scene.instantiate()
@@ -24,6 +26,12 @@ func fire():
 
 func _physics_process(delta: float) -> void:
 	time += delta
-	if move_type == "Oscillating":
+	fire_cooldown -= delta
+
+	if curr_pattern == "direct_aim" and fire_cooldown <= 0.0:
+		fire()
+		fire_cooldown = FIRE_INTERVAL
+	
+	if move_type == "oscillate":
 		velocity.x = sin(time * TAU * FREQUENCY) * AMPLITUDE
 	move_and_slide()

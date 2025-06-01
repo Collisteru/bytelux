@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const SPEED: float = 100.0
+var SPEED: float = 100.0
 @export var lifespan: float = 3.0
 @onready var light2D = $PointLight2D
 

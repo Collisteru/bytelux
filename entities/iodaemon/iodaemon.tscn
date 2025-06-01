@@ -29,7 +29,7 @@ wait_time = 1.5
 autostart = true
 
 [node name="bullet_spawn" type="Node2D" parent="."]
-position = Vector2(2, 50)
+position = Vector2(2, 69)
 
 [node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dv00u")
