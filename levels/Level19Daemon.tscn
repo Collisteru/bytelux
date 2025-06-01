@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://dko60f0hqe447"]
+[gd_scene load_steps=68 format=4 uid="uid://i0m2hqgn3qyo"]
 
 [ext_resource type="Script" path="res://levels/level_19_daemon.gd" id="1_qpqei"]
 [ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_y6yf8"]
@@ -462,19 +462,16 @@ tile_set = SubResource("TileSet_7lyeb")
 collision_enabled = false
 
 [node name="BlueWalls" type="TileMapLayer" parent="."]
-visible = false
 tile_map_data = PackedByteArray("AAD6/w0AAgAFAAUAAAA=")
 tile_set = SubResource("TileSet_thnpv")
 script = SubResource("GDScript_auhln")
 
 [node name="RedWalls" type="TileMapLayer" parent="."]
-visible = false
 tile_map_data = PackedByteArray("AAD+/w0AAwADAAMAAAABAA0AAwADAAUAAAA=")
 tile_set = SubResource("TileSet_thnpv")
 script = SubResource("GDScript_x55gs")
 
 [node name="GreenWalls" type="TileMapLayer" parent="."]
-visible = false
 tile_map_data = PackedByteArray("AAAOAA0AAQAGAAAAAAAPAA0AAQAGAAAAAAAQAA0AAQAGAAAAAAARAA0AAQAGAAAAAAA=")
 tile_set = SubResource("TileSet_thnpv")
 script = SubResource("GDScript_jl2a5")
@@ -488,13 +485,11 @@ position = Vector2(-126, -105)
 collision_mask = 21
 
 [node name="Door" parent="." instance=ExtResource("9_tmhdm")]
-visible = false
 position = Vector2(188, 3)
 
 [node name="background_filter" type="CanvasModulate" parent="."]
 script = ExtResource("10_81e0q")
 
 [node name="Iodaemon" parent="." instance=ExtResource("11_8bs8n")]
-visible = false
 position = Vector2(-48, -410)
 script = ExtResource("12_rugj0")
