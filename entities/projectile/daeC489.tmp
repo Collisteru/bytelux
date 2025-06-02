@@ -20,17 +20,17 @@ color = Color(1, 0, 0, 1)
 energy = 4.5
 texture = SubResource("ViewportTexture_fsgu3")
 
-[node name="PhysicsBox" type="CollisionPolygon2D" parent="."]
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
 light_mask = 16
 visibility_layer = 3
-polygon = PackedVector2Array(-1, -7, 1, -6, 3, -5, 5, -3, 6, -2, 6, 0, 6, 3, 5, 5, 3, 6, 0, 7, -3, 6, -5, 5, -7, 4, -8, 1, -8, -2, -7, -4, -5, -6)
+polygon = PackedVector2Array(0, -8, 2, -7, 4, -6, 6, -4, 7, -2, 7, 0, 6, 3, 5, 5, 3, 7, 0, 7, -3, 7, -5, 6, -7, 4, -8, 1, -8, -2, -7, -4, -5, -6)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 17
+collision_layer = 16
 collision_mask = 3
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(0, -8, 3, -7, 4, -6, 6, -4, 7, -3, 7, 0, 7, 3, 6, 5, 3, 7, 0, 8, -3, 7, -6, 6, -8, 4, -9, 1, -8, -3, -7, -5, -5, -7, -3, -8)
+polygon = PackedVector2Array(0, -7, 2, -7, 4, -6, 6, -4, 7, -2, 7, 0, 6, 3, 5, 5, 3, 7, 0, 7, -3, 7, -5, 6, -7, 4, -8, 1, -8, -2, -7, -4, -5, -6, -3, -7)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

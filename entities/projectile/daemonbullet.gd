@@ -1,18 +1,17 @@
 
 # Subclass of projectile
+
 extends "res://entities/projectile/projectile.gd"
 
-
-
-func _ready():
+func _ready(inlife=4.0):
+	
 	set_color()
 	# initialize the timer
 	SPEED = 300
 	direction = Vector2(0.0,1.0)
-	lifespan = 4.0
+	lifespan = inlife
 	life_timer = lifespan
 	
-
 
 func _process(delta):
 	# reduce the lifespan timer
@@ -26,12 +25,11 @@ func _process(delta):
 		linear_velocity = direction * SPEED
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	#print("HITTT area")
-	if area.get_collision_layer_value(3):
-		print("oops, area was a shield")
-	else:
-		queue_free()
+	if area == self:
+		return  # Ignore self
+	queue_free()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	#print("HITTT body")
+	if _body == self:
+		return  # Ignore self
 	queue_free()

@@ -4,14 +4,14 @@ extends CharacterBody2D
 @onready var spawnNode = $"bullet_spawn"
 
 # Horizontal movement for oscillate
-const AMPLITUDE = 200.0  # Peak horizontal speed (px/sec)
-const FREQUENCY = 0.1    # Oscillations per second (0.5 Hz = one cycle in 2s)
+const AMPLITUDE = 400.0  # Peak horizontal speed (px/sec)
+const FREQUENCY = 0.2    # Oscillations per second (0.5 Hz = one cycle in 2s)
 var move_type = "oscillate"
 const patterns = ["direct_aim", "star", "sweep"]
 var curr_pattern
 var time := 0.0
 var fire_cooldown := 0.0
-const FIRE_INTERVAL := 0.3
+const FIRE_INTERVAL := 0.2
 
 func _ready():
 	velocity = Vector2.ZERO

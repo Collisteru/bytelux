@@ -10,26 +10,27 @@
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_sj0w7")
 
-[node name="Physics" parent="." instance=ExtResource("2_7x3dw")]
+[node name="PhysicsBox" parent="." instance=ExtResource("2_7x3dw")]
+light_mask = 4
 position = Vector2(-23.3423, 43.9392)
 scale = Vector2(0.152587, 0.153547)
-polygon = PackedVector2Array(170, -219, 102, -193, 51, -138, 43, -63, 55, -15, 91, 43, 169, 70, 217.735, 57.6538, 244, 51, 291, -7, 299, -67, 291, -145, 236, -208)
+polygon = PackedVector2Array(166.084, -208.009, 107.102, -175.446, 80.887, -136.37, 67.7797, -71.2433, 67.7797, -32.1674, 93.9942, 19.934, 172.638, 52.4973, 218.513, 45.9846, 244.728, 32.9593, 277.496, -12.6294, 284.05, -71.2433, 270.942, -142.883, 231.621, -194.984)
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 8
+collision_layer = 31
+collision_mask = 15
 
 [node name="Area" parent="Hitbox" instance=ExtResource("2_7x3dw")]
 position = Vector2(13.2243, 30.8712)
 scale = Vector2(0.169118, 0.155026)
-polygon = PackedVector2Array(-65, -144, -129, -117, -171, -70, -185, -1, -175, 58, -139, 118, -62, 151, 14, 121, 56, 62, 70, -1, 50, -67, 4, -124)
+polygon = PackedVector2Array(-208.282, -147.531, 87.3692, -153.982, 81.4561, 155.644, -208.282, 155.644)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
 [node name="bullet_spawn" type="Node2D" parent="."]
-position = Vector2(2, 69)
+position = Vector2(2, 71)
 
 [node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dv00u")

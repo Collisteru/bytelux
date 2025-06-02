@@ -46,3 +46,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	#print("HITTT body")
 	queue_free()
+
+
+func _on_body_entered(body: Node) -> void:
+	pass # Replace with function body.
