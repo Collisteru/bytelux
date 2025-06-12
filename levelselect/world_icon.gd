@@ -3,6 +3,7 @@ extends Control
 class_name LevelSelect
 
 @export var world_index: int = 1
+@export var level: String
 
 func _ready() -> void:
 	$Label.text = "Level " + str(world_index)

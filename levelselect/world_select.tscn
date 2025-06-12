@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_bpokt")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -8.0
 offset_top = -1728.0
 offset_right = 2904.0
@@ -27,12 +28,14 @@ offset_top = 32.0
 offset_right = 272.0
 offset_bottom = 96.0
 world_index = 1
+level = "res://levels/Level1.tscn"
 
 [node name="WorldIcon2" parent="." instance=ExtResource("1_7sb37")]
 offset_left = 320.0
 offset_top = -56.0
 offset_right = 384.0
 offset_bottom = 8.0
+level = "\"res://levels/Level2.tscn\""
 
 [node name="WorldIcon3" parent="." instance=ExtResource("1_7sb37")]
 offset_left = 320.0

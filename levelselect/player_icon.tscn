@@ -9,3 +9,5 @@ rotation = 1.5708
 pivot_offset = Vector2(32, 32)
 texture = ExtResource("1_enpcy")
 expand_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]

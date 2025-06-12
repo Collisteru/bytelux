@@ -11,5 +11,9 @@ func get_last_level():
 func set_last_level(name: String):
 	LastLevel = name
 
+func get_progress():
+	return progress
+
 func update_progress(current_level: int):
 	progress = max(progress, current_level)
+	print("UPDATED!!! ", progress)
