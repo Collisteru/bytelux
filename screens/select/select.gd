@@ -99,10 +99,6 @@ func _on_exit_pressed() -> void:
 
 func _on_start_pressed() -> void:
 	
-	var implemented: bool = true
-	if implemented:
-		get_tree().change_scene_to_file("res://screens/select/select.tscn")
-		return
 	# Stop playing level music
 	MenuMusicPlayerS.playing = false
 	
