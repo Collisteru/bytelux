@@ -51,10 +51,14 @@ func _ready():
 	
 	walk_sfx.playing = false
 	
+	# eye trails
 	for n in eyes.size():
 		var trail = eye_trail_scene.instantiate()
 		eye_trails.append(trail)
 		add_child(trail)
+		
+	body.rotation = self.rotation
+	self.rotation = 0
 		
 func create_laser():
 	
