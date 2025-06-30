@@ -1,6 +1,6 @@
 [gd_scene load_steps=70 format=4 uid="uid://bjsomolu5ou3i"]
 
-[ext_resource type="Script" path="res://levels/level_12.gd" id="1_2wix0"]
+[ext_resource type="Script" path="res://levels/level_base.gd" id="1_gr17p"]
 [ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_0dge5"]
 [ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="3_ss5oe"]
 [ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="4_lv2ck"]
@@ -430,7 +430,7 @@ func _process(_delta: float) -> void:
 "
 
 [node name="Level3" type="Node2D"]
-script = ExtResource("1_2wix0")
+script = ExtResource("1_gr17p")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0

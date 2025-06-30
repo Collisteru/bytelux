@@ -99,7 +99,7 @@ func _on_exit_pressed() -> void:
 
 func _on_start_pressed() -> void:
 	
-	var implemented: bool = false
+	var implemented: bool = true
 	if implemented:
 		get_tree().change_scene_to_file("res://levelselect/world_select.tscn")
 		return

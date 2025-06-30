@@ -17,7 +17,7 @@ func _input(event):
 		current_world += 1
 	
 	if event.is_action_pressed("ui_accept"):
-		get_tree().change_scene_to_file(worlds[current_world].level)
+		get_tree().change_scene_to_file(LastLevelUpdater.get_level_dict()[current_world])
 		print("GOING IN")
 	
 	$PlayerIcon.global_position = worlds[current_world].global_position

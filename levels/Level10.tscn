@@ -1,6 +1,6 @@
 [gd_scene load_steps=75 format=4 uid="uid://cuj843t51l564"]
 
-[ext_resource type="Script" path="res://levels/level_10.gd" id="1_aqqva"]
+[ext_resource type="Script" path="res://levels/level_base.gd" id="1_s1gla"]
 [ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_qk5yg"]
 [ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="3_llwk2"]
 [ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="4_ftjse"]
@@ -570,7 +570,7 @@ sources/3 = SubResource("TileSetAtlasSource_vqqip")
 sources/4 = SubResource("TileSetAtlasSource_72ik6")
 
 [node name="Level10" type="Node2D"]
-script = ExtResource("1_aqqva")
+script = ExtResource("1_s1gla")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0

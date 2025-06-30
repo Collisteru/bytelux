@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=4 uid="uid://drtk2sdyatjes"]
 
-[ext_resource type="Script" path="res://levels/level_daemon.gd" id="1_mupa1"]
+[ext_resource type="Script" path="res://levels/level_base.gd" id="1_bndgd"]
 [ext_resource type="Texture2D" uid="uid://bv2qyppsu87nx" path="res://assets/tv_static-Sheet-Sheet.png" id="2_iy43y"]
 [ext_resource type="Texture2D" uid="uid://cbo3dufbdowd8" path="res://assets/gray_floor.jpg" id="3_fjpls"]
 [ext_resource type="Texture2D" uid="uid://bt1pmc08pso4u" path="res://assets/tile_gray.png" id="4_2hsgw"]
@@ -367,7 +367,7 @@ sources/3 = SubResource("TileSetAtlasSource_btdsf")
 sources/4 = SubResource("TileSetAtlasSource_l5hfa")
 
 [node name="IODaemonLevel" type="Node2D"]
-script = ExtResource("1_mupa1")
+script = ExtResource("1_bndgd")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -700.0
