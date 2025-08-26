@@ -6,7 +6,7 @@ var current_world: int = 0
 var unlocked_world: int = 1
 
 func _ready() -> void:
-	$PlayerIcon.global_position = worlds[current_world].global_position
+	$PlayerIcon.position = worlds[current_world].position
 	unlocked_world = LastLevelUpdater.get_progress()-1
 
 func _input(event):
@@ -20,4 +20,4 @@ func _input(event):
 		get_tree().change_scene_to_file(LastLevelUpdater.get_level_dict()[current_world])
 		print("GOING IN")
 	
-	$PlayerIcon.global_position = worlds[current_world].global_position
+	$PlayerIcon.position = worlds[current_world].position
