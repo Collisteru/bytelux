@@ -22,9 +22,6 @@ var level_dict = {
 	16: "res://levels/Level11.tscn",
 	17: "res://levels/Level12.tscn",
 	18: "res://levels/Level18.tscn",
-	19: "res://levels/Level19Daemon.tscn",
-	20: "dummy" #for assigning value to the door when we don't have stuffs
-#	"Some key name": "value1",
 }
 # To be used in unlocking levels
 var progress : int = 1
